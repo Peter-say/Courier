@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Web\ServicesController;
+use App\Http\Controllers\Web\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/' , [WelcomeController::class, 'welcome']);
+Route::prefix('web')->as('web.')->group(function () {
+
+    Route::get('/contact-us' , [WelcomeController::class, 'contactUs'])->name('contact-us');
+    Route::get('/about-us' , [WelcomeController::class, 'aboutUs'])->name('about-us');
+
+
+    Route::prefix('service')->as('service.')->group(function () {
+        Route::get('/' , [ServicesController::class, 'index']);
+    });
+
 });
