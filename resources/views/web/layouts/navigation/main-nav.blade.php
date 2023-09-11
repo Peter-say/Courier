@@ -57,11 +57,11 @@
                                 <nav class="tp-main-menu-content">
                                     <ul>
                                         <li class=""><a href="/">HOME</a>
-                                           
+
                                         </li>
                                         <li class="has-dropdown"><a href="index.html">PAGES</a>
                                             <ul class="tp-submenu">
-                                                <li><a href="{{route('web.about-us')}}">About</a></li>
+                                                <li><a href="{{ route('web.about-us') }}">About</a></li>
                                                 <li><a href="#">Team</a></li>
                                                 <li><a href="#">Team Details</a></li>
                                                 <li><a href="testimonial.html">Testimonial</a></li>
@@ -71,7 +71,7 @@
                                                 <li><a href="#">404</a></li>
                                             </ul>
                                         </li>
-                                        <li class="has-dropdown"><a href="{{route('web.service.')}}">SERVICES</a>
+                                        <li class="has-dropdown"><a href="{{ route('web.service.') }}">SERVICES</a>
                                         </li>
                                         <li class="has-dropdown"><a href="project.html">PROJECTS</a>
                                             <ul class="tp-submenu">
@@ -79,19 +79,25 @@
                                                 <li><a href="project-details.html">Project Details</a></li>
                                             </ul>
                                         </li>
-                                        <li class="has-dropdown"><a href="our-blog.html">NEWS</a>
+                                        {{-- <li class="has-dropdown"><a href="our-blog.html">NEWS</a>
                                             <ul class="tp-submenu">
                                                 <li><a href="blog-grid.html">Blog Grid</a></li>
                                                 <li><a href="blog-sidebar.html">Blog Sidebar</a></li>
                                                 <li><a href="blog-details.html">Blog Details</a></li>
                                             </ul>
-                                        </li>
-                                        <li><a href="{{route('web.contact-us')}}">CONTACT</a></li>
+                                        </li> --}}
+                                        <li><a href="{{ route('web.contact-us') }}">CONTACT</a></li>
+                                       
+                                            <a class="tp-btn" href="{{ route('login') }}">Login</a>
+
+                                        
                                     </ul>
                                 </nav>
+                                
                             </div>
                         </div>
                         <div class="col-xl-4">
+
                             <div class="tp-header__right text-end d-flex align-items-center justify-content-end">
                                 <div class="search-img f-left mr-30">
                                     <button class="search-open-btn">
@@ -99,8 +105,10 @@
                                     </button>
                                 </div>
                                 <div class="tp-header__btn">
-                                    <a class="tp-btn" href="{{route('web.contact-us')}}">REQUEST A QUOTE</a>
+                                    <a class="tp-btn" href="{{ route('web.contact-us') }}">REQUEST A QUOTE</a>
+
                                 </div>
+
                             </div>
                         </div>
                     </div>
