@@ -19,3 +19,29 @@
 
    <!-- Main CSS-->
    <link href="{{$dashboard_assets}}/css/theme.css" rel="stylesheet" media="all">
+
+   <style>
+      .required::after {
+          content: '*';
+          color: red;
+          margin-left: 5px;
+      }
+
+      #popup-message {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          padding: 10px;
+          text-align: center;
+          z-index: 9999;
+      }
+
+      .popup-message.success {
+          background-color: green;
+      }
+
+      .popup-message.error {
+          background-color: red;
+      }
+  </style>

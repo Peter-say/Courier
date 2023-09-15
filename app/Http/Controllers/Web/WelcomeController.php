@@ -21,4 +21,9 @@ class WelcomeController extends Controller
     {
         return view('web.about-us');
     }
+
+    public function trackOrderPage()
+    {
+        return view('web.tracking.details');
+    }
 }

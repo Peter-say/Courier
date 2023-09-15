@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Dashboard\ShipmentController;
 use App\Http\Controllers\Web\ServicesController;
 use App\Http\Controllers\Web\WelcomeController;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,11 @@ Route::prefix('web')->as('web.')->group(function () {
         Route::get('/' , [ServicesController::class, 'index']);
     });
 
+    Route::prefix('tracking')->as('tracking.')->group(function () {
+        Route::get('/' , [WelcomeController::class, 'trackOrderPage']);
+    });
+    Route::get('tracki');
+
 });
 
 Auth::routes();
@@ -35,4 +41,11 @@ Auth::routes();
 Route::prefix('dashboard')->as('dashboard.')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+    Route::prefix('shipment')->as('shipment.')->group(function () {
+        Route::get('/' , [ShipmentController::class, 'index']);
+        Route::get('/create' , [ShipmentController::class, 'create'])->name('create');
+        Route::post('/' , [ShipmentController::class, 'store'])->name('store');
+        Route::get('/{id}/details' , [ShipmentController::class, 'view'])->name('details');
+
+    });
 });

@@ -8,7 +8,7 @@
     <div class="menu-sidebar2__content js-scrollbar1">
         <div class="account2">
             <div class="image img-cir img-120">
-                <img src="images/icon/avatar-big-01.jpg" alt="John Doe" />
+                <img src="{{$dashboard_assets}}/images/icon/avatar-big-01.jpg" alt="John Doe" />
             </div>
             <h4 class="name">{{ Auth::user()->full_name }}</h4>
               <a href="{{ route('logout') }}"
@@ -19,30 +19,28 @@
         </div>
         <nav class="navbar-sidebar2">
             <ul class="list-unstyled navbar__list">
-                <li class="active has-sub">
+               
+                <li>
+                    <a href="{{route('dashboard.home')}}">
+                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                </li>
+                <li class="has-sub">
                     <a class="js-arrow" href="#">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard
+                        <i class="fas fa-trophy"></i>Percel
                         <span class="arrow">
                             <i class="fas fa-angle-down"></i>
                         </span>
                     </a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
-                            <a href="index.html">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard 1</a>
+                            <a href="{{route('dashboard.shipment.create')}}">
+                                <i class="fas fa-table"></i>Create New</a>
                         </li>
                         <li>
-                            <a href="index2.html">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard 2</a>
+                            <a href="{{route('dashboard.shipment.')}}">
+                                <i class="far fa-check-square"></i>View Shipments</a>
                         </li>
-                        <li>
-                            <a href="index3.html">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard 3</a>
-                        </li>
-                        <li>
-                            <a href="index4.html">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard 4</a>
-                        </li>
+                       
                     </ul>
                 </li>
                 <li>
@@ -52,7 +50,7 @@
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fas fa-shopping-basket"></i>eCommerce</a>
+                        <i class="fas fa-shopping-basket"></i>Manage Users</a>
                 </li>
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
