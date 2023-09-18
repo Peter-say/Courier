@@ -47,17 +47,7 @@
     <div class="main-content">
         <div class="section__content section__content--p30">
             <div class="container-fluid">
-                <!DOCTYPE html>
-                <html lang="en">
-
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-                    <title>Parcel Tracking Details</title>
-                </head>
-
-                <body>
+              
                     <div class="container mt-5">
                         <h1 class="mb-4">Parcel Tracking Details</h1>
 

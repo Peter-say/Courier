@@ -152,21 +152,6 @@
             border-color: #ff2b00;
             border-radius: 1px
         }
-
-        .custom-input {
-            background-color: white;
-            /* Set background color to white */
-            border: 1px solid #ccc;
-            /* Add a border to create an outline */
-            border-radius: 5px;
-            /* Add rounded corners */
-            padding: 10px;
-            /* Add some padding to the input field */
-            width: 100%;
-            /* Make the input field expand to 100% of its container */
-            box-sizing: border-box;
-            /* Include padding and border in width calculation */
-        }
     </style>
     <!--  breadcrumb-area  start -->
     <div class="wrapper-box p-relative ">
@@ -177,11 +162,11 @@
                     <div class="col-xxl-12">
                         <div class="breadcrumb__content p-relative z-index-1 ">
                             <div class="breadcrumb__list mb-10">
-                                <h3 class="breadcrumb__title mb-15">About Us</h3>
+                                <h3 class="breadcrumb__title mb-15">Tracking Page</h3>
                                 <div class="breadcrumb__item">
                                     <span><a href="/">Home </a></span>
                                     <span class="dvdr"> / </span>
-                                    <span class="sub-page-black"> About us</span>
+                                    <span class="sub-page-black"> Tracking Page</span>
                                 </div>
                             </div>
                         </div>
@@ -192,79 +177,236 @@
     </div>
     <!--  breadcrumb-area  end -->
     <!-- about area start -->
-    <div class="tpabout_area pt-120 pb-120">
-        <div class="container">
-            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-                <div class="form-group justify-content-center">
-                    <Label class=" form group">Enter Your tracking Number To Find Shipment</Label>
-                    <input type="text" class="form-control" name="tracking_number" id="tracking_number"
-                        style=" border: 3px solid rgba(255, 166, 0, 0.884); border-radius: 5px; padding: 10px; width: 100%; box-sizing: border-box;">
-                </div>
-                <div><button class="btn btn-warning w-100 mt-3">Track Now</button></div>
-            </div>
-
-            <div class="tracking-container">
-                <article class="card">
-                    <header class="card-header">Tracking Infomation</header>
-                    <div class="card-body">
-                        <h6>Order ID: OD45345345435</h6>
-                        <article class="card">
-                            <div class="card-body row">
-                                <div class="col"> <strong>Estimated Delivery time:</strong> <br>29 nov 2019 </div>
-                                <div class="col"> <strong>Shipping BY:</strong> <br> BLUEDART, | <i
-                                        class="fa fa-phone"></i> +1598675986 </div>
-                                <div class="col"> <strong>Status:</strong> <br> Picked by the courier </div>
-                                <div class="col"> <strong>Tracking #:</strong> <br> BD045903594059 </div>
-                            </div>
-                        </article>
-                        <div class="track">
-                            <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span
-                                    class="text">Order confirmed</span> </div>
-                            <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span
-                                    class="text"> Picked by courier</span> </div>
-                            <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span
-                                    class="text"> On the way </span> </div>
-                            <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span
-                                    class="text">Ready for pickup</span> </div>
+    <div class="tpabout_area pt-120 pb-5">
+        <div class="d-flex justify-content-center">
+            @include('notifications.flash-messages')
+        </div>
+        <div class="container m-5">
+            <div class="d-flex justify-content-center">
+                <div class="col-xl-12 col-lg-12 col-md-8 col-sm-12">
+                    <form action="{{ route('web.tracking.track-shipment') }}" method="POST">
+                        @csrf <!-- Add CSRF token -->
+                        <div class="form-group">
+                            <label class="form-group">Enter Your Tracking Number To Find Shipment</label>
+                            <input type="text" class="form-control" name="tracking_number" id="tracking_number"
+                                style="border: 3px solid rgba(255, 166, 0, 0.884);">
                         </div>
-                        <hr>
-                        <ul class="row">
-                            <li class="col-md-4">
-                                <figure class="itemside mb-3">
-                                    <div class="aside"><img src="https://i.imgur.com/iDwDQ4o.png" class="img-sm border">
+                        <div><button type="submit" class="btn btn-warning w-100 mt-3">Find Shipment</button></div>
+                    </form>
+
+                    @if ($shipmentDetails)
+                        <div class="tracking-container">
+                            <article class="card">
+                                <header class="card-header">Tracking Information</header>
+                                <div class="card-body">
+                                    <h6>Order ID: OD45345345435</h6>
+                                    <article class="card">
+                                        <div class="card-body row">
+                                            <div class="col"> <strong>Estimated Delivery time:</strong>
+                                                <br>{{ $shipmentDetails->estimated_delivery_date->format('D d, M ,Y') }}
+                                            </div>
+
+                                            <div class="col"> <strong>Status:</strong> <br>
+                                                {{ $shipmentDetails->trackingHistory[0]->delivery_status }} </div>
+                                            <div class="col"> <strong>Tracking #:</strong> <br>
+                                                {{ $shipmentDetails->tracking_number }} </div>
+                                        </div>
+                                    </article>
+                                    <div class="track">
+                                        <div class="step {{ str_contains($currentStatus, 'Accepted') ? 'active' : '' }}">
+                                            <span class="icon"> <i class="fa fa-check"></i> </span>
+                                            <span class="text">Accepted</span>
+                                        </div>
+                                        <div
+                                            class="step {{ str_contains($currentStatus, 'Submitted for Service') ? 'active' : '' }}">
+                                            <span class="icon"> <i class="fa fa-user"></i> </span>
+                                            <span class="text">Submitted for Service</span>
+                                        </div>
+                                        <div class="step {{ str_contains($currentStatus, 'Transported') ? 'active' : '' }}">
+                                            <span class="icon"> <i class="fa fa-truck"></i> </span>
+                                            <span class="text">Transported</span>
+                                        </div>
+                                        <div class="step {{ str_contains($currentStatus, 'Delivered') ? 'active' : '' }}">
+                                            <span class="icon"> <i class="fa fa-box"></i> </span>
+                                            <span class="text">Delivered</span>
+                                        </div>
                                     </div>
-                                    <figcaption class="info align-self-center">
-                                        <p class="title">Dell Laptop with 500GB HDD <br> 8GB RAM</p> <span
-                                            class="text-muted">$950 </span>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                            <li class="col-md-4">
-                                <figure class="itemside mb-3">
-                                    <div class="aside"><img src="https://i.imgur.com/tVBy5Q0.png" class="img-sm border">
-                                    </div>
-                                    <figcaption class="info align-self-center">
-                                        <p class="title">HP Laptop with 500GB HDD <br> 8GB RAM</p> <span
-                                            class="text-muted">$850 </span>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                            <li class="col-md-4">
-                                <figure class="itemside mb-3">
-                                    <div class="aside"><img src="https://i.imgur.com/Bd56jKH.png" class="img-sm border">
-                                    </div>
-                                    <figcaption class="info align-self-center">
-                                        <p class="title">ACER Laptop with 500GB HDD <br> 8GB RAM</p> <span
-                                            class="text-muted">$650 </span>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                        </ul>
-                        <hr>
-                        <a href="#" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back
-                            to orders</a>
-                    </div>
-                </article>
+
+                                    <hr>
+                                    <a href="#" class="btn btn-warning" data-abc="true"> <i
+                                            class="fa fa-chevron-left"></i>Go Back
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Sender Information -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                Sender Information
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Sender's Name:</label>
+                                    <input type="text" value="{{ $shipmentDetails->sender_name }}" class="form-control"
+                                        disabled readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Sender's Address:</label>
+                                    <input type="text" value="{{ $shipmentDetails->sender_address }}"
+                                        class="form-control" disabled readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Sender's Contact:</label>
+                                    <input type="text" value="{{ $shipmentDetails->sender_contact }}"
+                                        class="form-control" disabled readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Receiver Information -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                Receiver Information
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Receiver's Name:</label>
+                                    <input type="text" value="{{ $shipmentDetails->receiver_name }}"
+                                        class="form-control" disabled readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Receiver's Address:</label>
+                                    <input type="text" value="{{ $shipmentDetails->receiver_address }}"
+                                        class="form-control" disabled readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Receiver's Contact:</label>
+                                    <input type="text" value="{{ $shipmentDetails->receiver_contact }}"
+                                        class="form-control" disabled readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Parcel Details -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                Parcel Details
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Tracking Number:</label>
+                                    <input type="text" value="{{ $shipmentDetails->tracking_number }}"
+                                        class="form-control" disabled readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Carrier:</label>
+                                    <input type="text" value="{{ $shipmentDetails->courier->name ?? 'Not Available' }}"
+                                        class="form-control" disabled readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Shipping Date:</label>
+                                    <input type="text"
+                                        value="{{ $shipmentDetails->created_at->format('M d, Y') ?? 'Not Available' }}"
+                                        class="form-control" disabled readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Estimated Delivery Date:</label>
+                                    <input type="text"
+                                        value="{{ $shipmentDetails->estimated_delivery_date->format('F j, Y') ?? 'Not Available' }}"
+                                        class="form-control" disabled readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label>Shipping Method:</label>
+                                    <input type="text" value="{{ $shipmentDetails->transportation_mode }}"
+                                        class="form-control" disabled readonly>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Tracking Status -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                Tracking Status
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label>Status:</label>
+                                    {{ $shipmentDetails->trackingHistory[0]->delivery_status }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tracking History -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                Tracking History
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($shipmentDetails->trackingHistory as $tracking)
+                                            <tr>
+                                                <td>{{ $tracking->event_time->format('M d, Y') }}</td>
+                                                <td>{{ $tracking->event_time->format('h:i:s A') }}</td>
+                                                <td>
+                                                    {{ $shipmentDetails->trackingHistory[0]->delivery_status }}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Item Dimension -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                Package Dimension
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Weight(KG)</th>
+                                            <th>Height(M)</th>
+                                            <th>Width(M)</th>
+                                            <th>Length(M)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($shipmentDetails->dimensions as $dimension)
+                                            <tr>
+                                                <td>{{ $dimension->weight }}</td>
+                                                <td>{{ $dimension->height }}</td>
+                                                <td>{{ $dimension->width }}</td>
+                                                <td>{{ $dimension->length }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Comment -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                Comment
+                            </div>
+                            <div class="card-body">
+                                <textarea class="form-control" disabled rows="4" readonly>{{ $shipmentDetails->comments ?? 'Not Available' }}</textarea>
+                            </div>
+                        </div>
+                    @endif
+                </div>
             </div>
         </div>
     </div>

@@ -156,8 +156,10 @@
                                             @enderror
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                                            <label for="estimated_delivery_date" class="form-control-label">Estimated Delivery Date</label>
-                                            <input type="date" id="estimated_delivery_date" name="estimated_delivery_date" placeholder=""
+                                            <label for="estimated_delivery_date" class="form-control-label">Estimated
+                                                Delivery Date</label>
+                                            <input type="date" id="estimated_delivery_date"
+                                                name="estimated_delivery_date" placeholder=""
                                                 class="form-control @error('estimated_delivery_date') is-invalid @enderror"
                                                 value="{{ $shipment->estimated_delivery_date ? \Carbon\Carbon::parse($shipment->estimated_delivery_date)->format('Y-m-d') : '' }}">
                                             @error('estimated_delivery_date')
@@ -166,7 +168,8 @@
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                                             <label for="pickup_datetime" class="form-control-label">Pickup Date</label>
-                                            <input type="date" id="pickup_datetime" name="pickup_datetime" placeholder=""
+                                            <input type="date" id="pickup_datetime" name="pickup_datetime"
+                                                placeholder=""
                                                 class="form-control @error('pickup_datetime') is-invalid @enderror"
                                                 value="{{ $shipment->pickup_datetime ? \Carbon\Carbon::parse($shipment->pickup_datetime)->format('Y-m-d') : '' }}">
                                             @error('pickup_datetime')
@@ -174,15 +177,17 @@
                                             @enderror
                                         </div>
                                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                                            <label for="delivery_datetime" class="form-control-label">Delivery Date</label>
-                                            <input type="date" id="delivery_datetime" name="delivery_datetime" placeholder=""
+                                            <label for="delivery_datetime" class="form-control-label">Delivery
+                                                Date</label>
+                                            <input type="date" id="delivery_datetime" name="delivery_datetime"
+                                                placeholder=""
                                                 class="form-control @error('delivery_datetime') is-invalid @enderror"
                                                 value="{{ $shipment->delivery_datetime ? \Carbon\Carbon::parse($shipment->delivery_datetime)->format('Y-m-d') : '' }}">
                                             @error('delivery_datetime')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -277,34 +282,34 @@
                 </form>
             </div>
         </div>
+        <script>
+            $(document).ready(function() {
+                // Counter to keep track of the number of dimensions added
+                let dimensionCount = 1;
+
+                // Handle click event for "Add Another Package" button
+                $('#add-dimension').click(function() {
+                    // Clone only one dimension (the first one) and its contents
+                    const newDimension = $('#dimensions-container .dimension:eq(0), #dimensions-container .dimension:eq(1), #dimensions-container .dimension:eq(2), #dimensions-container .dimension:eq(3)').clone();
+
+
+                    // Clear input values in the cloned dimension
+                    newDimension.find('input[type="number"]').val('');
+
+                    // Update the name attributes for each input field in the cloned dimension
+                    newDimension.find('input[name="weight[]"]').attr('name', 'weight[' + dimensionCount + ']');
+                    newDimension.find('input[name="height[]"]').attr('name', 'height[' + dimensionCount + ']');
+                    newDimension.find('input[name="width[]"]').attr('name', 'width[' + dimensionCount + ']');
+                    newDimension.find('input[name="length[]"]').attr('name', 'length[' + dimensionCount + ']');
+
+                    // Append the cloned dimension to the container
+                    $('#dimensions-container').append(newDimension);
+
+                    // Increment the dimension count
+                    dimensionCount++;
+                });
+            });
+        </script>
     </div>
 
-    <script>
-        $(document).ready(function() {
-            // Counter to keep track of the number of dimensions added
-            let dimensionCount = 1;
-
-            // Handle click event for "Add Another Package" button
-            $('#add-dimension').click(function() {
-                // Clone the dimension container and its contents
-                const newDimension = $('#dimensions-container .dimension:first').clone();
-
-                // Clear input values in the cloned dimension
-                newDimension.find('input[type="number"]').val('');
-
-                // Update the name attributes for each input field
-                // Update the name attributes for each input field in the cloned dimension
-                newDimension.find('input[name="weight[]"]').attr('name', 'weight[' + dimensionCount + ']');
-                newDimension.find('input[name="height[]"]').attr('name', 'height[' + dimensionCount + ']');
-                newDimension.find('input[name="width[]"]').attr('name', 'width[' + dimensionCount + ']');
-                newDimension.find('input[name="length[]"]').attr('name', 'length[' + dimensionCount + ']');
-
-                // Append the cloned dimension to the container
-                $('#dimensions-container').append(newDimension);
-
-                // Increment the dimension count
-                dimensionCount++;
-            });
-        });
-    </script>
 @endsection

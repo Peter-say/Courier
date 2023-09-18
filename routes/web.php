@@ -31,6 +31,7 @@ Route::prefix('web')->as('web.')->group(function () {
 
     Route::prefix('tracking')->as('tracking.')->group(function () {
         Route::get('/' , [WelcomeController::class, 'trackOrderPage']);
+        Route::post('/track-shipment', [WelcomeController::class, 'trackShipment'])->name('track-shipment');
     });
     Route::get('tracki');
 
