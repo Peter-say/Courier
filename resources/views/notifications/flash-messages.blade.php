@@ -1,4 +1,4 @@
-<div>
+{{-- <div> --}}
     @if ($message = Session::get('success_message'))
         <div class="p-4 mb-3 bg-success-400 rounded">
             <p class="text-success-800">{{ $message }}</p>

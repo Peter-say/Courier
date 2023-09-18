@@ -10,7 +10,6 @@
             max-height: 200px;
             overflow-y: auto;
         }
-
     </style>
     <!-- BREADCRUMB-->
     <section class="au-breadcrumb m-t-75">
@@ -52,6 +51,9 @@
     <div class="main-content">
         <div class="section__content section__content--p30">
             <div class="container-fluid">
+                <div class="bg-success text-white">
+                    @include('notifications.flash-messages')
+                </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="table-responsive table--no-card m-b-30">
@@ -81,21 +83,26 @@
                                             <td>{{ $shipment->receiver_name }}</td>
                                             <td>{{ $shipment->receiver_address }}</td>
                                             <td>{{ $shipment->receiver_contact }}</td>
-                                            <td>{!!$shipment->currentDeliveryStatus() !!}</td>
+                                            <td>{!! $shipment->currentDeliveryStatus() !!}</td>
 
                                             <td>
                                                 <div class="d-flex justify-content-between">
                                                     <div class="btn-group">
-                                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                        <button type="button" class="btn btn-primary dropdown-toggle"
+                                                            data-toggle="dropdown" aria-expanded="false">
                                                             Change Status
                                                         </button>
                                                         <ul class="dropdown-menu">
                                                             @foreach ($statusOptions as $status)
                                                                 <li>
-                                                                    <form action="{{ route('dashboard.shipment.update.delivery_status', ['id' => $shipment->id, 'status' => $status]) }}" method="POST">
+                                                                    <form
+                                                                        action="{{ route('dashboard.shipment.update.delivery_status', ['id' => $shipment->id, 'status' => $status]) }}"
+                                                                        method="POST">
                                                                         @csrf
-                                                                        @method('PUT') <!-- Use PUT method for status update -->
-                                                                        <input type="hidden" name="delivery_status" value="{{ $status }}">
+                                                                        @method('PUT')
+                                                                        <!-- Use PUT method for status update -->
+                                                                        <input type="hidden" name="delivery_status"
+                                                                            value="{{ $status }}">
                                                                         <button type="submit" class="dropdown-item">
                                                                             Change as {{ ucfirst($status) }}
                                                                         </button>
@@ -104,12 +111,19 @@
                                                             @endforeach
                                                         </ul>
                                                     </div>
-                                                    
-                                                    <a href="{{ route('dashboard.shipment.details', $shipment->id) }}" class="btn btn-dark">View</a>
-                                                    <a href="{{ route('dashboard.shipment.edit', $shipment->id) }}" class="btn btn-primary">Edit</a>
-                                                    <a href="" class="btn btn-danger">Delete</a>
+
+                                                    <a href="{{ route('dashboard.shipment.details', $shipment->id) }}"
+                                                        class="btn btn-dark">View</a>
+                                                    <a href="{{ route('dashboard.shipment.edit', $shipment->id) }}"
+                                                        class="btn btn-primary">Edit</a>
+                                                        <form id="delete-form" action="{{ route('dashboard.shipment.delete', $shipment->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" id="delete-shipment" class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                       
                                                 </div>
-                                                
+
                                             </td>
 
                                         </tr>
@@ -121,10 +135,27 @@
                     </div>
 
                 </div>
-                @include('notifications.pop-up');
+                {{-- @include('notifications.pop-up'); --}}
                 @include('dashboard.shipment.modal.delivery-status')
             </div>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var deleteButton = document.getElementById('delete-shipment');
+
+                deleteButton.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent the default link behavior
+
+                    // Display a confirmation dialog
+                    var confirmation = confirm('Are you sure you want to delete this shipment?');
+
+                    if (confirmation) {
+                        // If the user confirms, proceed with the deletion
+                        window.location.href = this.getAttribute('href');
+                    }
+                });
+            });
+        </script>
 
     </div>
 @endsection

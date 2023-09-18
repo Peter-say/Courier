@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('dimensions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('shipment_id')->constrained('shipments');
+            $table->foreignId('shipment_id')->constrained('shipments')->onDelete('cascade');;
             $table->decimal('weight', 10, 2);
             $table->decimal('height', 10, 2);
             $table->decimal('width', 10, 2);

@@ -46,7 +46,7 @@ Route::prefix('dashboard')->as('dashboard.')->group(function () {
         Route::get('/create' , [ShipmentController::class, 'create'])->name('create');
         Route::post('/' , [ShipmentController::class, 'store'])->name('store');
         Route::get('/{id}/details' , [ShipmentController::class, 'view'])->name('details');
-        Route::post('/{id}' , [ShipmentController::class, 'delete'])->name('delete');
+        Route::delete('/{id}', [ShipmentController::class, 'delete'])->name('delete');
         Route::get('/{id}/edit' , [ShipmentController::class, 'edit'])->name('edit');
         Route::put('/{id}' , [ShipmentController::class, 'update'])->name('update');
         Route::put('shipments/update/{id}', [ShipmentController::class, 'updateDeliveryStatus'])->name('update.delivery_status');

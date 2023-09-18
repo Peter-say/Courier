@@ -26,7 +26,7 @@ class StatusConstants
 
     const TRANSPORTED = 'Transported';
 
-    const SUBMITTED_FOR_SERVICE = 'Transported for Service';
+    const SUBMITTED_FOR_SERVICE = 'Submitted for Service';
 
     const ACCEPTED = 'Accepted';
 

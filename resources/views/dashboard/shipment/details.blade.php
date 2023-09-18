@@ -159,7 +159,35 @@
                             </div>
                         </div>
 
+                        <!-- Tracking History -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                Item Dimension
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Weight(KG)</th>
+                                            <th>Height(M)</th>
+                                            <th>Width(M)</th>
+                                            <th>Length(M)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($shipment->dimensions as $dimension)
+                                            <tr>
+                                                <td>{{ $dimension->weight }}</td>
+                                                <td>{{ $dimension->height }}</td>
+                                                <td>{{ $dimension->width }}</td>
+                                                <td>{{ $dimension->length }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
 
+                                </table>
+                            </div>
+                        </div>
 
                         <!-- Tracking History -->
                         <div class="card mb-4">
@@ -184,7 +212,19 @@
 
                                                 <td>
                                                     @if ($tracking->shipment)
-                                                        {!! $shipment->currentDeliveryStatus() !!}
+                                                        @if ($tracking->delivery_status == \App\Constants\StatusConstants::PENDING)
+                                                            <span class="badge badge-warning">Pending</span>
+                                                        @elseif ($tracking->delivery_status == \App\Constants\StatusConstants::ACCEPTED)
+                                                            <span class="badge badge-primary">Accepted</span>
+                                                        @elseif ($tracking->delivery_status == \App\Constants\StatusConstants::TRANSPORTED)
+                                                            <span class="badge badge-info">Transported</span>
+                                                        @elseif ($tracking->delivery_status == \App\Constants\StatusConstants::SUBMITTED_FOR_SERVICE)
+                                                            <span class="badge badge-info">Submitted for Service</span>
+                                                        @elseif ($tracking->delivery_status == \App\Constants\StatusConstants::DELIVERED)
+                                                            <span class="badge badge-success">Delivered</span>
+                                                        @elseif ($tracking->delivery_status == \App\Constants\StatusConstants::FAILED_DELIVERY)
+                                                            <span class="badge badge-danger">Failed Delivery</span>
+                                                        @endif
                                                     @else
                                                         No shipment information available
                                                     @endif
@@ -200,10 +240,10 @@
                         <!-- Notes -->
                         <div class="card mb-4">
                             <div class="card-header">
-                                Notes
+                                Comment
                             </div>
                             <div class="card-body">
-                                <textarea class="form-control" disabled rows="4" readonly>{{ $shipment->comments ?? 'Not' }}</textarea>
+                                <textarea class="form-control" disabled rows="4" readonly>{{ $shipment->comments ?? 'Not Available' }}</textarea>
                             </div>
                         </div>
 

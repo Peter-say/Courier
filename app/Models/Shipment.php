@@ -37,13 +37,12 @@ class Shipment extends Model
 
         // Map the delivery status to your constants and add badge classes
         switch ($deliveryStatus) {
-            case StatusConstants::PENDING:
-                return '<span class="badge badge-warning">Pending</span>';
             case StatusConstants::ACCEPTED:
                 return '<span class="badge badge-primary">Accepted</span>';
             case StatusConstants::TRANSPORTED:
                 return '<span class="badge badge-info">Transported</span>';
             case StatusConstants::SUBMITTED_FOR_SERVICE:
+                
                 return '<span class="badge badge-info">Submitted for Service</span>';
             case StatusConstants::DELIVERED:
                 return '<span class="badge badge-success">Delivered</span>';

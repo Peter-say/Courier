@@ -50,7 +50,7 @@ class ShipmentController extends Controller
     public function view(Request $request, $id)
     {
 
-        $shipment = Shipment::findOrFail($id);
+        $shipment = Shipment::with('trackingHistory')->findOrFail($id);
         return view('dashboard.shipment.details', [
             'shipment' => $shipment,
         ]);
@@ -106,7 +106,7 @@ class ShipmentController extends Controller
     
         $shipment->trackingHistory()->save($trackingHistory);
     
-        return redirect()->back()->with('success', 'Delivery status updated successfully');
+        return redirect()->back()->with('success_message', 'Delivery status updated successfully');
     }
     
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Constants\StatusConstants;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,4 +22,6 @@ class TrackingHistory extends Model
     {
         return $this->belongsTo(Shipment::class);
     }
+
+   
 }
