@@ -6,7 +6,11 @@
             color: red;
         }
 
-      
+        .dropdown-menu {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
     </style>
     <!-- BREADCRUMB-->
     <section class="au-breadcrumb m-t-75">
@@ -34,10 +38,10 @@
                                 </ul>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <a href="{{route('dashboard.shipment.create')}}" class="btn btn-primary">Create New</a>
+                                <a href="{{ route('dashboard.shipment.create') }}" class="btn btn-primary">Create New</a>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -67,36 +71,60 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   @foreach ($shipments as $shipment)
-                                   <tr>
-                                    <td>{{$shipment->id}}</td>
-                                    <td>{{$shipment->tracking_number}}</td>
-                                    <td>{{$shipment->sender_name}}</td>
-                                    <td>{{$shipment->sender_address}}</td>
-                                    <td>{{$shipment->sender_contact}}</td>
-                                    <td>{{$shipment->receiver_name}}</td>
-                                    <td>{{$shipment->receiver_address}}</td>
-                                    <td>{{$shipment->receiver_contact}}</td>
-                                    <td>{{$shipment->delivery_status}}</td>
-                                    <td>
-                                       <div class="d-flex justify-content-between">
-                                        <a href="{{route('dashboard.shipment.details', $shipment->id)}}" class="btn btn-dark">View</a>
-                                        <a href="" class="btn btn-primary">Edit</a>
-                                        <a href="" class="btn btn-danger">Delete</a>
-                                       </div>
-                                    </td>
-                                    
-                                </tr>
-                                   @endforeach
-                                   
+                                    @foreach ($shipments as $shipment)
+                                        <tr>
+                                            <td>{{ $shipment->id }}</td>
+                                            <td>{{ $shipment->tracking_number }}</td>
+                                            <td>{{ $shipment->sender_name }}</td>
+                                            <td>{{ $shipment->sender_address }}</td>
+                                            <td>{{ $shipment->sender_contact }}</td>
+                                            <td>{{ $shipment->receiver_name }}</td>
+                                            <td>{{ $shipment->receiver_address }}</td>
+                                            <td>{{ $shipment->receiver_contact }}</td>
+                                            <td>{!!$shipment->currentDeliveryStatus() !!}</td>
+
+                                            <td>
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                            Change Status
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            @foreach ($statusOptions as $status)
+                                                                <li>
+                                                                    <form action="{{ route('dashboard.shipment.update.delivery_status', ['id' => $shipment->id, 'status' => $status]) }}" method="POST">
+                                                                        @csrf
+                                                                        @method('PUT') <!-- Use PUT method for status update -->
+                                                                        <input type="hidden" name="delivery_status" value="{{ $status }}">
+                                                                        <button type="submit" class="dropdown-item">
+                                                                            Change as {{ ucfirst($status) }}
+                                                                        </button>
+                                                                    </form>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                    
+                                                    <a href="{{ route('dashboard.shipment.details', $shipment->id) }}" class="btn btn-dark">View</a>
+                                                    <a href="{{ route('dashboard.shipment.edit', $shipment->id) }}" class="btn btn-primary">Edit</a>
+                                                    <a href="" class="btn btn-danger">Delete</a>
+                                                </div>
+                                                
+                                            </td>
+
+                                        </tr>
+                                    @endforeach
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                   
+
                 </div>
-              @include('notifications.pop-up');
+                @include('notifications.pop-up');
+                @include('dashboard.shipment.modal.delivery-status')
             </div>
         </div>
+
     </div>
 @endsection

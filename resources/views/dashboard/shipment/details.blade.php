@@ -16,7 +16,7 @@
                             <div class="au-breadcrumb-left">
                                 <span class="au-breadcrumb-span">You are here:</span>
                                 <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                   
+
                                     <li class="list-inline-item">
                                         <a href="{{ route('dashboard.home') }}">Dashboard</a>
                                     </li>
@@ -24,7 +24,7 @@
                                         <span>/</span>
                                     </li>
                                     <li class="list-inline-item">
-                                    <a href="{{ route('dashboard.shipment.') }}">Shipment</a>
+                                        <a href="{{ route('dashboard.shipment.') }}">Shipment</a>
                                     </li>
                                     <li class="list-inline-item seprate">
                                         <span>/</span>
@@ -154,17 +154,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label>Status:</label>
-                                    @if ($shipment->delivery_status == \App\Constants\StatusConstants::PENDING)
-                                        <span class="badge badge-warning">Pending</span>
-                                    @elseif ($shipment->delivery_status == \App\Constants\StatusConstants::SHIPPED)
-                                        <span class="badge badge-primary">Shipped</span>
-                                    @elseif ($shipment->delivery_status == \App\Constants\StatusConstants::IN_TRANSIT)
-                                        <span class="badge badge-info">In Transit</span>
-                                    @elseif ($shipment->delivery_status == \App\Constants\StatusConstants::OUT_FOR_DELIVERY)
-                                        <span class="badge badge-info">Out for Delivery</span>
-                                    @elseif ($shipment->delivery_status == \App\Constants\StatusConstants::DELIVERED)
-                                        <span class="badge badge-success">Delivered</span>
-                                    @endif
+                                    {!! $shipment->currentDeliveryStatus() !!}
                                 </div>
                             </div>
                         </div>
@@ -182,24 +172,26 @@
                                         <tr>
                                             <th>Date</th>
                                             <th>Time</th>
-                                            <th>Location</th>
+
                                             <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>_________</td>
-                                            <td>_________</td>
-                                            <td>_________</td>
-                                            <td>_________</td>
-                                        </tr>
-                                        <tr>
-                                            <td>_________</td>
-                                            <td>_________</td>
-                                            <td>_________</td>
-                                            <td>_________</td>
-                                        </tr>
-                                        <!-- Add more rows as needed -->
+                                        @foreach ($shipment->trackingHistory as $tracking)
+                                            <tr>
+                                                <td>{{ $tracking->event_time->format('M d, Y') }}</td>
+                                                <td>{{ $tracking->event_time->format('h:i:s A') }}</td>
+
+                                                <td>
+                                                    @if ($tracking->shipment)
+                                                        {!! $shipment->currentDeliveryStatus() !!}
+                                                    @else
+                                                        No shipment information available
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
@@ -211,9 +203,7 @@
                                 Notes
                             </div>
                             <div class="card-body">
-                                <textarea class="form-control" disabled rows="4" readonly>________________________________________
-                ________________________________________
-                ________________________________________</textarea>
+                                <textarea class="form-control" disabled rows="4" readonly>{{ $shipment->comments ?? 'Not' }}</textarea>
                             </div>
                         </div>
 

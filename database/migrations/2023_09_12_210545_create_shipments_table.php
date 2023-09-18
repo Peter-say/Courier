@@ -20,7 +20,6 @@ return new class extends Migration
             $table->text('receiver_address');
             $table->string('sender_contact');
             $table->string('receiver_contact');
-            $table->string('delivery_status')->default('Pending');
             $table->foreignId('courier_id')->nullable()->constrained('couriers'); // Delivery Driver/Courier
             $table->date('estimated_delivery_date')->nullable();
             $table->string('transportation_mode')->nullable();

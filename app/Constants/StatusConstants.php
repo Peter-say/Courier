@@ -24,11 +24,13 @@ class StatusConstants
 
     const COMPLETED = 'Completed';
 
-    const CONFIRMED = 'Comfirmed';
+    const TRANSPORTED = 'Transported';
 
-    const PROCESSING = 'Processing';
+    const SUBMITTED_FOR_SERVICE = 'Transported for Service';
 
-    const LIVE = 'Live';
+    const ACCEPTED = 'Accepted';
+
+    const TRA = 'Live';
 
     const CANCELLED = 'Cancelled';
 
@@ -82,25 +84,21 @@ class StatusConstants
 
     const TRACKING_OPTIONS = [
         self::PENDING => 'Pending',
-        self::RECEIVED => 'Recieved',
-        self::SHIPPED => 'Shipped',
-        self::PROCESSING => 'Processing',
-        self::COMPLETED => 'Completed',
-        self::DECLINED => 'Declined',
-        self::IN_TRANSIT => 'In Transit',
-        self::OUT_FOR_DELIVERY => 'Out for Delivery',
+        self::ACCEPTED => 'Accepted',
+        self::TRANSPORTED => 'Transported',
+        self::SUBMITTED_FOR_SERVICE => 'Submitted for Service',
         self::DELIVERED => 'Delivered',
         self::RETURNED => 'Returned',
         self::FAILED_DELIVERY => 'Failed Delivery',
     ];
 
     const TRANSPORTATION_MODES = [
-        'airplane' => 'Airplane',
-        'ship' => 'Ship',
-        'train' => 'Train',
-        'truck' => 'Truck',
-        'van' => 'Van',
-        'car' => 'Car',
+        'Airplane' => 'Airplane',
+        'Ship' => 'Ship',
+        'Train' => 'Train',
+        'Truck' => 'Truck',
+        'Van' => 'Van',
+        'Car' => 'Car',
 
     ];
 

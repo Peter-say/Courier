@@ -2,6 +2,9 @@
  <script src="{{$dashboard_assets}}/vendor/jquery-3.2.1.min.js"></script>
  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
  <!-- Bootstrap JS-->
  <script src="{{$dashboard_assets}}/vendor/bootstrap-4.1/popper.min.js"></script>
  <script src="{{$dashboard_assets}}/vendor/bootstrap-4.1/bootstrap.min.js"></script>
