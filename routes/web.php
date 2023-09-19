@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\GeneralController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\ShipmentController;
 use App\Http\Controllers\Dashboard\Users\UsersController;
@@ -65,6 +66,7 @@ Route::prefix('dashboard')->as('dashboard.')->group(function () {
         Route::delete('/{id}' , [UsersController::class, 'delete'])->name('destroy');
         Route::post('/send-login-details/{userId}', [UsersController::class, 'loginDetails'])->name('send-login-details');
 
+        Route::get('/notification/index', [GeneralController::class, 'allNotification'])->name('notification.index');
 
     });
 });

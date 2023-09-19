@@ -46,9 +46,9 @@
                      </ul>
                  </li>
                  <li>
-                     <a href="inbox.html">
+                     <a href="{{route('dashboard.user.notification.index')}}">
                          <i class="fas fa-chart-bar"></i>Inbox</a>
-                     <span class="inbox-num">3</span>
+                     <span class="inbox-num">{{$countAdminNotification}}</span>
                  </li>
                  <li>
                      <a href="{{route('dashboard.user.index')}}">

@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Log;
 
 class ContactFormNotification extends Notification
 {
@@ -40,8 +41,8 @@ class ContactFormNotification extends Notification
     /**
      * Get the mail representation of the notification.
      */
-    
-        public function toMail($notifiable)
+
+    public function toMail($notifiable)
     {
         return (new MailMessage)
             ->line('You have received a new contact form submission.')
@@ -50,6 +51,22 @@ class ContactFormNotification extends Notification
             ->line('Subject: ' . $this->subject)
             ->line('Message:')
             ->line($this->message);
+    }
+
+    public function toDatabase($notifiable)
+    {
+        Log::info('Storing contact form notification in the database', [
+            'name' => $this->name,
+            'email' => $this->email,
+            'subject' => $this->subject,
+        ]);
+        
+        return [
+            'name' => $this->name,
+            'email' => $this->email,
+            'subject' => $this->subject,
+            'message' => $this->message,
+        ];
     }
 
     /**
