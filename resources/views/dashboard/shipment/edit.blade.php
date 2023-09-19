@@ -267,7 +267,7 @@
                                     <div class="row">
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                             <label for="comment" class="form-control-label">Comment</label>
-                                            <textarea type="text" id="comment" name="comment" placeholder=""
+                                            <textarea type="text" id="comments" name="comments" placeholder=""
                                                 class="form-control @error('comment') is-invalid @enderror" cols="10">{{ $shipment->comment }}</textarea>
                                             @error('comment')
                                                 <div class="invalid-feedback">{{ $message }}</div>

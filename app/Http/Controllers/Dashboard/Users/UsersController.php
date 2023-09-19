@@ -31,15 +31,43 @@ class UsersController extends Controller
     }
 
     public function store(Request $request)
-{
-    try {
-        (new ServicesUsersService)->createUser($request);
-        return redirect()->route('dashboard.user.index')->with('success_message', 'User created successfully.');
-    } catch (Exception $e) {
-        Log::error('Exception: ' . $e->getMessage());
-        return redirect()->back()->with('error_message', 'An error occurred while creating the user.' . $e->getMessage());
+    {
+        try {
+            (new ServicesUsersService)->createUser($request);
+            return redirect()->route('dashboard.user.index')->with('success_message', 'User created successfully.');
+        } catch (Exception $e) {
+            Log::error('Exception: ' . $e->getMessage());
+            return redirect()->back()->with('error_message', 'An error occurred while creating the user.' . $e->getMessage());
+        }
     }
-}
+
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        $userRole = StatusConstants::USERS_ROLE;
+        return view('dashboard.users.edit', [
+            'userRole' => $userRole,
+            'user' => $user,
+        ]);
+    }
+
+    public function update($id, Request $request)
+    {
+        try {
+            (new ServicesUsersService)->updateUser($request, $id);
+            return redirect()->route('dashboard.user.index')->with('success_message', 'User updated successfully.');
+        } catch (Exception $e) {
+            Log::error('Exception: ' . $e->getMessage());
+            return redirect()->back()->with('error_message', 'An error occurred while updating the user.' . $e->getMessage());
+        }
+    }
+
+    public function delete($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return back()->with('success_message', 'User deleted successfully');
+    }
 
 
     public function loginDetails($user)

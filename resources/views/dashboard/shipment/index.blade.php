@@ -116,11 +116,6 @@
                                                         class="btn btn-dark">View</a>
                                                     <a href="{{ route('dashboard.shipment.edit', $shipment->id) }}"
                                                         class="btn btn-primary">Edit</a>
-                                                        <form id="delete-form" action="{{ route('dashboard.shipment.delete', $shipment->id) }}" method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" id="delete-shipment" class="btn btn-danger">Delete</button>
-                                                        </form>
                                                        
                                                 </div>
 

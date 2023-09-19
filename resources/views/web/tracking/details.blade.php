@@ -202,7 +202,7 @@
                                     <h6>Order ID: OD45345345435</h6>
                                     <article class="card">
                                         <div class="card-body row">
-                                            <div class="col"> <strong>Estimated Delivery time:</strong>
+                                            <div class="col"> <strong>Estimated Delivery Date & Time:</strong>
                                                 <br>{{ $shipmentDetails->estimated_delivery_date->format('D d, M ,Y') }}
                                             </div>
 

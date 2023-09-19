@@ -107,14 +107,12 @@ class StatusConstants
         self::UNRESOLVED => 'Unresolved',
     ];
 
-    const SUDO = 'Sudo';
     const ADMIN = 'Admin';
     const MODERATOR = 'Moderator';
     const CUSTOMER = 'Customer';
     const USER = 'User';
 
     const USERS_ROLE = [
-        self::SUDO => 'Sudo',
         self::ADMIN => 'Admin',
         self::MODERATOR => 'Moderator',
         self::CUSTOMER => 'Customer',

@@ -32,7 +32,8 @@ Route::prefix('web')->as('web.')->group(function () {
 
     Route::prefix('tracking')->as('tracking.')->group(function () {
         Route::get('/' , [WelcomeController::class, 'trackOrderPage']);
-        Route::post('/track-shipment', [WelcomeController::class, 'trackShipment'])->name('track-shipment');
+        Route::match(['get', 'post'], '/track-shipment', [WelcomeController::class, 'trackShipment'])->name('track-shipment');
+
     });
     Route::get('tracki');
 
@@ -58,6 +59,9 @@ Route::prefix('dashboard')->as('dashboard.')->group(function () {
         Route::get('/index' , [UsersController::class, 'index'])->name('index');
         Route::get('/create' , [UsersController::class, 'create'])->name('create');
         Route::post('/' , [UsersController::class, 'store'])->name('store');
+        Route::get('/{id}/edit' , [UsersController::class, 'edit'])->name('edit');
+        Route::put('/{id}' , [UsersController::class, 'update'])->name('update');
+        Route::delete('/{id}' , [UsersController::class, 'delete'])->name('destroy');
         Route::post('/send-login-details/{userId}', [UsersController::class, 'loginDetails'])->name('send-login-details');
 
 

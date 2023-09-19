@@ -84,7 +84,7 @@
                                                     <p>Can not Edit this</p>
                                                 @else
                                                     <div class="d-flex justify-content-between mr-2">
-                                                        <a href="" class="btn btn-primary">Edit</a>
+                                                        <a href="{{route('dashboard.user.edit', ['id' => $user->id])}}" class="btn btn-primary">Edit</a>
                                                         <form
                                                             action="{{ route('dashboard.user.send-login-details', ['userId' => $user->id]) }}"
                                                             method="post">
@@ -92,7 +92,12 @@
                                                             <button type="submit" class="btn btn-dark">Resend Login
                                                                 Details</button>
                                                         </form>
-                                                        <button class="btn btn-danger">Delete</button>
+                                                        <form action="{{ route('dashboard.user.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                        
                                                     </div>
                                                 @endif
                                             </td>
