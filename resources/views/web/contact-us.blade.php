@@ -27,7 +27,9 @@
     <!--  contact-area  start -->
     <div class="contact-page-area pt-120 pb-120">
         <div class="container">
+           
             <div class="row">
+
                 <div class="col-xl-4">
                     <div class="contact-page-title mr-70">
                         <div class="about-section-title z-index  pb-50">
@@ -43,9 +45,12 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-xl-8">
+
                     <div class="contact-page__comment-form">
-                        <form action="#">
+                        <form action="{{ route('web.contact-us.submit') }}" method="POST">
+                            @csrf
                             <div class="row">
                                 <div class="col-xxl-6 col-xl-6 col-lg-6">
                                     <div class="contact-page__comment-input">
@@ -59,7 +64,7 @@
                                 </div>
                                 <div class="col-xxl-12 col-xl-12 col-lg-12">
                                     <div class="contact-page__comment-input">
-                                        <input name="name" type="text" placeholder="Your Subject">
+                                        <input name="subject" type="text" placeholder="Your Subject">
                                     </div>
                                 </div>
                                 <div class="col-xxl-12">
@@ -74,9 +79,14 @@
                                 </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
+           <div class="text-success">
+            @include('notifications.flash-messages')
+           </div>
+
         </div>
     </div>
     <!--  contact-area  end -->

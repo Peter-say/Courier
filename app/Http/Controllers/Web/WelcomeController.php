@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use App\Models\Shipment;
 use App\Models\TrackingHistory;
+use App\Models\User;
+use App\Notifications\ContactFormNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class WelcomeController extends Controller
 {
@@ -53,5 +57,33 @@ class WelcomeController extends Controller
         } else {
             return view('web.tracking.details', ['shipmentDetails' => [],  'deliveryStatus']);
         }
+    }
+
+    public function submitContactForm(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'subject' => 'nullable|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        $notificationData = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message,
+        ];
+
+        // Retrieve the admin user with the 'Sudo' role
+        $adminUser = User::where('role', 'Sudo')->first();
+
+        if ($adminUser) {
+            // Send the notification to the admin user
+            $adminUser->notify(new ContactFormNotification(...$notificationData));
+        }
+
+        // Redirect back with a success message or display a thank you message
+        return redirect()->back()->with('success_message', 'Your message has been sent successfully!');
     }
 }

@@ -23,6 +23,7 @@ Route::get('/' , [WelcomeController::class, 'welcome']);
 Route::prefix('web')->as('web.')->group(function () {
 
     Route::get('/contact-us' , [WelcomeController::class, 'contactUs'])->name('contact-us');
+    Route::post('/contact-us/submit' , [WelcomeController::class, 'submitContactForm'])->name('contact-us.submit');
     Route::get('/about-us' , [WelcomeController::class, 'aboutUs'])->name('about-us');
 
 
