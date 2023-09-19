@@ -51,8 +51,8 @@
                      <span class="inbox-num">3</span>
                  </li>
                  <li>
-                     <a href="#">
-                         <i class="fas fa-shopping-basket"></i>Manage Users</a>
+                     <a href="{{route('dashboard.user.index')}}">
+                         <i class="fas fa-users"></i>Manage Users</a>
                  </li>
                  <li class="has-sub">
                      <a class="js-arrow" href="#">

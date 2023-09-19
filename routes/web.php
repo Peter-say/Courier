@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\ShipmentController;
+use App\Http\Controllers\Dashboard\Users\UsersController;
 use App\Http\Controllers\Web\ServicesController;
 use App\Http\Controllers\Web\WelcomeController;
 use Illuminate\Support\Facades\Auth;
@@ -51,6 +52,13 @@ Route::prefix('dashboard')->as('dashboard.')->group(function () {
         Route::get('/{id}/edit' , [ShipmentController::class, 'edit'])->name('edit');
         Route::put('/{id}' , [ShipmentController::class, 'update'])->name('update');
         Route::put('shipments/update/{id}', [ShipmentController::class, 'updateDeliveryStatus'])->name('update.delivery_status');
+    });
+
+    Route::prefix('user')->as('user.')->group(function () {
+        Route::get('/index' , [UsersController::class, 'index'])->name('index');
+        Route::get('/create' , [UsersController::class, 'create'])->name('create');
+        Route::post('/' , [UsersController::class, 'store'])->name('store');
+        Route::post('/send-login-details/{userId}', [UsersController::class, 'loginDetails'])->name('send-login-details');
 
 
     });
