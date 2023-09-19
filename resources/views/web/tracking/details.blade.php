@@ -242,6 +242,7 @@
 
                         <!-- Sender Information -->
                         <div class="card mb-4">
+                            <div><h5>Package Details</h5></div>
                             <div class="card-header">
                                 Sender Information
                             </div>

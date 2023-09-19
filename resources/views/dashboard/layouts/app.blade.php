@@ -20,12 +20,14 @@
 
     <div class="page-wrapper">
         <!-- MENU SIDEBAR-->
-        @include('dashboard.layouts.navigation.mobile')
-
+        @if (Auth::check())
+            @include('dashboard.layouts.navigation.mobile')
+        @endif
         <!-- PAGE CONTAINER-->
         <div class="page-container2">
-            @include('dashboard.layouts.navigation.desktop')
-
+            @if (Auth::check())
+                @include('dashboard.layouts.navigation.desktop')
+            @endif
             @yield('contents')
             <div class="row">
                 <div class="col-md-12">
@@ -37,7 +39,7 @@
             </div>
         </div>
     </div>
-    
+
     @include('dashboard.layouts.bottom.scripts')
 
 </body>
