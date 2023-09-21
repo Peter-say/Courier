@@ -66,10 +66,11 @@
                                         <a href="#">
                                             <tr>
                                                 @php
+                                               
                                                     $notificationData = json_decode($notification->data, true);
                                                 @endphp
                                                 <td>{{ $notification->id }}</td>
-                                                <<td>{{ isset($notificationData['name']) ? $notificationData['name'] : '' }}
+                                                <td>{{ isset($notificationData['name']) ? $notificationData['name'] : '' }}
                                                     </td>
                                                     <td>{{ isset($notificationData['email']) ? $notificationData['email'] : '' }}
                                                     </td>

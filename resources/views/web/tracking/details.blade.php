@@ -179,11 +179,25 @@
     <!-- about area start -->
     <div class="tpabout_area pt-120 pb-5">
         <div class="d-flex justify-content-center">
-            @include('notifications.flash-messages')
+
+
         </div>
         <div class="container m-5">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                @if (session('success_message'))
+                    <div class="alert alert-success text-dark">
+                        {{ session('success_message') }}
+                    </div>
+                @endif
+                @if (session('error_message'))
+                    <div class="alert alert-danger text-dark">  
+                        {{ session('error_message') }}
+                    </div>
+                @endif
+            </div>
             <div class="d-flex justify-content-center">
-                <div class="col-xl-12 col-lg-12 col-md-8 col-sm-12">
+               
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <form action="{{ route('web.tracking.track-shipment') }}" method="POST">
                         @csrf <!-- Add CSRF token -->
                         <div class="form-group">
@@ -242,7 +256,9 @@
 
                         <!-- Sender Information -->
                         <div class="card mb-4">
-                            <div><h5>Package Details</h5></div>
+                            <div>
+                                <h5>Package Details</h5>
+                            </div>
                             <div class="card-header">
                                 Sender Information
                             </div>
@@ -302,7 +318,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Carrier:</label>
-                                    <input type="text" value="{{ $shipmentDetails->courier->name ?? 'Not Available' }}"
+                                    <input type="text"
+                                        value="{{ $shipmentDetails->courier->name ?? 'Not Available' }}"
                                         class="form-control" disabled readonly>
                                 </div>
                                 <div class="form-group">

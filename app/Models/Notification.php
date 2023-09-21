@@ -10,6 +10,15 @@ class Notification extends Model
 {
     use HasFactory;
 
+    /**
+     * Cast variables to specified data types
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'string'
+    ];
+
     public function countAdminNotification()
     {
         $count = 0;
@@ -23,5 +32,11 @@ class Notification extends Model
         }
         
         return $count; 
+    }
+
+    public function notificationLimit()
+    {
+        $notifications = Notification::latest('created_at')->limit(3)->get();
+        return $notifications;
     }
 }

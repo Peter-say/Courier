@@ -67,6 +67,6 @@ Route::prefix('dashboard')->as('dashboard.')->group(function () {
         Route::post('/send-login-details/{userId}', [UsersController::class, 'loginDetails'])->name('send-login-details');
 
         Route::get('/notification/index', [GeneralController::class, 'allNotification'])->name('notification.index');
-
+        Route::get('/notification/{id}/details', [GeneralController::class, 'notificationDetails'])->name('notification.details');
     });
 });

@@ -22,22 +22,20 @@
         <!-- MENU SIDEBAR-->
         @if (Auth::check())
             @include('dashboard.layouts.navigation.mobile')
-        @endif
-        <!-- PAGE CONTAINER-->
-        <div class="page-container2">
-            @if (Auth::check())
+            <!-- PAGE CONTAINER-->
+            <div class="page-container2">
                 @include('dashboard.layouts.navigation.desktop')
-            @endif
-            @yield('contents')
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="copyright">
-                        <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a
-                                href="https://colorlib.com">Colorlib</a>.</p>
+                @yield('contents')
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright">
+                            <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a
+                                    href="https://colorlib.com">Colorlib</a>.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
     </div>
 
     @include('dashboard.layouts.bottom.scripts')

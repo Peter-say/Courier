@@ -50,7 +50,7 @@ class WelcomeController extends Controller
             if ($shipmentDetails) {
                 $currentStatus = $shipmentDetails->currentDeliveryStatus(); // Replace this with your logic to get the current status.
                 return view('web.tracking.details', ['shipmentDetails' => $shipmentDetails, 'currentStatus' => $currentStatus])
-                    ->with('success_message', 'Shipment details retrived!');
+                    ->with('success_message', 'Shipment details retrieved!');
             } else {
                 return back()->with('error_message', 'Shipment could not be found with the provided tracking number. Please, provide a valid tracking number ');
             }

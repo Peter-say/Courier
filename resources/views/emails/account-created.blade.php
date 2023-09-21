@@ -54,7 +54,7 @@
         </ul>
         <p>You can log in to your account using the provided credentials.</p>
         <p>Thank you for joining us!</p>
-        <p>If you have any questions or need assistance, please feel free to <a class="btn" href="#">contact us</a>.</p>
+        <p>If you have any questions or need assistance, please feel free to <a class="btn" href="{{route('web.contact-us')}}">contact us</a>.</p>
     </div>
 </body>
 </html>

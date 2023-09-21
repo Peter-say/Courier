@@ -14,10 +14,12 @@ class HomeController extends Controller
         $users = User::all();
         $usersCount = $users->count();
         $parcels = Shipment::all();
+        $parcelDelivered = $parcels->where('delivery_status', 'Delivered')->count();
         $percelCount = $parcels->count();
         return view('dashboard.index', [
             'usersCount' => $usersCount,
             'percelCount' => $percelCount,
+            'parcelDelivered' => $parcelDelivered,
         ]);
     }
 }
