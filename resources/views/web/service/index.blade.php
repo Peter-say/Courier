@@ -42,11 +42,11 @@
                    </div>
                    <div class="tp-services-3__content">
                       <h3 class="tp-services-3-title-3"><a href="services-details.html">Air Transport</a></h3>
-                      <p>Air freight is the fastest way to transport goods </p>
-                      <div class="tp-services-3__btn">
+                      <p>Air freight is the fastest way to transport goods on air</p>
+                      {{-- <div class="tp-services-3__btn">
                          <a class="tp-services-btn" href="contact.html">READ MORE<i
                                class="fa-sharp fa-regular fa-arrow-right"></i></a>
-                      </div>
+                      </div> --}}
                    </div>
                 </div>
              </div>
@@ -63,11 +63,11 @@
                    </div>
                    <div class="tp-services-3__content">
                       <h3 class="tp-services-3-title-3"><a href="services-details.html">Road Freight</a></h3>
-                      <p>Air freight is the fastest way to transport goods </p>
-                      <div class="tp-services-3__btn">
+                      <p>Air freight is the fastest way to transport goods on road</p>
+                      {{-- <div class="tp-services-3__btn">
                          <a class="tp-services-btn" href="contact.html">READ MORE<i
                                class="fa-sharp fa-regular fa-arrow-right"></i></a>
-                      </div>
+                      </div> --}}
                    </div>
                 </div>
              </div>
@@ -84,11 +84,11 @@
                    </div>
                    <div class="tp-services-3__content">
                       <h3 class="tp-services-3-title-3"><a href="services-details.html">Ocean Freight</a></h3>
-                      <p>Air freight is the fastest way to transport goods </p>
-                      <div class="tp-services-3__btn">
+                      <p>Air freight is the fastest way to transport goods in/on the sea</p>
+                      {{-- <div class="tp-services-3__btn">
                          <a class="tp-services-btn" href="contact.html">READ MORE<i
                                class="fa-sharp fa-regular fa-arrow-right"></i></a>
-                      </div>
+                      </div> --}}
                    </div>
                 </div>
              </div>
@@ -105,11 +105,11 @@
                    </div>
                    <div class="tp-services-3__content">
                       <h3 class="tp-services-3-title-3"><a href="services-details.html">Rail Transport</a></h3>
-                      <p>Air freight is the fastest way to transport goods </p>
-                      <div class="tp-services-3__btn">
+                      <p>Air freight is the fastest way to transport goods on rail</p>
+                      {{-- <div class="tp-services-3__btn">
                          <a class="tp-services-btn" href="contact.html">READ MORE<i
                                class="fa-sharp fa-regular fa-arrow-right"></i></a>
-                      </div>
+                      </div> --}}
                    </div>
                 </div>
              </div>
@@ -126,11 +126,11 @@
                    </div>
                    <div class="tp-services-3__content">
                       <h3 class="tp-services-3-title-3"><a href="services-details.html">Warehousing</a></h3>
-                      <p>Air freight is the fastest way to transport goods </p>
-                      <div class="tp-services-3__btn">
+                      <p>We got a perfect warehouse to housing your goods </p>
+                      {{-- <div class="tp-services-3__btn">
                          <a class="tp-services-btn" href="contact.html">READ MORE<i
                                class="fa-sharp fa-regular fa-arrow-right"></i></a>
-                      </div>
+                      </div> --}}
                    </div>
                 </div>
              </div>
@@ -147,11 +147,11 @@
                    </div>
                    <div class="tp-services-3__content">
                       <h3 class="tp-services-3-title-3"><a href="services-details.html">Road Transport</a></h3>
-                      <p>Air freight is the fastest way to transport goods </p>
-                      <div class="tp-services-3__btn">
+                      <p>Air freight is the fastest way to transport goods on road</p>
+                      {{-- <div class="tp-services-3__btn">
                          <a class="tp-services-btn" href="contact.html">READ MORE<i
                                class="fa-sharp fa-regular fa-arrow-right"></i></a>
-                      </div>
+                      </div> --}}
                    </div>
                 </div>
              </div>
@@ -185,7 +185,7 @@
           <div class="col-xl-3 col-lg-4">
              <div class="tp-cta-2__btn text-center text-lg-start">
                 <div class="tp-cta-2__btn wow fadeInUp  " data-wow-duration=".9s" data-wow-delay=".7s">
-                   <a class="tp-btn-white" href="contact.html">REQUEST A QUOTE</a>
+                   <a class="tp-btn-white" href="{{route('web.contact-us')}}">REQUEST A QUOTE</a>
                 </div>
              </div>
           </div>

@@ -39,7 +39,7 @@
                                             With Integrity
                                         </h2>
                                         <div class="tp-slide-btn-box">
-                                            <a class="thm-btn" href="about.html">EXPLORE MORE</a>
+                                            <a class="thm-btn" href="{{route('web.about-us')}}">EXPLORE MORE</a>
                                         </div>
                                     </div>
                                 </div>
@@ -149,17 +149,17 @@
             <div class="row">
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                     <div class="services-section-title z-index  pb-50">
-                        <div class="tp-section__subtitle tp-section__subtitle-before mb-15 p-relative wow fadeInUp   "
+                        <div class="tp-section__subtitle tp-section__subtitle-before mb-15 p-relative wow fadeInUp"
                             data-wow-duration=".9s" data-wow-delay=".3s">OUR SERVICES
                         </div>
-                        <h2 class="tp-section__title mb-10 wow fadeInUp   " data-wow-duration=".9s" data-wow-delay=".4s">
+                        <h2 class="tp-section__title mb-10 wow fadeInUp" data-wow-duration=".9s" data-wow-delay=".4s">
                             Safe & Reliable
                             Cargo Solutions
                         </h2>
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="tp-services__item p-relative fix mb-30  wow fadeInUp   " data-wow-duration=".9s"
+                    <div class="tp-services__item p-relative fix mb-30 wow fadeInUp" data-wow-duration=".9s"
                         data-wow-delay=".5s">
                         <div class="tp-services__hover-img">
                             <img src="{{$web_assets}}/assets/img/services/services-hover-img.jpg" alt="">
@@ -170,7 +170,7 @@
                             </div>
                             <div class="tp-services__content">
                                 <h3 class="tp-services__title-1"><a href="#">Air Freight</a></h3>
-                                <p>Wherever your cargo we can arrange the shipment for you and remain competitive</p>
+                                <p>Transport your cargo by air to any destination competitively.</p>
                             </div>
                             <div class="tp-services__number-count">
                                 <span>01</span>
@@ -179,7 +179,7 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="tp-services__item p-relative fix mb-30 wow fadeInUp   " data-wow-duration=".9s"
+                    <div class="tp-services__item p-relative fix mb-30 wow fadeInUp" data-wow-duration=".9s"
                         data-wow-delay=".6s">
                         <div class="tp-services__hover-img">
                             <img src="{{$web_assets}}/assets/img/services/services-hover-img.jpg" alt="">
@@ -190,7 +190,7 @@
                             </div>
                             <div class="tp-services__content">
                                 <h3 class="tp-services__title-1"><a href="#">Ship Freight</a></h3>
-                                <p>Wherever your cargo we can arrange the shipment for you and remain competitive</p>
+                                <p>Transport your cargo by sea and remain competitive.</p>
                             </div>
                             <div class="tp-services__number-count">
                                 <span>02</span>
@@ -199,7 +199,7 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="tp-services__item p-relative fix mb-30 wow fadeInUp   " data-wow-duration=".9s"
+                    <div class="tp-services__item p-relative fix mb-30 wow fadeInUp" data-wow-duration=".9s"
                         data-wow-delay=".7s">
                         <div class="tp-services__hover-img">
                             <img src="{{$web_assets}}/assets/img/services/services-hover-img.jpg" alt="">
@@ -210,7 +210,7 @@
                             </div>
                             <div class="tp-services__content">
                                 <h3 class="tp-services__title-1"><a href="#">Road Transport</a></h3>
-                                <p>Wherever your cargo we can arrange the shipment for you and remain competitive</p>
+                                <p>Transport your cargo by road and remain competitive.</p>
                             </div>
                             <div class="tp-services__number-count">
                                 <span>03</span>
@@ -219,7 +219,7 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="tp-services__item p-relative fix mb-30 wow fadeInUp   " data-wow-duration=".9s"
+                    <div class="tp-services__item p-relative fix mb-30 wow fadeInUp" data-wow-duration=".9s"
                         data-wow-delay=".8s">
                         <div class="tp-services__hover-img">
                             <img src="{{$web_assets}}/assets/img/services/services-hover-img.jpg" alt="">
@@ -230,7 +230,7 @@
                             </div>
                             <div class="tp-services__content">
                                 <h3 class="tp-services__title-1"><a href="#">Railway Logistic</a></h3>
-                                <p>Wherever your cargo we can arrange the shipment for you and remain competitive</p>
+                                <p>Transport your cargo by rail and remain competitive.</p>
                             </div>
                             <div class="tp-services__number-count">
                                 <span>04</span>
@@ -239,7 +239,7 @@
                     </div>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                    <div class="tp-services__item p-relative fix mb-30 wow fadeInUp   " data-wow-duration=".9s"
+                    <div class="tp-services__item p-relative fix mb-30 wow fadeInUp" data-wow-duration=".9s"
                         data-wow-delay=".9s">
                         <div class="tp-services__hover-img">
                             <img src="{{$web_assets}}/assets/img/services/services-hover-img.jpg" alt="">
@@ -250,7 +250,7 @@
                             </div>
                             <div class="tp-services__content">
                                 <h3 class="tp-services__title-1"><a href="#">Warehousing</a></h3>
-                                <p>Wherever your cargo we can arrange the shipment for you and remain competitive</p>
+                                <p>Store your cargo in our warehouses and remain competitive.</p>
                             </div>
                             <div class="tp-services__number-count">
                                 <span>05</span>
@@ -260,6 +260,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
     <!-- services area end -->
     <!-- video area start -->
@@ -270,7 +271,7 @@
                 <div class="col-xl-12">
                     <div
                         class="tp-video__wrap d-flex align-items-center justify-content-md-end justify-content-center z-index-2 pt-135">
-                        <div class="video-one__text">
+                        {{-- <div class="video-one__text">
                             <h4>Watch our videos</h4>
                         </div>
                         <div class="video-one__video-link ml-40">
@@ -280,7 +281,7 @@
                                     <i class="ripple"></i>
                                 </div>
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -326,7 +327,7 @@
                                     </div>
                                 </div>
                                 <div class="tp-about__btn-box">
-                                    <a href="about.html" class="about-two__btn thm-btn">EXPLORE MORE</a>
+                                    <a href="{{route('web.about-us')}}" class="about-two__btn thm-btn">EXPLORE MORE</a>
                                 </div>
                             </div>
                         </div>
@@ -396,9 +397,9 @@
                                         </h4>
                                     </div>
                                 </div>
-                                <div class="tp-project-icon">
+                                {{-- <div class="tp-project-icon">
                                     <a href="project-details.html"><i class="fa-sharp fa-regular fa-arrow-right"></i></a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -415,9 +416,9 @@
                                                 Transport</a></h4>
                                     </div>
                                 </div>
-                                <div class="tp-project-icon">
+                                {{-- <div class="tp-project-icon">
                                     <a href="project-details.html"><i class="fa-sharp fa-regular fa-arrow-right"></i></a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -434,9 +435,9 @@
                                                 Transport</a></h4>
                                     </div>
                                 </div>
-                                <div class="tp-project-icon">
+                                {{-- <div class="tp-project-icon">
                                     <a href="project-details.html"><i class="fa-sharp fa-regular fa-arrow-right"></i></a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -454,9 +455,9 @@
                                         </h4>
                                     </div>
                                 </div>
-                                <div class="tp-project-icon">
+                                {{-- <div class="tp-project-icon">
                                     <a href="project-details.html"><i class="fa-sharp fa-regular fa-arrow-right"></i></a>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -524,10 +525,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="tp-challenges__join-over text-center mt-70">
+                {{-- <div class="tp-challenges__join-over text-center mt-70">
                     <p>Join over 3000 people who engage with sector. <button><a href="contact.html">Join Now!</a></button>
                     </p>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -548,7 +549,7 @@
                             logistics transport service?
                         </h3>
                         <div class="cta__btn wow fadeInUp   " data-wow-duration=".9s" data-wow-delay=".7s">
-                            <a class="tp-btn" href="contact.html">REQUEST A QUOTE</a>
+                            <a class="tp-btn" href="{{route('web.contact-us')}}">REQUEST A QUOTE</a>
                         </div>
                     </div>
                 </div>
@@ -599,76 +600,39 @@
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-6 col-md-12">
-                    <div class="tp-contact__inner-column wow fadeInDown   " data-wow-duration=".9s" data-wow-delay=".5s">
-                        <!-- Contact Form -->
-                        <div class="tp-contact__contact-form">
-                            <h4 class="title">Request a quote</h4>
-                            <!--Contact Form-->
-                            <form method="post" action="https://html.weblearnbd.net/portx-demo/portx/get"
-                                id="contact-form">
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-12 form-group mb-10">
-                                        <div class="tp-contact__comment-input">
-                                            <label>Your Name:</label>
-                                            <input type="text" name="full_name" placeholder="" required="">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-sm-12 form-group mb-30">
-                                        <div class="tp-contact__comment-input">
-                                            <label>Your Email:</label>
-                                            <input type="text" name="Email" placeholder="" required="">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-sm-12 form-group mb-30">
-                                        <div class="tp-contact__comment-input">
-                                            <label> Your Phone:</label>
-                                            <input type="text" name="Phone" placeholder="" required="">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 col-md-12 col-sm-12 form-group mb-30">
-                                        <label>Distance (Miles):</label>
-                                        <div class="productsidebar">
-                                            <div class="productsidebar__range">
-                                                <div id="slider-range"
-                                                    class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
-                                                    <span tabindex="0"
-                                                        class="ui-slider-handle ui-corner-all ui-state-default"
-                                                        style="left: 46.8%;"></span>
-                                                </div>
-                                                <div
-                                                    class="price-filter mt-35 d-flex align-items-center justify-content-between">
-                                                    <input type="text" id="amount">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-sm-12 form-group">
-                                        <div class="tp-contact__comment-input">
-                                            <label>Freight type:</label>
-                                            <input type="text" name="Phone" placeholder="" required="">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-6 col-md-6 col-sm-12 form-group mb-20">
-                                        <div class="tp-contact__comment-input">
-                                            <label>Load:</label>
-                                            <input type="text" name="Phone" placeholder="" required="">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                        <button class="tp-contact__submit-btn thm-btn btn-style-two hvr-light"
-                                            type="submit" name="submit-form"><span class="btn-title">SUBMIT
-                                                REQUEST</span></button>
+                       <H4>Request A Quote</H4>
+                    <div class="contact-page__comment-form">
+                        <form action="{{ route('web.contact-us.submit') }}" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="col-xxl-6 col-xl-6 col-lg-6">
+                                    <div class="contact-page__comment-input">
+                                        <input name="name" type="text" placeholder="Your Name*">
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                        <!--End Contact Form -->
+                                <div class="col-xxl-6 col-xl-6 col-lg-6">
+                                    <div class="contact-page__comment-input">
+                                        <input name="email" type="email" placeholder="Your Email*">
+                                    </div>
+                                </div>
+                                <div class="col-xxl-12 col-xl-12 col-lg-12">
+                                    <div class="contact-page__comment-input">
+                                        <input name="subject" type="text" placeholder="Your Subject">
+                                    </div>
+                                </div>
+                                <div class="col-xxl-12">
+                                    <div class="contact-page__comment-input">
+                                        <textarea name="message" placeholder="Your Message"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-12">
+                                    <div class="contact-page__comment-btn">
+                                        <button type="submit" class="thm-btn">Send Message</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -686,34 +650,30 @@
                 <div class="row align-items-xl-end">
                     <div class="col-xl-5 col-lg-5 col-md-12">
                         <div class="tp-features__img wow fadeInDownBig   ">
-                            <img src="{{$web_assets}}/assets/img/features/features-img.png" alt="">
+                            {{-- <img src="{{$web_assets}}/assets/img/features/features-img.png" alt=""> --}}
                         </div>
                     </div>
                     <div class="col-xl-7 col-lg-7 col-md-12">
                         <div class="tp-features">
                             <div class="tp-features__wrap">
-                                <h2 class="tp-section__title-white mb-40">Our fleet covers your needs &
-                                    pricing range
-                                </h2>
+                                <h2 class="tp-section__title-white mb-40">Our fleet covers your needs & pricing range</h2>
                                 <div class="tp-features__list">
+                                    <!-- First Set of Features -->
                                     <div class="tp-features__single d-flex align-items-start">
-                                        <span class="mr-30"><img src="{{$web_assets}}/assets/img/features/icon.png" alt="">
-                                        </span>
-                                        <p>Providing an independent advice and identifying the right fit for you, sourced
-                                            and procured based on sol. Advice and identifying
-                                        </p>
+                                        <span class="mr-30"><img src="{{$web_assets}}/assets/img/features/icon1.png" alt=""></span>
+                                        <p>Providing independent advice and identifying the right fit for you, sourced and procured based on solutions. Advice and identifying.</p>
                                     </div>
+                    
+                                    <!-- Second Set of Features -->
                                     <div class="tp-features__single d-flex align-items-start">
-                                        <span class="mr-30"><img src="{{$web_assets}}/assets/img/features/icon.png" alt="">
-                                        </span>
-                                        <p>Providing an independent advice and identifying the right fit for you, sourced
-                                            and procured based on sol. Advice and identifying
-                                        </p>
+                                        <span class="mr-30"><img src="{{$web_assets}}/assets/img/features/icon2.png" alt=""></span>
+                                        <p>Offering competitive pricing and flexible options to meet your budget and requirements. Competitive pricing and flexible options.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
 
                 <div class="tp-brand__items mt-110">
@@ -1028,7 +988,7 @@
     <!-- team area end -->
 
     <!-- blog area start -->
-    <div class="blog-area pt-105 pb-85">
+    {{-- <div class="blog-area pt-105 pb-85">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xxl-8 col-xl-8 col-lg-9">
@@ -1103,6 +1063,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- blog area end -->
 @endsection

@@ -59,7 +59,7 @@
                         </div>
                         <div class="col-md-6 col-lg-3">
                             <div class="statistic__item">
-                                <h2 class="number">$1,060,386</h2>
+                                <h2 class="number">$0</h2>
                                 <span class="desc">total earnings</span>
                                 <div class="icon">
                                     <i class="zmdi zmdi-money"></i>

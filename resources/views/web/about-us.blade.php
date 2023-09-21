@@ -70,15 +70,15 @@
              <div class="tpabout__thumb-shape-2 p-relative"
                 data-parallax="{&quot;y&quot;: 100, &quot;smoothness&quot;: 100}"
                 style="transform:translate3d(0px, 36.768px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1); -webkit-transform:translate3d(0px, 36.768px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1); ">
-                <img class="tpabout__thumb-shape-logo" src="assets/img/about/about-shape-2.png" alt="">
-                <img class="tpabout__thumb-shape-logo-icon" src="assets/img/about/about-shape-2-icon.png" alt="">
+                <img class="tpabout__thumb-shape-logo" src="{{$web_assets}}/assets/img/about/about-shape-2.png" alt="">
+                <img class="tpabout__thumb-shape-logo-icon" src="{{$web_assets}}/assets/img/about/about-shape-2-icon.png" alt="">
              </div>
              <div class="tpabout__wrap text-end p-relative">
                 <div class="tpabout__lg-img ">
-                   <img src="assets/img/about/about-2-lg.jpg" alt="">
+                   <img src="{{$web_assets}}/assets/img/about/about-2-lg.jpg" alt="">
                 </div>
                 <div class="tpabout__sm-img ml-40">
-                   <img src="assets/img/about/about-2-sm.jpg" alt="">
+                   <img src="{{$web_assets}}/assets/img/about/about-2-sm.jpg" alt="">
                 </div>
              </div>
           </div>
@@ -105,7 +105,7 @@
           <div class="swiper-slide">
              <div class="tp-project__item p-relative">
                 <div class="tp-project__thumb ">
-                   <img class="w-100" src="assets/img/project/project-1.jpg" alt="">
+                   <img class="w-100" src="{{$web_assets}}/assets/img/project/project-1.jpg" alt="">
                 </div>
                 <div class="tp-project-box">
                    <div class="tp-project-content">
@@ -115,7 +115,7 @@
                       </div>
                    </div>
                    <div class="tp-project-icon">
-                      <a href="project-details.html"><i class="fa-sharp fa-regular fa-arrow-right"></i></a>
+                      <a href="#"><i class="fa-sharp fa-regular fa-arrow-right"></i></a>
                    </div>
                 </div>
              </div>
@@ -123,7 +123,7 @@
           <div class="swiper-slide">
              <div class="tp-project__item p-relative">
                 <div class="tp-project__thumb ">
-                   <img class="w-100" src="assets/img/project/project-2.jpg" alt="">
+                   <img class="w-100" src="{{$web_assets}}/assets/img/project/project-2.jpg" alt="">
                 </div>
                 <div class="tp-project-box">
                    <div class="tp-project-content">
@@ -133,7 +133,7 @@
                       </div>
                    </div>
                    <div class="tp-project-icon">
-                      <a href="project-details.html"><i class="fa-sharp fa-regular fa-arrow-right"></i></a>
+                      <a href="#"><i class="fa-sharp fa-regular fa-arrow-right"></i></a>
                    </div>
                 </div>
              </div>
@@ -141,17 +141,17 @@
           <div class="swiper-slide">
              <div class="tp-project__item p-relative">
                 <div class="tp-project__thumb ">
-                   <img class="w-100" src="assets/img/project/project-3.jpg" alt="">
+                   <img class="w-100" src="{{$web_assets}}/assets/img/project/project-3.jpg" alt="">
                 </div>
                 <div class="tp-project-box">
                    <div class="tp-project-content">
                       <div class="tp-project-info ">
                          <span>DISTRIBUTION</span>
-                         <h4 class="tp-project-titile-1"><a href="project-details.html">Shipping Transport</a></h4>
+                         <h4 class="tp-project-titile-1"><a href="#">Shipping Transport</a></h4>
                       </div>
                    </div>
                    <div class="tp-project-icon">
-                      <a href="project-details.html"><i class="fa-sharp fa-regular fa-arrow-right"></i></a>
+                      <a href="#"><i class="fa-sharp fa-regular fa-arrow-right"></i></a>
                    </div>
                 </div>
              </div>
@@ -159,7 +159,7 @@
           <div class="swiper-slide">
              <div class="tp-project__item p-relative">
                 <div class="tp-project__thumb ">
-                   <img class="w-100" src="assets/img/project/project-4.jpg" alt="">
+                   <img class="w-100" src="{{$web_assets}}/assets/img/project/project-4.jpg" alt="">
                 </div>
                 <div class="tp-project-box">
                    <div class="tp-project-content">
@@ -251,16 +251,16 @@
 <div class="tp-choose-area theme-background fix">
  <div class="dddd mb-100 p-relative">
     <div class="tpchoose__left-img p-relative">
-       <img src="assets/img/choose/choose-2-left-img.jpg" alt="">
+       <img src="{{$web_assets}}/assets/img/choose/choose-2-left-img.jpg" alt="">
        <div class="tpchoose__play-video text-center">
-          <div class="tpchoose__video ml-20">
+          {{-- <div class="tpchoose__video ml-20">
              <a href="https://www.youtube.com/watch?v=o4GuSJYSzrY" class="popup-video">
                 <div class="tpchoose__video-icon">
                    <span class="fa fa-play"></span>
                    <i class="ripple"></i>
                 </div>
              </a>
-          </div>
+          </div> --}}
           <div class="text mt-200 pt-130 text-start">
              <span>We are always
                 dedicated to give
@@ -269,7 +269,7 @@
        </div>
     </div>
     <div class="tpchoose__air-plan  wow slideInRight    ">
-       <img src="assets/img/choose/choose-air-plan.png" alt="">
+       <img src="{{$web_assets}}/assets/img/choose/choose-air-plan.png" alt="">
     </div>
     <div class="container">
        <div class="row">
@@ -338,7 +338,7 @@
              data-wow-delay=".5s">
              <div class="tp-team__item p-relative mb-40">
                 <div class="tp-team__thumb ">
-                   <img src="assets/img/team/team-4.jpg" alt="">
+                   <img src="{{$web_assets}}/assets/img/team/team-4.jpg" alt="">
                 </div>
                 <div class="tp-team__content">
                    <div class="tp-team__social text-end">
@@ -360,7 +360,7 @@
              data-wow-delay=".7s">
              <div class="tp-team__item p-relative mb-40">
                 <div class="tp-team__thumb ">
-                   <img src="assets/img/team/team-5.jpg" alt="">
+                   <img src="{{$web_assets}}/assets/img/team/team-5.jpg" alt="">
                 </div>
                 <div class="tp-team__content">
                    <div class="tp-team__social text-end">
@@ -382,7 +382,7 @@
              data-wow-delay=".9s">
              <div class="tp-team__item p-relative mb-40">
                 <div class="tp-team__thumb ">
-                   <img src="assets/img/team/team-6.jpg" alt="">
+                   <img src="{{$web_assets}}/assets/img/team/team-6.jpg" alt="">
                 </div>
                 <div class="tp-team__content">
                    <div class="tp-team__social text-end">
@@ -412,13 +412,13 @@
  <!-- cta area start -->
  <div class="cta-area-2 theme-color-2 pt-60 pb-60 p-relative fix">
     <div class="tp-cta__lg-circel">
-       <img src="assets/img/blog/lg-circel.png" alt="">
+       <img src="{{$web_assets}}/assets/img/blog/lg-circel.png" alt="">
     </div>
     <div class="tp-cta__sm-circel">
-       <img src="assets/img/blog/circel.png" alt="">
+       <img src="{{$web_assets}}/assets/img/blog/circel.png" alt="">
     </div>
     <div class="tp-cta__shap-3 wow slideInLeft   ">
-       <img src="assets/img/cta/cta-shap-3.png" alt="">
+       <img src="{{$web_assets}}/assets/img/cta/cta-shap-3.png" alt="">
     </div>
     <div class="container">
        <div class="row align-items-center">

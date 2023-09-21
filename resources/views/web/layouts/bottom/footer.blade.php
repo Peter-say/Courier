@@ -49,11 +49,11 @@
                    <h4 class="tp-footer__widget-title">Our Navigation</h4>
                    <div class="tp-footer__content">
                       <ul>
-                         <li><a href="#"><i class="fa-sharp fa-solid fa-plus"></i> About Portx</a></li>
-                         <li><a href="#"><i class="fa-sharp fa-solid fa-plus"></i> Meet the Team</a></li>
+                         <li><a href="{{route('web.about-us')}}"><i class="fa-sharp fa-solid fa-plus"></i> About Us</a></li>
+                         {{-- <li><a href="#"><i class="fa-sharp fa-solid fa-plus"></i> Meet the Team</a></li>
                          <li><a href="#"><i class="fa-sharp fa-solid fa-plus"></i> News & Media</a></li>
-                         <li><a href="#"><i class="fa-sharp fa-solid fa-plus"></i> Our Projects</a></li>
-                         <li><a href="#"><i class="fa-sharp fa-solid fa-plus"></i> Contact</a></li>
+                         <li><a href="#"><i class="fa-sharp fa-solid fa-plus"></i> Our Projects</a></li> --}}
+                         <li><a href="{{route('web.contact-us')}}"><i class="fa-sharp fa-solid fa-plus"></i> Contact</a></li>
                       </ul>
                    </div>
                 </div>
@@ -62,14 +62,14 @@
                 <div class="tp-footer__widget tp-footer-col-3  mb-40  wow fadeInUp  " data-wow-duration=".9s"
                    data-wow-delay=".7s">
                    <h4 class="tp-footer__widget-title">Subscribe</h4>
-                   <div class="tp-footer__content">
+                   {{-- <div class="tp-footer__content">
                       <div class="tp-footer__input p-relative mb-30">
                          <form action="#">
                             <input type="text" placeholder="Your Email Address">
                             <button>SUBSCRIBE</button>
                          </form>
                       </div>
-                   </div>
+                   </div> --}}
                    <div class="tp-footer__subscribe-text">
                       <p>Our expertise, as well as our passion for web design, sets us agenciese</p>
                    </div>
@@ -83,7 +83,7 @@
                    </div>
                 </div>
              </div>
-             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+             {{-- <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="tp-footer__widget tp-footer-col-4 wow fadeInUp  " data-wow-duration=".9s"
                    data-wow-delay=".9s">
                    <h4 class="tp-footer__widget-title">Our Gallery</h4>
@@ -104,7 +104,7 @@
                       </ul>
                    </div>
                 </div>
-             </div>
+             </div> --}}
           </div>
        </div>
     </div>
