@@ -9,6 +9,7 @@ use App\Services\UsersService as ServicesUsersService;
 use App\Services\UsersService\UsersService;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 
@@ -16,18 +17,26 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::all();
-        return view('dashboard.users.index', [
-            'users' => $users
-        ]);
+        if (in_array(Auth::user()->role, ['Sudo'])) {
+            $users = User::all();
+            return view('dashboard.users.index', [
+                'users' => $users
+            ]);
+        } else {
+            abort(403, 'You do not have permission to this page');
+        }
     }
 
     public function create()
     {
-        $userRole = StatusConstants::USERS_ROLE;
-        return view('dashboard.users.create', [
-            'userRole' => $userRole,
-        ]);
+        if (in_array(Auth::user()->role, ['Sudo'])) {
+            $userRole = StatusConstants::USERS_ROLE;
+            return view('dashboard.users.create', [
+                'userRole' => $userRole,
+            ]);
+        } else {
+            abort(403, 'You do not have permission to this page');
+        }
     }
 
     public function store(Request $request)
@@ -43,12 +52,16 @@ class UsersController extends Controller
 
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        $userRole = StatusConstants::USERS_ROLE;
-        return view('dashboard.users.edit', [
-            'userRole' => $userRole,
-            'user' => $user,
-        ]);
+        if (in_array(Auth::user()->role, ['Sudo'])) {
+            $user = User::findOrFail($id);
+            $userRole = StatusConstants::USERS_ROLE;
+            return view('dashboard.users.edit', [
+                'userRole' => $userRole,
+                'user' => $user,
+            ]);
+        } else {
+            abort(403, 'You do not have permission to this page');
+        }
     }
 
     public function update($id, Request $request)

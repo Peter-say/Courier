@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\GeneralController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\ShipmentController;
+use App\Http\Controllers\Dashboard\Users\ProfileController;
 use App\Http\Controllers\Dashboard\Users\UsersController;
 use App\Http\Controllers\Web\ServicesController;
 use App\Http\Controllers\Web\WelcomeController;
@@ -68,5 +69,8 @@ Route::prefix('dashboard')->as('dashboard.')->group(function () {
 
         Route::get('/notification/index', [GeneralController::class, 'allNotification'])->name('notification.index');
         Route::get('/notification/{id}/details', [GeneralController::class, 'notificationDetails'])->name('notification.details');
+
+        Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+        Route::put('/{id}/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     });
 });

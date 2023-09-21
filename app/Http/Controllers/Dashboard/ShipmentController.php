@@ -9,28 +9,37 @@ use App\Models\TrackingHistory;
 use App\Services\ShipmentService;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ShipmentController extends Controller
 {
 
     public function index()
     {
-        $shipments = Shipment::all();
-        $statusOptions = StatusConstants::TRACKING_OPTIONS;
-        return view('dashboard.shipment.index', [
-            'shipments' => $shipments,
-            'statusOptions' =>  $statusOptions,
-        ]);
+        if (in_array(Auth::user()->role, ['Sudo', 'Admin'])) {
+            $shipments = Shipment::all();
+            $statusOptions = StatusConstants::TRACKING_OPTIONS;
+            return view('dashboard.shipment.index', [
+                'shipments' => $shipments,
+                'statusOptions' =>  $statusOptions,
+            ]);
+        } else {
+            abort(403, 'You do not have permission to this page');
+        }
     }
     public function create()
     {
 
-        $statusOptions = StatusConstants::TRACKING_OPTIONS;
-        $transportModes = StatusConstants::TRANSPORTATION_MODES;
-        return view('dashboard.shipment.create', [
-            'statusOptions' =>  $statusOptions,
-            'transportModes' =>  $transportModes,
-        ]);
+        if (in_array(Auth::user()->role, ['Sudo', 'Admin'])) {
+            $statusOptions = StatusConstants::TRACKING_OPTIONS;
+            $transportModes = StatusConstants::TRANSPORTATION_MODES;
+            return view('dashboard.shipment.create', [
+                'statusOptions' =>  $statusOptions,
+                'transportModes' =>  $transportModes,
+            ]);
+        } else {
+            abort(403, 'You do not have permission to this page');
+        }
     }
 
     public function store(Request $request)
@@ -50,22 +59,30 @@ class ShipmentController extends Controller
     public function view(Request $request, $id)
     {
 
-        $shipment = Shipment::with('trackingHistory')->findOrFail($id);
-        return view('dashboard.shipment.details', [
-            'shipment' => $shipment,
-        ]);
+        if (in_array(Auth::user()->role, ['Sudo', 'Admin'])) {
+            $shipment = Shipment::with('trackingHistory')->findOrFail($id);
+            return view('dashboard.shipment.details', [
+                'shipment' => $shipment,
+            ]);
+        } else {
+            abort(403, 'You do not have permission to this page');
+        }
     }
 
     public function edit(Request $request, $id)
     {
-        $statusOptions = StatusConstants::TRACKING_OPTIONS;
-        $transportModes = StatusConstants::TRANSPORTATION_MODES;
-        $shipment = Shipment::with('dimensions')->find($id);
-        return view('dashboard.shipment.edit', [
-            'statusOptions' =>  $statusOptions,
-            'transportModes' =>  $transportModes,
-            'shipment' => $shipment
-        ]);
+        if (in_array(Auth::user()->role, ['Sudo', 'Admin'])) {
+            $statusOptions = StatusConstants::TRACKING_OPTIONS;
+            $transportModes = StatusConstants::TRANSPORTATION_MODES;
+            $shipment = Shipment::with('dimensions')->find($id);
+            return view('dashboard.shipment.edit', [
+                'statusOptions' =>  $statusOptions,
+                'transportModes' =>  $transportModes,
+                'shipment' => $shipment
+            ]);
+        } else {
+            abort(403, 'You do not have permission to this page');
+        }
     }
 
     public function update(Request $request, $id)
@@ -92,21 +109,20 @@ class ShipmentController extends Controller
     public function updateDeliveryStatus(Request $request, $id)
     {
         $shipment = Shipment::findOrFail($id);
-    
+
         // Validate and update the delivery status
         $request->validate([
             'delivery_status' => 'required',
         ]);
-    
+
         // Create a new tracking history entry with the updated status
         $trackingHistory = new TrackingHistory([
             'delivery_status' => $request->input('delivery_status'),
             'event_time' => now(),
         ]);
-    
+
         $shipment->trackingHistory()->save($trackingHistory);
-    
+
         return redirect()->back()->with('success_message', 'Delivery status updated successfully');
     }
-    
 }
