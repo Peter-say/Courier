@@ -3,7 +3,10 @@
 use App\Http\Controllers\Dashboard\GeneralController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\ShipmentController;
+use App\Http\Controllers\Dashboard\Users\AccountSettings;
+use App\Http\Controllers\Dashboard\Users\UpdatePasswordController;
 use App\Http\Controllers\Dashboard\Users\ProfileController;
+use App\Http\Controllers\Dashboard\Users\UpdateEmailAddressController;
 use App\Http\Controllers\Dashboard\Users\UsersController;
 use App\Http\Controllers\Web\ServicesController;
 use App\Http\Controllers\Web\WelcomeController;
@@ -72,5 +75,16 @@ Route::prefix('dashboard')->as('dashboard.')->group(function () {
 
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
         Route::put('/{id}/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+        Route::get('change-password', [UpdatePasswordController::class, 'changePassword'])->name('change-password');
+        Route::post('update-password', [UpdatePasswordController::class, 'updatePassword'])->name('update-password');
+    
+        Route::get('change-email', [UpdateEmailAddressController::class, 'changeEmail'])->name('change-email');
+        Route::put('/{id}/update-email', [UpdateEmailAddressController::class, 'updateEmail'])->name('update-email');
+        
+        Route::get('/account-settings', [AccountSettings::class, 'view'])->name('account.settings');
+        Route::get('/fetch-account', [AccountSettings::class, 'getAccount'])->name('fetch-account');
+        Route::delete('/delete-account/{id}', [AccountSettings::class, 'destroy'])->name('delete-account');
+    
     });
 });
