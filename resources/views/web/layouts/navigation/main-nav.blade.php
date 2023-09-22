@@ -7,7 +7,7 @@
                     <div class="row align-items-center">
                         <div class="col-xl-4">
                             <div class="main-logo ">
-                                <a href="index.html"><img src="assets/img/logo/black-logo.png" alt=""></a>
+                                <a href="index.html"><img src="{{$web_assets}}/assets/img/logo/black-logo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-8">

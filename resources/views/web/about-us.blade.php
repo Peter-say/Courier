@@ -1,5 +1,9 @@
 @extends('web.layouts.app')
 
+
+<title>{{ $pageTitle }}</title>
+<meta name="description" content="{{ $pageDescription }}">
+
 @section('contents')
 
    <!--  breadcrumb-area  start -->

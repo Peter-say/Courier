@@ -88,7 +88,6 @@ class StatusConstants
         self::TRANSPORTED => 'Transported',
         self::SUBMITTED_FOR_SERVICE => 'Submitted for Service',
         self::DELIVERED => 'Delivered',
-        self::RETURNED => 'Returned',
         self::FAILED_DELIVERY => 'Failed Delivery',
     ];
 

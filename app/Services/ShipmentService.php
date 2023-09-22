@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
+use App\Helpers\FileHelpers;
 use App\Models\Dimension;
 use App\Models\Shipment;
+use App\Models\TrackingHistory;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -33,6 +35,7 @@ class ShipmentService
                 'height.*' => 'required|numeric',
                 'width.*' => 'required|numeric',
                 'length.*' => 'required|numeric',
+                'images.*' => 'image|mimes:jpeg,png,jpg,gif',
                
             ]);
         } catch (ValidationException $e) {
@@ -46,6 +49,15 @@ class ShipmentService
             $this->validateData($request);
     
             // Create a new shipment using the validated data
+
+            $imagePaths = [];
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $image) {
+                    // Save each image and store the path in $imagePaths
+                    $imagePaths[] = FileHelpers::saveImageRequest($image, 'shipment/images');
+                }
+            }
+            $serializedImagePaths = json_encode($imagePaths);
             $createdShipment = Shipment::create([
                 'sender_name' => $request->input('sender_name'),
                 'sender_address' => $request->input('sender_address'),
@@ -59,6 +71,7 @@ class ShipmentService
                 'pickup_datetime' => $request->input('pickup_datetime'),
                 'transportation_mode' => $request->input('transportation_mode'),
                 'delivery_datetime' => $request->input('delivery_datetime'),
+                'images' =>  $serializedImagePaths,
                 'tracking_number' => $this->generateTrackingNumber(),
             ]);
             
@@ -73,6 +86,12 @@ class ShipmentService
                     'length' => $request->input('length')[$index],
                 ]);
             }
+
+            TrackingHistory::create([
+                'shipment_id' => $createdShipment->id,
+                'delivery_status' => 'Accepted',
+                'event_time' => now(),
+            ]);
     
             return redirect()->route('dashboard.shipment.')->with('success_message', 'Shipment created successfully');
         } catch (Exception $e) {
@@ -88,6 +107,14 @@ class ShipmentService
             $this->validateData($request);
     
             // Create a new shipment using the validated data
+            $imagePaths = [];
+            if ($request->hasFile('images')) {
+                foreach ($request->file('images') as $image) {
+                    // Save each image and store the path in $imagePaths
+                    $imagePaths[] = FileHelpers::saveImageRequest($image, 'shipment/images');
+                }
+            }
+            $serializedImagePaths = json_encode($imagePaths);
             $Updateshipment = Shipment::FindOrFail($id);
              $Updateshipment->update([
                 'sender_name' => $request->input('sender_name'),
@@ -102,6 +129,7 @@ class ShipmentService
                 'pickup_datetime' => $request->input('pickup_datetime'),
                 'transportation_mode' => $request->input('transportation_mode'),
                 'delivery_datetime' => $request->input('delivery_datetime'),
+                'images' =>  $serializedImagePaths,
                 
             ]);
             

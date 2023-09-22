@@ -16,7 +16,7 @@
                             <div class="au-breadcrumb-left">
                                 <span class="au-breadcrumb-span">You are here:</span>
                                 <ul class="list-unstyled list-inline au-breadcrumb__list">
-                                   
+
                                     <li class="list-inline-item">
                                         <a href="{{ route('dashboard.home') }}">Dashboard</a>
                                     </li>
@@ -120,7 +120,16 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="images" class="form-control-label">Images (You can add multiple images)</label>
+                                <input type="file" id="images" name="images[]" accept="image/*" multiple class="form-control @error('images.*') is-invalid @enderror">
+                                @error('images.*')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        
 
                         <div class="col-12">
                             <div class="card">
@@ -267,30 +276,30 @@
             $(document).ready(function() {
                 // Counter to keep track of the number of dimensions added
                 let dimensionCount = 1;
-        
+
                 // Handle click event for "Add Another Package" button
                 $('#add-dimension').click(function() {
                     // Clone the dimension container and its contents
                     const newDimension = $('#dimensions-container .dimension').clone();
-        
+
                     // Clear input values in the cloned dimension
                     newDimension.find('input[type="number"]').val('');
-        
+
                     // Update the name attributes for each input field in the cloned dimension
                     newDimension.find('input[name="weight[]"]').attr('name', 'weight[' + dimensionCount + ']');
                     newDimension.find('input[name="height[]"]').attr('name', 'height[' + dimensionCount + ']');
                     newDimension.find('input[name="width[]"]').attr('name', 'width[' + dimensionCount + ']');
                     newDimension.find('input[name="length[]"]').attr('name', 'length[' + dimensionCount + ']');
-        
+
                     // Append the cloned dimension to the container
                     $('#dimensions-container').append(newDimension);
-        
+
                     // Increment the dimension count
                     dimensionCount++;
                 });
             });
         </script>
-        
+
 
     </div>
 @endsection

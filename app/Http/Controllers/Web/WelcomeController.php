@@ -15,28 +15,46 @@ class WelcomeController extends Controller
 {
     public function welcome()
     {
-        return view('web.index');
+        $pageTitle = 'Welcome to SwiftlySend';
+        $pageDescription = 'Discover SwiftlySend - Your Premier Destination for Cutting-Edge Logistics and Transportation Solutions. Explore Our Services Today!';
+
+        return view('web.index', compact('pageTitle', 'pageDescription'));
     }
 
     public function contactUS()
     {
-        return view('web.contact-us');
+        $pageTitle = 'Contact Us - Portx';
+        $pageDescription = 'Get in touch with Portx for inquiries and support.';
+        return view('web.contact-us', compact('pageTitle', 'pageDescription'));
     }
 
     public function aboutUS()
     {
-        return view('web.about-us');
+        $pageTitle = 'About Us - Portx';
+        $pageDescription = 'Learn more about Portx and our services.';
+        return view('web.about-us', compact('pageTitle', 'pageDescription'));
     }
 
     public function trackOrderPage()
     {
-        // Pass an empty array to the view to ensure $shipmentDetails is defined
+        $pageTitle = 'Tracking - SwiftlySend';
+        $pageDescription = 'Effortless Shipment Tracking with SwiftlySend - Stay in Control of Your Deliveries, Anytime, Anywhere. Experience the Future of Logistics!';
 
-        return view('web.tracking.details', ['shipmentDetails' => [],  'deliveryStatus']);
+
+        return view(
+            'web.tracking.details',
+            [
+                'shipmentDetails' => [],  'deliveryStatus',
+                'pageTitle' => $pageTitle,
+                'pageDescription' =>  $pageDescription,
+            ]
+        );
     }
 
     public function trackShipment(Request $request)
     {
+        $pageTitle = 'Tracking - SwiftlySend';
+        $pageDescription = 'Effortless Shipment Tracking with SwiftlySend - Stay in Control of Your Deliveries, Anytime, Anywhere. Experience the Future of Logistics!';
         if ($request->isMethod('post')) {
             // Retrieve the tracking number from the request
             $trackingNumber = $request->input('tracking_number');
@@ -48,8 +66,14 @@ class WelcomeController extends Controller
             }])->where('tracking_number', $trackingNumber)->first();
 
             if ($shipmentDetails) {
-                $currentStatus = $shipmentDetails->currentDeliveryStatus(); // Replace this with your logic to get the current status.
-                return view('web.tracking.details', ['shipmentDetails' => $shipmentDetails, 'currentStatus' => $currentStatus])
+                $currentStatus = $shipmentDetails->currentDeliveryStatus();
+                return view('web.tracking.details', [
+                    'shipmentDetails' => $shipmentDetails,
+                    'currentStatus' => $currentStatus,
+                    'pageTitle' => $pageTitle,
+                    'pageDescription' =>  $pageDescription,
+
+                ])
                     ->with('success_message', 'Shipment details retrieved!');
             } else {
                 return back()->with('error_message', 'Shipment could not be found with the provided tracking number. Please, provide a valid tracking number ');

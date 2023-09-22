@@ -1,5 +1,8 @@
 @extends('web.layouts.app')
 
+<title>{{ $pageTitle }}</title>
+<meta name="description" content="{{ $pageDescription }}">
+
 @section('contents')
     <style>
         @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
@@ -178,11 +181,8 @@
     <!--  breadcrumb-area  end -->
     <!-- about area start -->
     <div class="tpabout_area pt-120 pb-5">
-        <div class="d-flex justify-content-center">
 
-
-        </div>
-        <div class="container m-5">
+        <div class="container">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                 @if (session('success_message'))
                     <div class="alert alert-success text-dark">
@@ -190,70 +190,103 @@
                     </div>
                 @endif
                 @if (session('error_message'))
-                    <div class="alert alert-danger text-dark">  
+                    <div class="alert alert-danger text-dark">
                         {{ session('error_message') }}
                     </div>
                 @endif
             </div>
-            <div class="d-flex justify-content-center">
-               
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <form action="{{ route('web.tracking.track-shipment') }}" method="POST">
-                        @csrf <!-- Add CSRF token -->
-                        <div class="form-group">
-                            <label class="form-group">Enter Your Tracking Number To Find Shipment</label>
-                            <input type="text" class="form-control" name="tracking_number" id="tracking_number"
-                                style="border: 3px solid rgba(255, 166, 0, 0.884);">
-                        </div>
-                        <div><button type="submit" class="btn btn-warning w-100 mt-3">Find Shipment</button></div>
-                    </form>
 
-                    @if ($shipmentDetails)
-                        <div class="tracking-container">
-                            <article class="card">
-                                <header class="card-header">Tracking Information</header>
-                                <div class="card-body">
-                                    <h6>Order ID: OD45345345435</h6>
-                                    <article class="card">
-                                        <div class="card-body row">
-                                            <div class="col"> <strong>Estimated Delivery Date & Time:</strong>
-                                                <br>{{ $shipmentDetails->estimated_delivery_date->format('D d, M ,Y') }}
-                                            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <form action="{{ route('web.tracking.track-shipment') }}" method="POST">
+                    @csrf <!-- Add CSRF token -->
+                    <div class="form-group">
+                        <label class="form-group">Enter Your Tracking Number To Find Shipment</label>
+                        <input type="text" class="form-control" name="tracking_number" id="tracking_number"
+                            style="border: 3px solid rgba(255, 166, 0, 0.884);">
+                    </div>
+                    <div><button type="submit" class="btn btn-warning w-100 mt-3">Find Shipment</button></div>
+                </form>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                @if ($shipmentDetails)
+                    <div class="tracking-container">
+                        <article class="card">
+                            <header class="card-header">Tracking Information</header>
+                            <div class="card-body">
+                                <h6>Order ID: OD45345345435</h6>
+                                <article class="card">
+                                    <div class="card-body row">
+                                        <div class="col-4">
+                                            <strong>Estimated Delivery Date:</strong>
+                                            <br>{{ $shipmentDetails->estimated_delivery_date->format('D d, M ,Y') }}
+                                        </div>
 
-                                            <div class="col"> <strong>Status:</strong> <br>
-                                                {{ $shipmentDetails->trackingHistory[0]->delivery_status }} </div>
-                                            <div class="col"> <strong>Tracking #:</strong> <br>
-                                                {{ $shipmentDetails->tracking_number }} </div>
-                                        </div>
-                                    </article>
-                                    <div class="track">
-                                        <div class="step {{ str_contains($currentStatus, 'Accepted') ? 'active' : '' }}">
-                                            <span class="icon"> <i class="fa fa-check"></i> </span>
-                                            <span class="text">Accepted</span>
-                                        </div>
-                                        <div
-                                            class="step {{ str_contains($currentStatus, 'Submitted for Service') ? 'active' : '' }}">
-                                            <span class="icon"> <i class="fa fa-user"></i> </span>
-                                            <span class="text">Submitted for Service</span>
-                                        </div>
-                                        <div class="step {{ str_contains($currentStatus, 'Transported') ? 'active' : '' }}">
-                                            <span class="icon"> <i class="fa fa-truck"></i> </span>
-                                            <span class="text">Transported</span>
-                                        </div>
-                                        <div class="step {{ str_contains($currentStatus, 'Delivered') ? 'active' : '' }}">
-                                            <span class="icon"> <i class="fa fa-box"></i> </span>
-                                            <span class="text">Delivered</span>
-                                        </div>
+                                        <div class="col-4"> <strong>Status:</strong> <br>
+                                            {{ $shipmentDetails->trackingHistory[0]->delivery_status }} </div>
+                                        <div class="col-4"> <strong>Tracking #:</strong> <br>
+                                            {{ $shipmentDetails->tracking_number }} </div>
                                     </div>
-
-                                    <hr>
-                                    <a href="#" class="btn btn-warning" data-abc="true"> <i
-                                            class="fa fa-chevron-left"></i>Go Back
-                                    </a>
+                                </article>
+                                <div class=" col-12 track">
+                                    <div class="step {{ str_contains($currentStatus, 'Accepted') ? 'active' : '' }}">
+                                        <span class="icon"> <i class="fa fa-check"></i> </span>
+                                        <span class="text">Accepted</span>
+                                    </div>
+                                    <div
+                                        class="step {{ str_contains($currentStatus, 'Submitted for Service') ? 'active' : '' }}">
+                                        <span class="icon"> <i class="fa fa-user"></i> </span>
+                                        <span class="text">Submitted for Service</span>
+                                    </div>
+                                    <div class="step {{ str_contains($currentStatus, 'Transported') ? 'active' : '' }}">
+                                        <span class="icon"> <i class="fa fa-truck"></i> </span>
+                                        <span class="text">Transported</span>
+                                    </div>
+                                    <div class="step {{ str_contains($currentStatus, 'Delivered') ? 'active' : '' }}">
+                                        <span class="icon"> <i class="fa fa-box"></i> </span>
+                                        <span class="text">Delivered</span>
+                                    </div>
                                 </div>
-                            </article>
-                        </div>
 
+                                <hr>
+                                <div class="row">
+                                    @if (is_array($shipmentDetails->images) && count($shipmentDetails->images) === 1)
+                                        {{-- Display a single image --}}
+                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                                            <div class="card">
+                                                @php
+                                                    $imagePath = json_decode($shipmentDetails->images[0]);
+                                                @endphp
+                                                <img src="{{ asset($imagePath[0]) }}" alt="Image" class="card-img-top">
+                                            </div>
+                                        </div>
+                                    @elseif (is_array($shipmentDetails->images) && count($shipmentDetails->images) > 1)
+                                        {{-- Display a collection of images --}}
+                                        @foreach ($shipmentDetails->images as $imageJson)
+                                            @php
+                                                $imagePaths = json_decode($imageJson);
+                                            @endphp
+                                            @foreach ($imagePaths as $imagePath)
+                                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+                                                    <div class="card">
+                                                        <img src="{{ asset($imagePath) }}" alt="Image"
+                                                            class="card-img-top">
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endforeach
+                                    @endif
+                                </div>
+
+
+                                <hr>
+                                <a href="#" class="btn btn-warning" data-abc="true"> <i
+                                        class="fa fa-chevron-left"></i>Go Back
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="container-fluid">
                         <!-- Sender Information -->
                         <div class="card mb-4">
                             <div>
@@ -391,26 +424,29 @@
                                 Package Dimension
                             </div>
                             <div class="card-body">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Weight(KG)</th>
-                                            <th>Height(M)</th>
-                                            <th>Width(M)</th>
-                                            <th>Length(M)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($shipmentDetails->dimensions as $dimension)
+                                <div style="max-width: 100%; overflow-x: auto;">
+                                    <table class="table table-bordered">
+                                        <thead>
                                             <tr>
-                                                <td>{{ $dimension->weight }}</td>
-                                                <td>{{ $dimension->height }}</td>
-                                                <td>{{ $dimension->width }}</td>
-                                                <td>{{ $dimension->length }}</td>
+                                                <th>Weight(KG)</th>
+                                                <th>Height(M)</th>
+                                                <th>Width(M)</th>
+                                                <th>Length(M)</th>
                                             </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($shipmentDetails->dimensions as $dimension)
+                                                <tr>
+                                                    <td>{{ $dimension->weight }}</td>
+                                                    <td>{{ $dimension->height }}</td>
+                                                    <td>{{ $dimension->width }}</td>
+                                                    <td>{{ $dimension->length }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             </div>
                         </div>
 
@@ -423,8 +459,8 @@
                                 <textarea class="form-control" disabled rows="4" readonly>{{ $shipmentDetails->comments ?? 'Not Available' }}</textarea>
                             </div>
                         </div>
-                    @endif
-                </div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

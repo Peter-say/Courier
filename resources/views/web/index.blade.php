@@ -1,14 +1,16 @@
 @extends('web.layouts.app')
 
+<title>{{ $pageTitle }}</title>
+<meta name="description" content="{{ $pageDescription }}">
+
 @section('contents')
-   
     <!-- slider area start -->
     <div class="tp-slider__area p-relative">
         <div class="hero-active swiper-container">
             <div class="swiper-wrapper">
                 <div class=" swiper-slide tp-slider__item p-relative">
                     <div class="tp-slider-right-bg tp-slider__height d-flex align-items-center "
-                        data-background="{{$web_assets}}/assets/img/slider/slider-img.jpg">
+                        data-background="{{ $web_assets }}/assets/img/slider/slider-img.jpg">
                         <div class="tp-slider__social">
                             <ul>
                                 <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
@@ -39,7 +41,7 @@
                                             With Integrity
                                         </h2>
                                         <div class="tp-slide-btn-box">
-                                            <a class="thm-btn" href="{{route('web.about-us')}}">EXPLORE MORE</a>
+                                            <a class="thm-btn" href="{{ route('web.about-us') }}">EXPLORE MORE</a>
                                         </div>
                                     </div>
                                 </div>
@@ -49,7 +51,7 @@
                 </div>
                 <div class=" swiper-slide tp-slider__item p-relative">
                     <div class="tp-slider-right-bg tp-slider__height d-flex align-items-center "
-                        data-background="{{$web_assets}}/assets/img/slider/slider-img-2.jpg">
+                        data-background="{{ $web_assets }}/assets/img/slider/slider-img-2.jpg">
                         <div class="tp-slider__social">
                             <ul>
                                 <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
@@ -90,7 +92,7 @@
                 </div>
                 <div class=" swiper-slide tp-slider__item p-relative">
                     <div class="tp-slider-right-bg tp-slider__height d-flex align-items-center "
-                        data-background="{{$web_assets}}/assets/img/slider/slider-img-3.jpg">
+                        data-background="{{ $web_assets }}/assets/img/slider/slider-img-3.jpg">
                         <div class="tp-slider__social">
                             <ul>
                                 <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
@@ -140,10 +142,10 @@
     <!-- services area start -->
     <div class="services-area tp-services__ptb pt-120 pb-90 p-relative fix">
         <div class="tp-services__tran  wow fadeInDownBig    ">
-            <img src="{{$web_assets}}/assets/img/services/services-tran.png" alt="">
+            <img src="{{ $web_assets }}/assets/img/services/services-tran.png" alt="">
         </div>
         <div class="tp-services__shap">
-            <img src="{{$web_assets}}/assets/img/services/services-left-img.png" alt="">
+            <img src="{{ $web_assets }}/assets/img/services/services-left-img.png" alt="">
         </div>
         <div class="container">
             <div class="row">
@@ -162,7 +164,7 @@
                     <div class="tp-services__item p-relative fix mb-30 wow fadeInUp" data-wow-duration=".9s"
                         data-wow-delay=".5s">
                         <div class="tp-services__hover-img">
-                            <img src="{{$web_assets}}/assets/img/services/services-hover-img.jpg" alt="">
+                            <img src="{{ $web_assets }}/assets/img/services/services-hover-img.jpg" alt="">
                         </div>
                         <div class="tp-services__wrap z-index-2 d-flex align-items-start">
                             <div class="tp-services__icon">
@@ -182,7 +184,7 @@
                     <div class="tp-services__item p-relative fix mb-30 wow fadeInUp" data-wow-duration=".9s"
                         data-wow-delay=".6s">
                         <div class="tp-services__hover-img">
-                            <img src="{{$web_assets}}/assets/img/services/services-hover-img.jpg" alt="">
+                            <img src="{{ $web_assets }}/assets/img/services/services-hover-img.jpg" alt="">
                         </div>
                         <div class="tp-services__wrap z-index-2 d-flex align-items-start">
                             <div class="tp-services__icon">
@@ -202,7 +204,7 @@
                     <div class="tp-services__item p-relative fix mb-30 wow fadeInUp" data-wow-duration=".9s"
                         data-wow-delay=".7s">
                         <div class="tp-services__hover-img">
-                            <img src="{{$web_assets}}/assets/img/services/services-hover-img.jpg" alt="">
+                            <img src="{{ $web_assets }}/assets/img/services/services-hover-img.jpg" alt="">
                         </div>
                         <div class="tp-services__wrap z-index-2 d-flex align-items-start">
                             <div class="tp-services__icon">
@@ -222,7 +224,7 @@
                     <div class="tp-services__item p-relative fix mb-30 wow fadeInUp" data-wow-duration=".9s"
                         data-wow-delay=".8s">
                         <div class="tp-services__hover-img">
-                            <img src="{{$web_assets}}/assets/img/services/services-hover-img.jpg" alt="">
+                            <img src="{{ $web_assets }}/assets/img/services/services-hover-img.jpg" alt="">
                         </div>
                         <div class="tp-services__wrap z-index-2 d-flex align-items-start">
                             <div class="tp-services__icon">
@@ -242,7 +244,7 @@
                     <div class="tp-services__item p-relative fix mb-30 wow fadeInUp" data-wow-duration=".9s"
                         data-wow-delay=".9s">
                         <div class="tp-services__hover-img">
-                            <img src="{{$web_assets}}/assets/img/services/services-hover-img.jpg" alt="">
+                            <img src="{{ $web_assets }}/assets/img/services/services-hover-img.jpg" alt="">
                         </div>
                         <div class="tp-services__wrap z-index-2 d-flex align-items-start">
                             <div class="tp-services__icon">
@@ -260,12 +262,12 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
     <!-- services area end -->
     <!-- video area start -->
     <div class="video-area tp-video__height-video-bg tp-video__bg-opacity p-relative jarallax"
-        style="background-image: url({{$web_assets}}/assets/img/video/home-1.jpg);">
+        style="background-image: url({{ $web_assets }}/assets/img/video/home-1.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -327,7 +329,7 @@
                                     </div>
                                 </div>
                                 <div class="tp-about__btn-box">
-                                    <a href="{{route('web.about-us')}}" class="about-two__btn thm-btn">EXPLORE MORE</a>
+                                    <a href="{{ route('web.about-us') }}" class="about-two__btn thm-btn">EXPLORE MORE</a>
                                 </div>
                             </div>
                         </div>
@@ -336,10 +338,12 @@
                         data-wow-delay=".5s">
                         <div class="tp-about__right-img p-relative text-end">
                             <div class="tp-about__lg-img ml-40">
-                                <img class="w-100" src="{{$web_assets}}/assets/img/about/about-lg.jpg" alt="">
+                                <img class="w-100" src="{{ $web_assets }}/assets/img/about/about-lg.jpg"
+                                    alt="">
                             </div>
                             <div class="tp-about__sm-img">
-                                <img class="w-100" src="{{$web_assets}}/assets/img/about/about-sm.jpg" alt="">
+                                <img class="w-100" src="{{ $web_assets }}/assets/img/about/about-sm.jpg"
+                                    alt="">
                             </div>
                         </div>
                     </div>
@@ -387,7 +391,8 @@
                     <div class="swiper-slide">
                         <div class="tp-project__item p-relative">
                             <div class="tp-project__thumb ">
-                                <img class="w-100" src="{{$web_assets}}/assets/img/project/project-1.jpg" alt="">
+                                <img class="w-100" src="{{ $web_assets }}/assets/img/project/project-1.jpg"
+                                    alt="">
                             </div>
                             <div class="tp-project-box">
                                 <div class="tp-project-content">
@@ -406,7 +411,8 @@
                     <div class="swiper-slide">
                         <div class="tp-project__item p-relative">
                             <div class="tp-project__thumb ">
-                                <img class="w-100" src="{{$web_assets}}/assets/img/project/project-2.jpg" alt="">
+                                <img class="w-100" src="{{ $web_assets }}/assets/img/project/project-2.jpg"
+                                    alt="">
                             </div>
                             <div class="tp-project-box">
                                 <div class="tp-project-content">
@@ -425,7 +431,8 @@
                     <div class="swiper-slide">
                         <div class="tp-project__item p-relative">
                             <div class="tp-project__thumb ">
-                                <img class="w-100" src="{{$web_assets}}/assets/img/project/project-3.jpg" alt="">
+                                <img class="w-100" src="{{ $web_assets }}/assets/img/project/project-3.jpg"
+                                    alt="">
                             </div>
                             <div class="tp-project-box">
                                 <div class="tp-project-content">
@@ -444,7 +451,8 @@
                     <div class="swiper-slide">
                         <div class="tp-project__item p-relative">
                             <div class="tp-project__thumb ">
-                                <img class="w-100" src="{{$web_assets}}/assets/img/project/project-4.jpg" alt="">
+                                <img class="w-100" src="{{ $web_assets }}/assets/img/project/project-4.jpg"
+                                    alt="">
                             </div>
                             <div class="tp-project-box">
                                 <div class="tp-project-content">
@@ -536,7 +544,7 @@
 
     <!-- cta area start -->
     <section class="cta-area cta-opasity pt-170 pb-180 p-relative include-bg jarallax "
-        data-background="{{$web_assets}}/assets/img/bg/cta1-bg.jpg">
+        data-background="{{ $web_assets }}/assets/img/bg/cta1-bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -549,7 +557,7 @@
                             logistics transport service?
                         </h3>
                         <div class="cta__btn wow fadeInUp   " data-wow-duration=".9s" data-wow-delay=".7s">
-                            <a class="tp-btn" href="{{route('web.contact-us')}}">REQUEST A QUOTE</a>
+                            <a class="tp-btn" href="{{ route('web.contact-us') }}">REQUEST A QUOTE</a>
                         </div>
                     </div>
                 </div>
@@ -561,10 +569,10 @@
     <!-- choose area start -->
     <div class="choose-area pt-120 pb-50 p-relative z-index-1">
         <div class="tp-choose__circel-img d-none d-md-block">
-            <img src="{{$web_assets}}/assets/img/choose/choose-circel-img.png" alt="">
+            <img src="{{ $web_assets }}/assets/img/choose/choose-circel-img.png" alt="">
         </div>
         <div class="red-trick wow fadeInUp   d-none d-xxl-block">
-            <img src="{{$web_assets}}/assets/img/choose/trick-img.png" alt="">
+            <img src="{{ $web_assets }}/assets/img/choose/trick-img.png" alt="">
         </div>
         <div class="container">
             <div class="row">
@@ -600,7 +608,7 @@
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-6 col-md-12">
-                       <H4>Request A Quote</H4>
+                    <H4>Request A Quote</H4>
                     <div class="contact-page__comment-form">
                         <form action="{{ route('web.contact-us.submit') }}" method="POST">
                             @csrf
@@ -644,7 +652,7 @@
     <div class="features-area tp-features__bg-color p-relative pt-10 fix">
         <div class="tp-features__class-fix">
             <div class="tp-features__shap-img">
-                <img src="{{$web_assets}}/assets/img/features/features-shap-img-2.png" alt="">
+                <img src="{{ $web_assets }}/assets/img/features/features-shap-img-2.png" alt="">
             </div>
             <div class="container mb-110">
                 <div class="row align-items-xl-end">
@@ -660,20 +668,24 @@
                                 <div class="tp-features__list">
                                     <!-- First Set of Features -->
                                     <div class="tp-features__single d-flex align-items-start">
-                                        <span class="mr-30"><img src="{{$web_assets}}/assets/img/features/icon1.png" alt=""></span>
-                                        <p>Providing independent advice and identifying the right fit for you, sourced and procured based on solutions. Advice and identifying.</p>
+                                        <span class="mr-30"><img src="{{ $web_assets }}/assets/img/features/icon1.png"
+                                                alt=""></span>
+                                        <p>Providing independent advice and identifying the right fit for you, sourced and
+                                            procured based on solutions. Advice and identifying.</p>
                                     </div>
-                    
+
                                     <!-- Second Set of Features -->
                                     <div class="tp-features__single d-flex align-items-start">
-                                        <span class="mr-30"><img src="{{$web_assets}}/assets/img/features/icon2.png" alt=""></span>
-                                        <p>Offering competitive pricing and flexible options to meet your budget and requirements. Competitive pricing and flexible options.</p>
+                                        <span class="mr-30"><img src="{{ $web_assets }}/assets/img/features/icon2.png"
+                                                alt=""></span>
+                                        <p>Offering competitive pricing and flexible options to meet your budget and
+                                            requirements. Competitive pricing and flexible options.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
 
                 <div class="tp-brand__items mt-110">
@@ -681,40 +693,40 @@
                         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                             <div class="tp-brand__single p-relative">
                                 <span class="tp-brand__hover-logo ">
-                                    <img src="{{$web_assets}}/assets/img/brand/brand-bg.jpg" alt="">
+                                    <img src="{{ $web_assets }}/assets/img/brand/brand-bg.jpg" alt="">
                                 </span>
                                 <span class="tp-brand__logo">
-                                    <img src="{{$web_assets}}/assets/img/brand/brand-1.png" alt="">
+                                    <img src="{{ $web_assets }}/assets/img/brand/brand-1.png" alt="">
                                 </span>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                             <div class="tp-brand__single p-relative">
                                 <span class="tp-brand__hover-logo ">
-                                    <img src="{{$web_assets}}/assets/img/brand/brand-bg.jpg" alt="">
+                                    <img src="{{ $web_assets }}/assets/img/brand/brand-bg.jpg" alt="">
                                 </span>
                                 <span class="tp-brand__logo">
-                                    <img src="{{$web_assets}}/assets/img/brand/brand-2.png" alt="">
+                                    <img src="{{ $web_assets }}/assets/img/brand/brand-2.png" alt="">
                                 </span>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                             <div class="tp-brand__single p-relative">
                                 <span class="tp-brand__hover-logo ">
-                                    <img src="{{$web_assets}}/assets/img/brand/brand-bg.jpg" alt="">
+                                    <img src="{{ $web_assets }}/assets/img/brand/brand-bg.jpg" alt="">
                                 </span>
                                 <span class="tp-brand__logo">
-                                    <img src="{{$web_assets}}/assets/img/brand/brand-3.png" alt="">
+                                    <img src="{{ $web_assets }}/assets/img/brand/brand-3.png" alt="">
                                 </span>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                             <div class="tp-brand__single p-relative">
                                 <span class="tp-brand__hover-logo ">
-                                    <img src="{{$web_assets}}/assets/img/brand/brand-bg.jpg" alt="">
+                                    <img src="{{ $web_assets }}/assets/img/brand/brand-bg.jpg" alt="">
                                 </span>
                                 <span class="tp-brand__logo">
-                                    <img src="{{$web_assets}}/assets/img/brand/brand-4.png" alt="">
+                                    <img src="{{ $web_assets }}/assets/img/brand/brand-4.png" alt="">
                                 </span>
                             </div>
                         </div>
@@ -753,7 +765,8 @@
                                 <div class="swiper-slide ">
                                     <div class="tp-testimonial__item p-relative fix">
                                         <div class="shap-img">
-                                            <img src="{{$web_assets}}/assets/img/testimonial/shap-1.png" alt="">
+                                            <img src="{{ $web_assets }}/assets/img/testimonial/shap-1.png"
+                                                alt="">
                                         </div>
                                         <div class="quote-img">
                                             <span> <i class="flaticon-quote"></i></span>
@@ -766,7 +779,8 @@
                                         </div>
                                         <div class="tp-testimonial__avata d-flex align-items-start">
                                             <div class="tp-testimonial__avata-img p-relative mr-30">
-                                                <img src="{{$web_assets}}/assets/img/testimonial/testimonial-1.jpg" alt="">
+                                                <img src="{{ $web_assets }}/assets/img/testimonial/testimonial-1.jpg"
+                                                    alt="">
                                                 <div class="icon">
                                                     <i class="flaticon-double-quotes"></i>
                                                 </div>
@@ -791,7 +805,8 @@
                                 <div class="swiper-slide ">
                                     <div class="tp-testimonial__item p-relative fix">
                                         <div class="shap-img">
-                                            <img src="{{$web_assets}}/assets/img/testimonial/shap-1.png" alt="">
+                                            <img src="{{ $web_assets }}/assets/img/testimonial/shap-1.png"
+                                                alt="">
                                         </div>
                                         <div class="quote-img">
                                             <span> <i class="flaticon-quote"></i></span>
@@ -804,7 +819,8 @@
                                         </div>
                                         <div class="tp-testimonial__avata d-flex align-items-start">
                                             <div class="tp-testimonial__avata-img p-relative mr-30">
-                                                <img src="{{$web_assets}}/assets/img/testimonial/testimonial-5.jpg" alt="">
+                                                <img src="{{ $web_assets }}/assets/img/testimonial/testimonial-5.jpg"
+                                                    alt="">
                                                 <div class="icon">
                                                     <i class="flaticon-double-quotes"></i>
                                                 </div>
@@ -859,7 +875,8 @@
                                 <div class="team__slider-wrapper">
                                     <div class="team__item p-relative ">
                                         <div class="team__thumb fix">
-                                            <img class="w-100" src="{{$web_assets}}/assets/img/team/team-1.jpg" alt="">
+                                            <img class="w-100" src="{{ $web_assets }}/assets/img/team/team-1.jpg"
+                                                alt="">
                                             <div class="team__wrapp">
                                                 <div class="team__content">
                                                     <h3 class="team__title-1"><a href="team-details.html">Helen
@@ -890,7 +907,8 @@
                                 <div class="team__slider-wrapper">
                                     <div class="team__item p-relative">
                                         <div class="team__thumb">
-                                            <img class="w-100" src="{{$web_assets}}/assets/img/team/team-2.jpg" alt="">
+                                            <img class="w-100" src="{{ $web_assets }}/assets/img/team/team-2.jpg"
+                                                alt="">
                                             <div class="team__wrapp">
                                                 <div class="team__content">
                                                     <h3 class="team__title-1"><a href="team-details.html">Helen
@@ -921,7 +939,8 @@
                                 <div class="team__slider-wrapper">
                                     <div class="team__item p-relative">
                                         <div class="team__thumb">
-                                            <img class="w-100" src="{{$web_assets}}/assets/img/team/team-3.jpg" alt="">
+                                            <img class="w-100" src="{{ $web_assets }}/assets/img/team/team-3.jpg"
+                                                alt="">
                                             <div class="team__wrapp">
                                                 <div class="team__content">
                                                     <h3 class="team__title-1"><a href="team-details.html">Helen
@@ -952,7 +971,8 @@
                                 <div class="team__slider-wrapper">
                                     <div class="team__item p-relative">
                                         <div class="team__thumb">
-                                            <img class="w-100" src="{{$web_assets}}/assets/img/team/team-4.jpg" alt="">
+                                            <img class="w-100" src="{{ $web_assets }}/assets/img/team/team-4.jpg"
+                                                alt="">
                                             <div class="team__wrapp">
                                                 <div class="team__content">
                                                     <h3 class="team__title-1"><a href="team-details.html">Helen

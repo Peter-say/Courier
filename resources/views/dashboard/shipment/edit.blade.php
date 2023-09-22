@@ -131,6 +131,17 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="images" class="form-control-label">Images (You can add multiple
+                                    images)</label>
+                                <input type="file" id="images" name="images[]" accept="image/*" multiple
+                                    class="form-control @error('images.*') is-invalid @enderror">
+                                @error('images.*')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
 
                         <!-- Additional Details -->
                         <div class="col-12">
@@ -290,7 +301,9 @@
                 // Handle click event for "Add Another Package" button
                 $('#add-dimension').click(function() {
                     // Clone only one dimension (the first one) and its contents
-                    const newDimension = $('#dimensions-container .dimension:eq(0), #dimensions-container .dimension:eq(1), #dimensions-container .dimension:eq(2), #dimensions-container .dimension:eq(3)').clone();
+                    const newDimension = $(
+                        '#dimensions-container .dimension:eq(0), #dimensions-container .dimension:eq(1), #dimensions-container .dimension:eq(2), #dimensions-container .dimension:eq(3)'
+                        ).clone();
 
 
                     // Clear input values in the cloned dimension

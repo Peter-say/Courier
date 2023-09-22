@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('shipment_id')->constrained('shipments');
             $table->timestamp('event_time');
-            $table->string('delivery_status')->default('Pending');
+            $table->string('delivery_status')->default('Accepted');
             $table->timestamps();
         });
     }
