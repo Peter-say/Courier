@@ -41,7 +41,7 @@ Route::prefix('web')->as('web.')->group(function () {
         Route::match(['get', 'post'], '/track-shipment', [WelcomeController::class, 'trackShipment'])->name('track-shipment');
 
     });
-    Route::get('tracki');
+    // Route::get('tracki');
 
 });
 

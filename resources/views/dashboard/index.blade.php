@@ -25,60 +25,62 @@
     <!-- END BREADCRUMB-->
 
     <!-- STATISTIC-->
-    @if (Auth::user()->role == 'Sudo')
-        <section class="statistic">
-            <div class="section__content section__content--p30">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6 col-lg-3">
-                            <div class="statistic__item">
-                                <h2 class="number">{{ $usersCount }}</h2>
-                                <span class="desc">Total Users</span>
-                                <div class="icon">
-                                    <i class="zmdi zmdi-account-o"></i>
+    @if (Auth::check())
+        @if (Auth::user()->role == 'Sudo')
+            <section class="statistic">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-3">
+                                <div class="statistic__item">
+                                    <h2 class="number">{{ $usersCount }}</h2>
+                                    <span class="desc">Total Users</span>
+                                    <div class="icon">
+                                        <i class="zmdi zmdi-account-o"></i>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="statistic__item">
-                                <h2 class="number">{{ $percelCount }}</h2>
-                                <span class="desc">Shipment Created</span>
-                                <div class="icon">
-                                    <i class="zmdi zmdi-shopping-cart"></i>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="statistic__item">
+                                    <h2 class="number">{{ $percelCount }}</h2>
+                                    <span class="desc">Shipment Created</span>
+                                    <div class="icon">
+                                        <i class="zmdi zmdi-shopping-cart"></i>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="statistic__item">
-                                <h2 class="number">{{ $parcelDelivered }}</h2>
-                                <span class="desc">Parcel(s) Delivered</span>
-                                <div class="icon">
-                                    <i class="zmdi zmdi-calendar-note"></i>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="statistic__item">
+                                    <h2 class="number">{{ $parcelDelivered }}</h2>
+                                    <span class="desc">Parcel(s) Delivered</span>
+                                    <div class="icon">
+                                        <i class="zmdi zmdi-calendar-note"></i>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3">
-                            <div class="statistic__item">
-                                <h2 class="number">$0</h2>
-                                <span class="desc">total earnings</span>
-                                <div class="icon">
-                                    <i class="zmdi zmdi-money"></i>
+                            <div class="col-md-6 col-lg-3">
+                                <div class="statistic__item">
+                                    <h2 class="number">$0</h2>
+                                    <span class="desc">total earnings</span>
+                                    <div class="icon">
+                                        <i class="zmdi zmdi-money"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    @else
-        <section class="statistic">
-            <div class="section__content section__content--p30">
-                <div class="container-fluid mb-5">
-                    <div class="justify-content-center">
-                        <p>Hello <strong>{{ Auth::user()->full_name }}</strong>, Welcome to your dashboard</p>
+            </section>
+        @else
+            <section class="statistic">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid mb-5">
+                        <div class="justify-content-center">
+                            <p>Hello <strong>{{ Auth::user()->full_name }}</strong>, Welcome to your dashboard</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+        @endif
     @endif
     <!-- END STATISTIC-->
 

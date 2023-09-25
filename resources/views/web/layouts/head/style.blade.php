@@ -1,5 +1,5 @@
   <!-- Place favicon.ico in the root directory -->
-  <link rel="shortcut icon" type="image/x-icon" href="{{$web_assets}}/assets/img/logo/favicon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="{{$web_assets}}/assets/img/logo/cover.png">
 
  
  <!-- CSS here -->

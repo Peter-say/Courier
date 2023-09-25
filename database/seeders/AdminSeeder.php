@@ -18,11 +18,11 @@ class AdminSeeder extends Seeder
         User::create([
             'first_name' => 'Sudo',
             'last_name' => 'Admin',
-            'email' => 'admin@gmail.com',
+            'email' => 'swiftlysend@admin.com',
             'role' => 'Sudo',
             'avatar' => null,
             'email_verified_at' => now(),
-            'password' => Hash::make('password'),
+            'password' => Hash::make('Ekeoba11@'),
             'remember_token' => Str::random(10),
         ]);
     }

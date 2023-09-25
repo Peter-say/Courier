@@ -5,8 +5,9 @@
             <button class="close-btn"><i class="fal fa-times"></i></button>
         </div>
         <div class="tpoffcanvas__logo">
-            <a href="index.html">
-                <img src="assets/img/logo/black-logo.png" alt="">
+            <a href="/">
+                <a href="/"><img class="img-fluid site-logo" src="{{$web_assets}}/assets/img/logo/cover.png" alt=""></a>
+
             </a>
         </div>
         <div class="tp-main-menu-mobile"></div>
@@ -38,8 +39,9 @@
                 <div class="search__wrapper">
                     <div class="search__top d-flex justify-content-between align-items-center">
                         <div class="search__logo">
-                            <a href="index.html">
-                                <img src="assets/img/logo/footer-logo.png" alt="logo">
+                            <a href="/">
+                                <a href="/"><img class="img-fluid site-logo" src="{{$web_assets}}/assets/img/logo/cover.png" alt=""></a>
+
                             </a>
                         </div>
                         <div class="search__close">

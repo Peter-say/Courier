@@ -23,15 +23,15 @@ class WelcomeController extends Controller
 
     public function contactUS()
     {
-        $pageTitle = 'Contact Us - Portx';
-        $pageDescription = 'Get in touch with Portx for inquiries and support.';
+        $pageTitle = 'Contact Us - SwiftlySend';
+        $pageDescription = 'Get in touch with SwiftlySend for inquiries and support.';
         return view('web.contact-us', compact('pageTitle', 'pageDescription'));
     }
 
     public function aboutUS()
     {
-        $pageTitle = 'About Us - Portx';
-        $pageDescription = 'Learn more about Portx and our services.';
+        $pageTitle = 'About Us - SwiftlySend';
+    $pageDescription = 'Learn more about SwiftlySend and our services.';
         return view('web.about-us', compact('pageTitle', 'pageDescription'));
     }
 

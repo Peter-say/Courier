@@ -1,9 +1,13 @@
 @extends('web.layouts.app')
 
-<title>{{ $pageTitle }}</title>
-<meta name="description" content="{{ $pageDescription }}">
+
+
+{{-- <title>{{ $pageTitle }}</title>
+<meta name="description" content="{{ $pageDescription }}"> --}}
+
 
 @section('contents')
+
     <style>
         @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
@@ -155,6 +159,15 @@
             border-color: #ff2b00;
             border-radius: 1px
         }
+
+       .image-card{
+        height: 300px;
+       }
+
+        .card-img-top {
+            object-fit: cover;
+            height: 100%;
+        }
     </style>
     <!--  breadcrumb-area  start -->
     <div class="wrapper-box p-relative ">
@@ -217,7 +230,7 @@
                                 <article class="card">
                                     <div class="card-body row">
                                         <div class="col-4">
-                                            <strong>Estimated Delivery Date:</strong>
+                                            <strong>Estimated Delivery Date & Time:</strong>
                                             <br>{{ $shipmentDetails->estimated_delivery_date->format('D d, M ,Y') }}
                                         </div>
 
@@ -249,30 +262,24 @@
 
                                 <hr>
                                 <div class="row">
-                                    @if (is_array($shipmentDetails->images) && count($shipmentDetails->images) === 1)
+                                    @if (is_array(json_decode($shipmentDetails->images)) && count(json_decode($shipmentDetails->images)) === 1)
                                         {{-- Display a single image --}}
-                                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                                            <div class="card">
+                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                                            <div class="card image-card">
                                                 @php
-                                                    $imagePath = json_decode($shipmentDetails->images[0]);
+                                                    $imagePaths = json_decode($shipmentDetails->images);
                                                 @endphp
-                                                <img src="{{ asset($imagePath[0]) }}" alt="Image" class="card-img-top">
+                                                <img src="{{ asset($imagePaths[0]) }}" alt="Image" class="card-img-top">
                                             </div>
                                         </div>
-                                    @elseif (is_array($shipmentDetails->images) && count($shipmentDetails->images) > 1)
+                                    @elseif (is_array(json_decode($shipmentDetails->images)) && count(json_decode($shipmentDetails->images)) > 1)
                                         {{-- Display a collection of images --}}
-                                        @foreach ($shipmentDetails->images as $imageJson)
-                                            @php
-                                                $imagePaths = json_decode($imageJson);
-                                            @endphp
-                                            @foreach ($imagePaths as $imagePath)
-                                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                                                    <div class="card">
-                                                        <img src="{{ asset($imagePath) }}" alt="Image"
-                                                            class="card-img-top">
-                                                    </div>
+                                        @foreach (json_decode($shipmentDetails->images) as $imagePath)
+                                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                                                <div class="card image-card">
+                                                    <img src="{{ asset($imagePath) }}" alt="Image" class="card-img-top">
                                                 </div>
-                                            @endforeach
+                                            </div>
                                         @endforeach
                                     @endif
                                 </div>

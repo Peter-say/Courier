@@ -16,13 +16,17 @@ class ShipmentController extends Controller
 
     public function index()
     {
-        if (in_array(Auth::user()->role, ['Sudo', 'Admin'])) {
-            $shipments = Shipment::all();
-            $statusOptions = StatusConstants::TRACKING_OPTIONS;
-            return view('dashboard.shipment.index', [
-                'shipments' => $shipments,
-                'statusOptions' =>  $statusOptions,
-            ]);
+        if (Auth::check()) {
+            if (in_array(Auth::user()->role, ['Sudo', 'Admin'])) {
+                $shipments = Shipment::all();
+                $statusOptions = StatusConstants::TRACKING_OPTIONS;
+                return view('dashboard.shipment.index', [
+                    'shipments' => $shipments,
+                    'statusOptions' =>  $statusOptions,
+                ]);
+            } else {
+                abort(403, 'You do not have permission to this page');
+            }
         } else {
             abort(403, 'You do not have permission to this page');
         }
@@ -59,29 +63,37 @@ class ShipmentController extends Controller
     public function view(Request $request, $id)
     {
 
-        if (in_array(Auth::user()->role, ['Sudo', 'Admin'])) {
-            $shipment = Shipment::with('trackingHistory')->findOrFail($id);
-            return view('dashboard.shipment.details', [
-                'shipment' => $shipment,
-            ]);
+        if (Auth::check()) {
+            if (in_array(Auth::user()->role, ['Sudo', 'Admin'])) {
+                $shipment = Shipment::with('trackingHistory')->findOrFail($id);
+                return view('dashboard.shipment.details', [
+                    'shipment' => $shipment,
+                ]);
+            } else {
+                abort(403, 'You do not have permission to this page');
+            }
         } else {
-            abort(403, 'You do not have permission to this page');
+            return redirect()->route('login');
         }
     }
 
     public function edit(Request $request, $id)
     {
-        if (in_array(Auth::user()->role, ['Sudo', 'Admin'])) {
-            $statusOptions = StatusConstants::TRACKING_OPTIONS;
-            $transportModes = StatusConstants::TRANSPORTATION_MODES;
-            $shipment = Shipment::with('dimensions')->find($id);
-            return view('dashboard.shipment.edit', [
-                'statusOptions' =>  $statusOptions,
-                'transportModes' =>  $transportModes,
-                'shipment' => $shipment
-            ]);
+        if (Auth::check()) {
+            if (in_array(Auth::user()->role, ['Sudo', 'Admin'])) {
+                $statusOptions = StatusConstants::TRACKING_OPTIONS;
+                $transportModes = StatusConstants::TRANSPORTATION_MODES;
+                $shipment = Shipment::with('dimensions')->find($id);
+                return view('dashboard.shipment.edit', [
+                    'statusOptions' =>  $statusOptions,
+                    'transportModes' =>  $transportModes,
+                    'shipment' => $shipment
+                ]);
+            } else {
+                abort(403, 'You do not have permission to this page');
+            }
         } else {
-            abort(403, 'You do not have permission to this page');
+            return redirect()->route('login');
         }
     }
 

@@ -1,13 +1,18 @@
 <!-- header area start -->
 <header>
+    <style>
+        .site-logo{
+            width: 180px
+        }
+    </style>
     <div class="main-header d-none d-xl-block">
         <div class="tp-header__top tp-header__he pt-20 pb-20 p-relative">
             <div class="tp-header-wrap">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-xl-4">
-                            <div class="main-logo ">
-                                <a href="index.html"><img src="{{$web_assets}}/assets/img/logo/black-logo.png" alt=""></a>
+                            <div class="main-logo img-fluid">
+                                <a href="/"><img class="img-fluid site-logo" src="{{$web_assets}}/assets/img/logo/cover.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-8">
@@ -27,8 +32,9 @@
                                             <span class="tp-header__icon"><i class="flaticon-envelope"></i></span>
                                             <div class="tp-header__icon-info ml-20">
                                                 <label>Email</label>
-                                                <span><a href="maito:thepures@support.com"><span class="__cf_email__"
-                                                            data-cfemail="d1a1bea3a5a9b8bfb7be91b6bcb0b8bdffb2bebc">[email&#160;protected]</span></a></span>
+                                                <span><a href="mailto:" target="_blank"><span class="__cf_email__"
+                                                    data-cfemail="d1a1bea3a5a9b8bfb7be91b6bcb0b8bdffb2bebc">[email&#160;protected]</span></a></span>
+                                                    
                                             </div>
                                         </div>
                                     </div>
@@ -37,7 +43,7 @@
                                             <span class="tp-header__icon"><i class="flaticon-telephone"></i></span>
                                             <div class="tp-header__icon-info ml-20">
                                                 <label>Call Us</label>
-                                                <span><a href="tel:+98565689656">(00) 122 456 789</a></span>
+                                                <span><a href="">(00) 000 000 000</a></span>
                                             </div>
                                         </div>
                                     </div>

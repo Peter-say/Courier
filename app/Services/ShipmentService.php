@@ -95,7 +95,6 @@ class ShipmentService
     
             return redirect()->route('dashboard.shipment.')->with('success_message', 'Shipment created successfully');
         } catch (Exception $e) {
-            Log::error($e);
             return redirect()->back()->with('error_message', 'Something went wrong while trying to create the shipment' . $e->getMessage());
         }
     }
@@ -147,7 +146,6 @@ class ShipmentService
     
             return redirect()->route('dashboard.shipment.')->with('success_message', 'Shipment created successfully');
         } catch (Exception $e) {
-            Log::error($e);
             return redirect()->back()->with('error_message', 'Something went wrong while trying to create the shipment' . $e->getMessage());
         }
     }

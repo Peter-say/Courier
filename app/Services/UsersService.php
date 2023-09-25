@@ -41,40 +41,36 @@ class UsersService
     public function createUser(Request $request, $id = null)
     {
         $this->validateUser($request, $id);
-        try {
-            // Handle file upload for avatar
-            $avatarFileName = null;
-            if ($request->hasFile('avatar')) {
-                $avatarPath = FileHelpers::saveImageRequest($request->file('avatar'), 'users/avatar');
-                $avatarFileName = basename($avatarPath);
-            }
-
-            // Generate a random password
-            $randomPassword = Str::random(12);
-
-            $user = new User();
-            $user->first_name = $request->input('first_name');
-            $user->last_name = $request->input('last_name');
-            $user->email = $request->input('email');
-            $user->role = $request->input('role');
-            $user->password = Hash::make($randomPassword);
-            $user->avatar = $avatarFileName;
-            $user->street_address = $request->input('street_address');
-            $user->city = $request->input('city');
-            $user->state = $request->input('state');
-            $user->postal_code = $request->input('postal_code');
-            $user->country = $request->input('country');
-            $user->phone_number = $request->input('phone_number');
-            $user->email_verified_at = Carbon::now();
-            $user->save();
-
-            $this->sendLoginDetails($user->id);
-
-            // Redirect with a success message
-            return redirect()->route('dashboard.user.index')->with('success_message', 'User created successfully.');
-        } catch (Exception $e) {
-            return redirect()->back()->with('error_message', 'An error occurred while creating the user.' . $e->getMessage());
+        // Handle file upload for avatar
+        $avatarFileName = null;
+        if ($request->hasFile('avatar')) {
+            $avatarPath = FileHelpers::saveImageRequest($request->file('avatar'), 'users/avatar');
+            $avatarFileName = basename($avatarPath);
         }
+
+        // Generate a random password
+        $randomPassword = Str::random(12);
+
+        $user = new User();
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->email = $request->input('email');
+        $user->role = $request->input('role');
+        $user->password = Hash::make($randomPassword);
+        $user->avatar = $avatarFileName;
+        $user->street_address = $request->input('street_address');
+        $user->city = $request->input('city');
+        $user->state = $request->input('state');
+        $user->postal_code = $request->input('postal_code');
+        $user->country = $request->input('country');
+        $user->phone_number = $request->input('phone_number');
+        $user->email_verified_at = Carbon::now();
+        $user->save();
+
+        $this->sendLoginDetails($user->id);
+
+        // Redirect with a success message
+
     }
 
 
@@ -124,15 +120,19 @@ class UsersService
 
     public function sendLoginDetails($userId)
     {
-        $user = AuthUser::findOrFail($userId);
+        try {
+            $user = AuthUser::findOrFail($userId);
 
-        $randomPassword = Str::random(12);
+            $randomPassword = Str::random(12);
 
-        $user->password = Hash::make($randomPassword);
-        $user->save();
+            $user->password = Hash::make($randomPassword);
+            $user->save();
 
-        Mail::to($user->email)->send(new UserLoginDetailsMail($user, $randomPassword));
+            Mail::to($user->email)->send(new UserLoginDetailsMail($user, $randomPassword));
 
-        return $user;
+            return $user;
+        } catch (Exception) {
+            return redirect()->back()->with('error_message', 'An error occurred while updating the user.');
+        }
     }
 }

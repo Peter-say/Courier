@@ -29,13 +29,17 @@ class UsersController extends Controller
 
     public function create()
     {
-        if (in_array(Auth::user()->role, ['Sudo'])) {
-            $userRole = StatusConstants::USERS_ROLE;
-            return view('dashboard.users.create', [
-                'userRole' => $userRole,
-            ]);
+        if (Auth::check()) {
+            if (in_array(Auth::user()->role, ['Sudo'])) {
+                $userRole = StatusConstants::USERS_ROLE;
+                return view('dashboard.users.create', [
+                    'userRole' => $userRole,
+                ]);
+            } else {
+                abort(403, 'You do not have permission to this page');
+            }
         } else {
-            abort(403, 'You do not have permission to this page');
+            return redirect()->route('login');
         }
     }
 

@@ -2,7 +2,7 @@
   <footer>
     <div class="footer-area theme-background pt-120 pb-80 p-relative fix">
        <div class="tp-footer__right-bg wow slideInLeft   ">
-          <img src="assets/img/footer/footer-left-trns.png" alt="">
+          <img src="{{$web_assets}}/assets/img/footer/footer-left-trns.png" alt="">
        </div>
        <div class="tp-footer__car">
           <img class=" tp-footer__shape-1 movingX" src="assets/img/footer/footer-car.png" alt="">
@@ -12,8 +12,9 @@
              <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="tp-footer__widget  tp-footer-col-1 mb-40  wow fadeInUp  " data-wow-duration=".9s"
                    data-wow-delay=".3s">
-                   <a href="index.html" class="tp-footer__widget-logo">
-                      <img src="assets/img/logo/footer-logo.png" alt="">
+                   <a href="/" class="tp-footer__widget-logo">
+                     <a href="/"><img class="img-fluid site-logo" src="{{$web_assets}}/assets/img/logo/cover.png" alt=""></a>
+
                    </a>
                    <div class="tp-footer__text mt-15 mb-25">
                       <p>Desires to obtain pain of it because it is pain, but occasionally circum</p>
