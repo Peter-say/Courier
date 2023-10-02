@@ -12,3 +12,5 @@
 <meta property="og:url" content="{{ $metaData->og_url }}">
 <meta property="og:type" content="{{ $metaData->page_type }}">
 <meta name="twitter:card" content="{{ $metaData->twitter_card ?? '' }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
