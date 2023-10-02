@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Helpers\PageMetaData;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Shipment;
@@ -13,48 +14,41 @@ use Illuminate\Support\Facades\Notification;
 
 class WelcomeController extends Controller
 {
+
     public function welcome()
     {
-        $pageTitle = 'Welcome to SwiftlySend';
-        $pageDescription = 'Discover SwiftlySend - Your Premier Destination for Cutting-Edge Logistics and Transportation Solutions. Explore Our Services Today!';
-
-        return view('web.index', compact('pageTitle', 'pageDescription'));
+        $metaData = PageMetaData::welcome();
+        return view('web.index', compact('metaData'));
     }
 
     public function contactUS()
     {
-        $pageTitle = 'Contact Us - SwiftlySend';
-        $pageDescription = 'Get in touch with SwiftlySend for inquiries and support.';
-        return view('web.contact-us', compact('pageTitle', 'pageDescription'));
+        $metaData = PageMetaData::contactUS();
+        return view('web.contact-us', compact('metaData'));
     }
 
-    public function aboutUS()
+    public function aboutUs()
     {
-        $pageTitle = 'About Us - SwiftlySend';
-    $pageDescription = 'Learn more about SwiftlySend and our services.';
-        return view('web.about-us', compact('pageTitle', 'pageDescription'));
+        $metaData = PageMetaData::aboutUs();
+        return view('web.about-us', compact('metaData'));
     }
 
     public function trackOrderPage()
     {
-        $pageTitle = 'Tracking - SwiftlySend';
-        $pageDescription = 'Effortless Shipment Tracking with SwiftlySend - Stay in Control of Your Deliveries, Anytime, Anywhere. Experience the Future of Logistics!';
-
+        $metaData = PageMetaData::trackOrderPage();
 
         return view(
             'web.tracking.details',
             [
                 'shipmentDetails' => [],  'deliveryStatus',
-                'pageTitle' => $pageTitle,
-                'pageDescription' =>  $pageDescription,
+                'metaData' => $metaData,
             ]
         );
     }
 
     public function trackShipment(Request $request)
     {
-        $pageTitle = 'Tracking - SwiftlySend';
-        $pageDescription = 'Effortless Shipment Tracking with SwiftlySend - Stay in Control of Your Deliveries, Anytime, Anywhere. Experience the Future of Logistics!';
+        $metaData = PageMetaData::trackOrderPage();
         if ($request->isMethod('post')) {
             // Retrieve the tracking number from the request
             $trackingNumber = $request->input('tracking_number');
@@ -70,8 +64,7 @@ class WelcomeController extends Controller
                 return view('web.tracking.details', [
                     'shipmentDetails' => $shipmentDetails,
                     'currentStatus' => $currentStatus,
-                    'pageTitle' => $pageTitle,
-                    'pageDescription' =>  $pageDescription,
+                    'metaData' => $metaData,
 
                 ])
                     ->with('success_message', 'Shipment details retrieved!');
