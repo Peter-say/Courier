@@ -32,7 +32,7 @@
                                             <span class="tp-header__icon"><i class="flaticon-envelope"></i></span>
                                             <div class="tp-header__icon-info ml-20">
                                                 <label>Email</label>
-                                                <span><a href="mailto:" target="_blank"><span class="__cf_email__"
+                                                <span><a href="mailto:swiftlysend.online@gmail.com" target="_blank"><span class="__cf_email__"
                                                     data-cfemail="d1a1bea3a5a9b8bfb7be91b6bcb0b8bdffb2bebc">[email&#160;protected]</span></a></span>
                                                     
                                             </div>
@@ -43,7 +43,7 @@
                                             <span class="tp-header__icon"><i class="flaticon-telephone"></i></span>
                                             <div class="tp-header__icon-info ml-20">
                                                 <label>Call Us</label>
-                                                <span><a href="">(00) 000 000 000</a></span>
+                                                <span><a href="tel:+14377826276">+14377826276</a></span>
                                             </div>
                                         </div>
                                     </div>

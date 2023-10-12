@@ -12,12 +12,12 @@
         </div>
         <div class="tp-main-menu-mobile"></div>
         <div class="offcanvas__btn mb-20">
-            <a href="contact.html" class="tp-btn w-100">Getting Started</a>
+            <a href="{{route('web.contact-us')}}" class="tp-btn w-100">Getting Started</a>
         </div>
         <div class="offcanvas__contact mb-40">
-            <p class="offcanvas__contact-call"><a href="tel:+964-742-44-763">+964 742 44 763</a></p>
+            <p class="offcanvas__contact-call"><a href="tel:+14377826276">+14377826276</a></p>
             <p class="offcanvas__contact-mail"><a
-                    href="https://html.weblearnbd.net/cdn-cgi/l/email-protection#056c6b636a456d6477777c2b666a68"><span
+                    href="mailto:swiftlysend.online@gmail.com" target="_blank"><span
                         class="__cf_email__"
                         data-cfemail="5e373038311e2d3b313327703d3133">[email&#160;protected]</span></a></p>
         </div>

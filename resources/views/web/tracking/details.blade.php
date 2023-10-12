@@ -1,7 +1,5 @@
 @extends('web.layouts.app')
 
-
-
 @section('contents')
 
     <style>
@@ -10,7 +8,7 @@
 
         .tracking-container {
             margin-top: 50px;
-            margin-bottom: 50px
+            margin-bottom: 50px;
         }
 
         .card {
@@ -156,15 +154,26 @@
             border-radius: 1px
         }
 
-       .image-card{
-        height: 300px;
-       }
+        .image-card {
+            height: 300px;
+        }
 
         .card-img-top {
             object-fit: cover;
             height: 100%;
         }
+
+        
+        .scrollable-text {
+            
+            overflow-y: auto;
+            white-space: nowrap;
+            padding: 6px
+            /* Prevent line breaks */
+        }
     </style>
+
+
     <!--  breadcrumb-area  start -->
     <div class="wrapper-box p-relative ">
         <div class="breadcrumb__bg breadcrumb__bg__overlay pt-130 pb-130 "
@@ -236,27 +245,31 @@
                                             {{ $shipmentDetails->tracking_number }} </div>
                                     </div>
                                 </article>
-                                <div class=" col-12 track">
-                                    <div class="step {{ str_contains($currentStatus, 'Accepted') ? 'active' : '' }}">
+
+                                <div class="col-12 track">
+                                    <div
+                                        class="step {{ str_contains($currentStatus, 'Accepted') || str_contains($currentStatus, 'Transported') || str_contains($currentStatus, 'Submitted for Service') || str_contains($currentStatus, 'Delivered') ? 'active' : '' }}">
                                         <span class="icon"> <i class="fa fa-check"></i> </span>
-                                        <span class="text">Accepted</span>
+                                        <span class="text scrollable-text">Accepted</span>
                                     </div>
                                     <div
-                                        class="step {{ str_contains($currentStatus, 'Submitted for Service') ? 'active' : '' }}">
-                                        <span class="icon"> <i class="fa fa-user"></i> </span>
-                                        <span class="text">Submitted for Service</span>
-                                    </div>
-                                    <div class="step {{ str_contains($currentStatus, 'Transported') ? 'active' : '' }}">
+                                        class="step {{ str_contains($currentStatus, 'Transported') || str_contains($currentStatus, 'Submitted for Service') || str_contains($currentStatus, 'Delivered') ? 'active' : '' }}">
                                         <span class="icon"> <i class="fa fa-truck"></i> </span>
-                                        <span class="text">Transported</span>
+                                        <span class="text scrollable-text">Transported</span>
+                                    </div>
+                                    <div
+                                        class="step {{ str_contains($currentStatus, 'Submitted for Service') || str_contains($currentStatus, 'Delivered') ? 'active' : '' }}">
+                                        <span class="icon"> <i class="fa fa-user"></i> </span>
+                                        <span class="text scrollable-text">Submitted for Service</span>
                                     </div>
                                     <div class="step {{ str_contains($currentStatus, 'Delivered') ? 'active' : '' }}">
                                         <span class="icon"> <i class="fa fa-box"></i> </span>
-                                        <span class="text">Delivered</span>
+                                        <span class="text scrollable-text">Delivered</span>
                                     </div>
                                 </div>
 
-                                <hr>
+
+
                                 <div class="row">
                                     @if (is_array(json_decode($shipmentDetails->images)) && count(json_decode($shipmentDetails->images)) === 1)
                                         {{-- Display a single image --}}
@@ -467,4 +480,20 @@
             </div>
         </div>
     </div>
+
+    {{-- <script>
+    const steps = document.querySelectorAll('.step');
+    let currentStep = -1;
+
+    for (let i = 0; i < steps.length; i--) {
+        if (steps[i].classList.contains('active')) {
+            currentStep = i;
+        }
+
+        if (currentStep >= 0) {
+            steps[i].classList.add('active');
+        }
+    }
+</script> --}}
+
 @endsection
