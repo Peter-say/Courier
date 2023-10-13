@@ -28,6 +28,12 @@
                                     <li class="list-inline-item seprate">
                                         <span>/</span>
                                     </li>
+                                    <li class="list-inline-item">
+                                        <a href="{{ route('dashboard.shipment.') }}">Shipment</a>
+                                    </li>
+                                    <li class="list-inline-item seprate">
+                                        <span>/</span>
+                                    </li>
                                     <li class="list-inline-item">Create</li>
                                 </ul>
                             </div>
@@ -131,8 +137,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="form-group">
+                        
+                            <div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12">
                                 <label for="images" class="form-control-label">Images (You can add multiple
                                     images)</label>
                                 <input type="file" id="images" name="images[]" accept="image/*" multiple
@@ -141,7 +147,20 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                        </div>
+                       
+                            <div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <label for="courier_id" class="form-control-label">Courier</label>
+                                <select name="courier_id" id="courier_id"
+                                    class="form-control @error('courier_id') is-invalid @enderror">
+                                    <option value="" disabled selected>Select A Courier</option>
+                                    @foreach ($couriers as $courier)
+                                        <option value="{{ $courier->id }}" {{old('courier_id', $shipment->courier_id) == $courier->id ? 'selected' : '' }}>{{ $courier->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('courier_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
 
                         <!-- Additional Details -->
                         <div class="col-12">
@@ -264,6 +283,7 @@
                                         <button class="btn btn-dark" type="button" id="add-dimension">Add Another
                                             Package</button>
                                     </div>
+                                   
                                 </div>
                             </div>
                         </div>
@@ -323,6 +343,7 @@
                 });
             });
         </script>
+
     </div>
 
 @endsection

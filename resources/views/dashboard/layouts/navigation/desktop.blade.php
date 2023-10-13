@@ -5,7 +5,7 @@
               <div class="header-wrap2">
                   <div class="logo d-block d-lg-none">
                       <a href="#">
-                          <img src="images/icon/logo-white.png" alt="CoolAdmin" />
+                          <img src="{{ $dashboard_assets }}/images/icon/logo-white.png" alt="CoolAdmin" />
                       </a>
                   </div>
                   <div class="header-button2">
@@ -127,6 +127,13 @@
                       <li>
                           <a href="{{ route('dashboard.user.index') }}">
                               <i class="fas fa-users"></i>Manage Users</a>
+                      </li>
+                  @endif
+
+                  @if (Auth::user()->role == 'Sudo')
+                      <li>
+                          <a href="{{ route('dashboard.shipment.courier.index') }}">
+                              <i class="fas fa-users"></i>Manage Couriers</a>
                       </li>
                   @endif
 

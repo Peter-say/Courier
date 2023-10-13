@@ -23,6 +23,12 @@
                                     <li class="list-inline-item seprate">
                                         <span>/</span>
                                     </li>
+                                    <li class="list-inline-item">
+                                        <a href="{{ route('dashboard.shipment.') }}">Shipment</a>
+                                    </li>
+                                    <li class="list-inline-item seprate">
+                                        <span>/</span>
+                                    </li>
                                     <li class="list-inline-item">Create</li>
                                 </ul>
                             </div>
@@ -53,7 +59,7 @@
                                                 class="required-field">*</span></label>
                                         <input type="text" id="sender-name" name="sender_name" placeholder=""
                                             class="form-control @error('sender_name') is-invalid @enderror"
-                                            value="{{ old('sender_name') }}">
+                                            value="{{ old('sender_name') }}" required>
                                         @error('sender_name')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -63,7 +69,7 @@
                                                 class="required-field">*</span></label>
                                         <input type="text" id="sender-address" name="sender_address" placeholder=""
                                             class="form-control @error('sender_address') is-invalid @enderror"
-                                            value="{{ old('sender_address') }}">
+                                            value="{{ old('sender_address') }}" required>
                                         @error('sender_address')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -73,7 +79,7 @@
                                             <span class="required-field">*</span></label>
                                         <input type="text" id="contact" name="sender_contact" placeholder=""
                                             class="form-control @error('sender_contact') is-invalid @enderror"
-                                            value="{{ old('sender_contact') }}">
+                                            value="{{ old('sender_contact') }}" required>
                                         @error('sender_contact')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -92,7 +98,7 @@
                                                 class="required-field">*</span></label>
                                         <input type="text" id="receiver_name" name="receiver_name" placeholder=""
                                             class="form-control @error('receiver_name') is-invalid @enderror"
-                                            value="{{ old('receiver_name') }}">
+                                            value="{{ old('receiver_name') }}" required>
                                         @error('receiver_name')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -102,7 +108,7 @@
                                                 class="required-field">*</span></label>
                                         <input type="text" id="receiver_address" name="receiver_address" placeholder=""
                                             class="form-control @error('receiver_address') is-invalid @enderror"
-                                            value="{{ old('receiver_address') }}">
+                                            value="{{ old('receiver_address') }}" required>
                                         @error('receiver_address')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -112,7 +118,7 @@
                                             Phone Number <span class="required-field">*</span></label>
                                         <input type="text" id="receiver_contact" name="receiver_contact" placeholder=""
                                             class="form-control @error('receiver_contact') is-invalid @enderror"
-                                            value="{{ old('receiver_contact') }}">
+                                            value="{{ old('receiver_contact') }}" required>
                                         @error('receiver_contact')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -120,16 +126,32 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label for="images" class="form-control-label">Images (You can add multiple images)</label>
-                                <input type="file" id="images" name="images[]" accept="image/*" multiple class="form-control @error('images.*') is-invalid @enderror">
+                        {{-- <div class="row"> --}}
+                            <div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <label for="images" class="form-control-label">Images (You can add multiple
+                                    images)</label>
+                                <input type="file" id="images" name="images[]" accept="image/*" multiple
+                                    class="form-control @error('images.*') is-invalid @enderror">
                                 @error('images.*')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                        </div>
-                        
+
+
+                            <div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <label for="courier_id" class="form-control-label">Courier</label>
+                                <select name="courier_id" id="courier_id"
+                                    class="form-control @error('courier_id') is-invalid @enderror">
+                                    <option value="" disabled selected>Select A Courier</option>
+                                    @foreach ($couriers as $courier)
+                                        <option value="{{ $courier->id }}">{{ $courier->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('courier_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        {{-- </div> --}}
 
                         <div class="col-12">
                             <div class="card">

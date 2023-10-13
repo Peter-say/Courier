@@ -5,7 +5,7 @@
    <!--  breadcrumb-area  start -->
    <div class="wrapper-box p-relative ">
     <div class="breadcrumb__bg breadcrumb__bg__overlay pt-130 pb-130 "
-       data-background="assets/img/breadcrumb/breadcrumb-bg-1.jpg">
+       data-background="{{ $web_assets }}/assets/img/breadcrumb/breadcrumb-bg-1.jpg">
        <div class="container">
           <div class="row">
              <div class="col-xxl-12">

@@ -5,7 +5,7 @@
           <img src="{{$web_assets}}/assets/img/footer/footer-left-trns.png" alt="">
        </div>
        <div class="tp-footer__car">
-          <img class=" tp-footer__shape-1 movingX" src="assets/img/footer/footer-car.png" alt="">
+          <img class=" tp-footer__shape-1 movingX" src="{{$web_assets}}/assets/img/footer/footer-car.png" alt="">
        </div>
        <div class="container">
           <div class="row">
@@ -25,7 +25,7 @@
                             <span>
                                <i class="fa-solid fa-square-phone"></i>
                             </span>
-                            <a href="tel:+92487(9098)98765">+92 487 (9098) 98765</a>
+                            <a href="tel:+14377826276">+14377826276</a>
                          </li>
                          <li>
                             <span>

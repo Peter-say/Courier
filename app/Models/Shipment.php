@@ -26,6 +26,11 @@ class Shipment extends Model
         return $this->hasMany(TrackingHistory::class);
     }
 
+    public function courier()
+    {
+        return $this->belongsTo(Courier::class, 'courier_id');
+    }
+
     public function currentDeliveryStatus()
     {
         // Retrieve the last tracking history entry

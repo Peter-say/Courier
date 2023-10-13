@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Constants\StatusConstants;
 use App\Http\Controllers\Controller;
+use App\Models\Courier;
 use App\Models\Shipment;
 use App\Models\TrackingHistory;
 use App\Services\ShipmentService;
@@ -35,11 +36,13 @@ class ShipmentController extends Controller
     {
 
         if (in_array(Auth::user()->role, ['Sudo', 'Admin'])) {
+            $couriers = Courier::where('status', 'Active')->get();
             $statusOptions = StatusConstants::TRACKING_OPTIONS;
             $transportModes = StatusConstants::TRANSPORTATION_MODES;
             return view('dashboard.shipment.create', [
                 'statusOptions' =>  $statusOptions,
                 'transportModes' =>  $transportModes,
+                'couriers' => $couriers
             ]);
         } else {
             abort(403, 'You do not have permission to this page');
@@ -54,7 +57,7 @@ class ShipmentController extends Controller
             return redirect()->route('dashboard.shipment.')->with('success_message', 'Shipment created successfully');
         } catch (\Illuminate\Database\QueryException $e) {
             // Handle database-related exception
-            return back()->with('error_message', 'Database error: ' . $e->getMessage());
+            return back()->with('error_message', 'Database error');
         } catch (\Exception $e) {
             return back()->with('error_message', 'Something went wrong: ' . $e->getMessage());
         }
@@ -81,13 +84,16 @@ class ShipmentController extends Controller
     {
         if (Auth::check()) {
             if (in_array(Auth::user()->role, ['Sudo', 'Admin'])) {
+                $couriers = Courier::where('status', 'Active')->get();
+                
                 $statusOptions = StatusConstants::TRACKING_OPTIONS;
                 $transportModes = StatusConstants::TRANSPORTATION_MODES;
                 $shipment = Shipment::with('dimensions')->find($id);
                 return view('dashboard.shipment.edit', [
                     'statusOptions' =>  $statusOptions,
                     'transportModes' =>  $transportModes,
-                    'shipment' => $shipment
+                    'shipment' => $shipment,
+                    'couriers' => $couriers
                 ]);
             } else {
                 abort(403, 'You do not have permission to this page');
@@ -101,7 +107,6 @@ class ShipmentController extends Controller
     {
         try {
             (new ShipmentService)->updateData($request, $id);
-
             return redirect()->route('dashboard.shipment.')->with('success_message', 'Shipment updated successfully');
         } catch (\Illuminate\Database\QueryException $e) {
             // Handle database-related exception

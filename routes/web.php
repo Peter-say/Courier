@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChatsController;
+use App\Http\Controllers\Dashboard\CourierController;
 use App\Http\Controllers\Dashboard\GeneralController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\ShipmentController;
@@ -62,6 +63,8 @@ Route::prefix('dashboard')->as('dashboard.')->group(function () {
         Route::get('/{id}/edit', [ShipmentController::class, 'edit'])->name('edit');
         Route::put('/{id}', [ShipmentController::class, 'update'])->name('update');
         Route::put('shipments/update/{id}', [ShipmentController::class, 'updateDeliveryStatus'])->name('update.delivery_status');
+
+        Route::resource('/courier', CourierController::class);
     });
 
     Route::prefix('user')->as('user.')->group(function () {

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('contact_number');
             $table->string('vehicle_type'); // E.g., bicycle, motorcycle, van
             $table->string('license_plate')->nullable();
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->enum('status', ['Active', 'Inactive'])->default('Active');
             $table->timestamps();
         });
     }

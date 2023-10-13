@@ -163,13 +163,13 @@
             height: 100%;
         }
 
-        
+
         .scrollable-text {
-            
+
             overflow-y: auto;
             white-space: nowrap;
             padding: 6px
-            /* Prevent line breaks */
+                /* Prevent line breaks */
         }
     </style>
 
@@ -177,7 +177,7 @@
     <!--  breadcrumb-area  start -->
     <div class="wrapper-box p-relative ">
         <div class="breadcrumb__bg breadcrumb__bg__overlay pt-130 pb-130 "
-            data-background="assets/img/breadcrumb/breadcrumb-bg-1.jpg">
+            data-background="{{ $web_assets }}/assets/img/breadcrumb/breadcrumb-bg-1.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-xxl-12">
@@ -295,8 +295,8 @@
 
 
                                 <hr>
-                                <a href="#" class="btn btn-warning" data-abc="true"> <i
-                                        class="fa fa-chevron-left"></i>Go Back
+                                <a href="/" class="btn btn-warning" data-abc="true"> <i
+                                        class="fa fa-chevron-left"></i>Go Back Home
                                 </a>
                             </div>
                         </article>
@@ -365,11 +365,41 @@
                                     <input type="text" value="{{ $shipmentDetails->tracking_number }}"
                                         class="form-control" disabled readonly>
                                 </div>
-                                <div class="form-group">
-                                    <label>Carrier:</label>
-                                    <input type="text"
-                                        value="{{ $shipmentDetails->courier->name ?? 'Not Available' }}"
-                                        class="form-control" disabled readonly>
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        Carrier Details
+                                    </div>
+                                    <div class="card-body">
+                                        @if ($shipmentDetails->courier)
+                                            <div style="max-width: 100%; overflow-x: auto;">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Phone Number</th>
+                                                            <th>Vehicle Type</th>
+                                                            <th>License Plate Number</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                        <tr>
+                                                            <td>{{ $shipmentDetails->courier->name }}</td>
+                                                            <td>{{ $shipmentDetails->courier->contact_number }}</td>
+                                                            <td>{{ $shipmentDetails->courier->vehicle_type }}</td>
+                                                            <td>{{ $shipmentDetails->courier->license_plate ?? 'Not Available' }}
+                                                            </td>
+                                                        </tr>
+
+
+                                                    </tbody>
+
+                                                </table>
+                                            </div>
+                                        @else
+                                            <p>Not Available</p>
+                                        @endif
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Shipping Date:</label>
@@ -481,19 +511,5 @@
         </div>
     </div>
 
-    {{-- <script>
-    const steps = document.querySelectorAll('.step');
-    let currentStep = -1;
-
-    for (let i = 0; i < steps.length; i--) {
-        if (steps[i].classList.contains('active')) {
-            currentStep = i;
-        }
-
-        if (currentStep >= 0) {
-            steps[i].classList.add('active');
-        }
-    }
-</script> --}}
 
 @endsection

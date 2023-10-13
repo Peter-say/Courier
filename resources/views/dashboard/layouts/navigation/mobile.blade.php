@@ -64,6 +64,13 @@
                      </li>
                  @endif
 
+                 @if (Auth::user()->role == 'Sudo')
+                     <li>
+                         <a href="{{ route('dashboard.shipment.courier.index') }}">
+                             <i class="fas fa-users"></i>Manage Couriers</a>
+                     </li>
+                 @endif
+
                  
              </ul>
          </nav>
