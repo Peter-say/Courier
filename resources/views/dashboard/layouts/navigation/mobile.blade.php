@@ -64,6 +64,11 @@
                      </li>
                  @endif
 
+                 <li>
+                    <a href="{{ route('dashboard.select_chat_partner') }}">
+                        <i class="fas fa-chart-bar"></i>Chat</a>
+                    
+                </li>
                  
              </ul>
          </nav>
