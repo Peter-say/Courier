@@ -1,6 +1,9 @@
 @extends('web.layouts.app')
 
 @section('contents')
+    {{-- <div class="container">
+        <div id="google_translate_element"></div>
+    </div> --}}
     <!-- slider area start -->
     <div class="tp-slider__area p-relative">
         <div class="hero-active swiper-container">

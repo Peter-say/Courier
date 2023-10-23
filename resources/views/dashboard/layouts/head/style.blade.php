@@ -25,6 +25,12 @@
 
    <!-- Main CSS-->
    <link href="{{$dashboard_assets}}/css/theme.css" rel="stylesheet" media="all">
+   <script src="{{ asset('js/app.js') }}"></script>
+   <link rel="icon" href="https://assets.edlin.app/favicon/favicon.ico"/>
+   <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+   
+
 
    <style>
       .required::after {
