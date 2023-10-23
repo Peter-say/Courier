@@ -23,7 +23,7 @@ class ProfileController extends Controller
 
         // Validate the incoming request data
         $validator = Validator::make($request->all(), [
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:6048', // Add appropriate image validation rules
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif', // Add appropriate image validation rules
             'phone_number' => 'nullable|string|max:255',
             'street_address' => 'nullable|string|max:255',
             'city' => 'nullable|string|max:255',
