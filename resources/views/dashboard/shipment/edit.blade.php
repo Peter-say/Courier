@@ -287,7 +287,16 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <label for="shipping_cost" class="form-control-label">Shipping Cost (In Dollars)</label>
+                            <input type="number" id="shipping_cost" name="shipping_cost"
+                                placeholder=""
+                                class="form-control @error('shipping_cost') is-invalid @enderror"
+                                value="{{ $shipment->$shipment->shipping_cost ?? ''}}">
+                            @error('shipping_cost')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <!-- Comment -->
                         <div class="col-12">
                             <div class="card">

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
-
+use Mpdf\MpdfServiceProvider;
 return [
 
     /*
@@ -169,6 +169,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\NotificationServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
+        // Mpdf\MpdfServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -184,6 +186,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'PDF' => Barryvdh\DomPDF::class,
     ])->toArray(),
 
 ];

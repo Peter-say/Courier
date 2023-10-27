@@ -111,12 +111,19 @@
                                                             @endforeach
                                                         </ul>
                                                     </div>
-
+                                                    <a href="{{ route('dashboard.shipment.view-receipt', $shipment->id) }}"
+                                                        class="btn btn-success">View Receipt</a>
                                                     <a href="{{ route('dashboard.shipment.details', $shipment->id) }}"
                                                         class="btn btn-dark">View</a>
                                                     <a href="{{ route('dashboard.shipment.edit', $shipment->id) }}"
                                                         class="btn btn-primary">Edit</a>
-                                                       
+                                                    <form action="{{route('dashboard.shipment.delete', $shipment->id)}}"
+                                                        method="POST"
+                                                        onsubmit="return confirm('Are you sure you want to delete this shipment?');">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger"> Delete</button>
+                                                    </form>
                                                 </div>
 
                                             </td>

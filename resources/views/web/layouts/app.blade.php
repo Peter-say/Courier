@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    
+
     @include('web.fragments.preloader_back_to_top')
     @include('web.layouts.navigation.nav-menu')
     <div class="container">
@@ -31,7 +31,7 @@
             var s1 = document.createElement("script"),
                 s0 = document.getElementsByTagName("script")[0];
             s1.async = true;
-            s1.src = 'https://embed.tawk.to/6536708da84dd54dc4844bcf/1hdeafanb';
+            s1.src = 'https://embed.tawk.to/653a3733a84dd54dc4856a44/1hdlmf95d';
             s1.charset = 'UTF-8';
             s1.setAttribute('crossorigin', '*');
             s0.parentNode.insertBefore(s1, s0);

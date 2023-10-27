@@ -8,7 +8,8 @@ use App\Models\Courier;
 use App\Models\Shipment;
 use App\Models\TrackingHistory;
 use App\Services\ShipmentService;
-use Exception;
+use App\Jobs\GeneratePdfReceipt;
+use Barryvdh\DomPDF\Facade\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -85,7 +86,7 @@ class ShipmentController extends Controller
         if (Auth::check()) {
             if (in_array(Auth::user()->role, ['Sudo', 'Admin'])) {
                 $couriers = Courier::where('status', 'Active')->get();
-                
+
                 $statusOptions = StatusConstants::TRACKING_OPTIONS;
                 $transportModes = StatusConstants::TRANSPORTATION_MODES;
                 $shipment = Shipment::with('dimensions')->find($id);
@@ -118,8 +119,9 @@ class ShipmentController extends Controller
 
     public function delete($id)
     {
-        $shipment = Shipment::findOrFail($id);
-        $shipment->delete();
+        $shipment = Shipment::withTrashed()->findOrFail($id);
+        $shipment->trackingHistory()->delete();
+        $shipment->forceDelete();
         return back()->with('success_message', 'Shipment deleted successfully');
     }
 
@@ -141,5 +143,24 @@ class ShipmentController extends Controller
         $shipment->trackingHistory()->save($trackingHistory);
 
         return redirect()->back()->with('success_message', 'Delivery status updated successfully');
+    }
+
+    public function viewReceipt($id)
+    {
+        $shipment = Shipment::findOrFail($id);
+        $dimensions = $shipment->dimensions;
+        $currentDate = date('F d, Y');
+        return view('dashboard.shipment.receipt.view', compact('shipment', 'dimensions', 'currentDate'));
+    }
+
+    public function generateReceipt($id)
+    {
+        $shipment = Shipment::findOrFail($id);
+        $dimensions = $shipment->dimensions;
+
+        $currentDate = date('F d, Y');
+
+        $pdf = PDF::loadView('dashboard.shipment.receipt.generate', compact('shipment', 'dimensions', 'currentDate'));
+        return $pdf->download('swiftlysend_payment_receipt.pdf');
     }
 }

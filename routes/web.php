@@ -65,6 +65,9 @@ Route::prefix('dashboard')->as('dashboard.')->group(function () {
         Route::put('shipments/update/{id}', [ShipmentController::class, 'updateDeliveryStatus'])->name('update.delivery_status');
 
         Route::resource('/courier', CourierController::class);
+        Route::get('/{id}/view-receipt', [ShipmentController::class, 'viewReceipt'])->name('view-receipt');
+        Route::get('/{id}/generate-receipt', [ShipmentController::class, 'generateReceipt'])->name('generate-receipt');
+
     });
 
     Route::prefix('user')->as('user.')->group(function () {
@@ -92,4 +95,5 @@ Route::prefix('dashboard')->as('dashboard.')->group(function () {
         Route::get('/fetch-account', [AccountSettings::class, 'getAccount'])->name('fetch-account');
         Route::delete('/delete-account/{id}', [AccountSettings::class, 'destroy'])->name('delete-account');
     });
+
 });

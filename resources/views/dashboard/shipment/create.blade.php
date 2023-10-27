@@ -127,30 +127,30 @@
                             </div>
                         </div>
                         {{-- <div class="row"> --}}
-                            <div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                                <label for="images" class="form-control-label">Images (You can add multiple
-                                    images)</label>
-                                <input type="file" id="images" name="images[]" accept="image/*" multiple
-                                    class="form-control @error('images.*') is-invalid @enderror">
-                                @error('images.*')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
+                        <div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <label for="images" class="form-control-label">Images (You can add multiple
+                                images)</label>
+                            <input type="file" id="images" name="images[]" accept="image/*" multiple
+                                class="form-control @error('images.*') is-invalid @enderror">
+                            @error('images.*')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
 
 
-                            <div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                                <label for="courier_id" class="form-control-label">Courier</label>
-                                <select name="courier_id" id="courier_id"
-                                    class="form-control @error('courier_id') is-invalid @enderror">
-                                    <option value="" disabled selected>Select A Courier</option>
-                                    @foreach ($couriers as $courier)
-                                        <option value="{{ $courier->id }}">{{ $courier->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('courier_id')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
+                        <div class="form-group col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <label for="courier_id" class="form-control-label">Courier</label>
+                            <select name="courier_id" id="courier_id"
+                                class="form-control @error('courier_id') is-invalid @enderror">
+                                <option value="" disabled selected>Select A Courier</option>
+                                @foreach ($couriers as $courier)
+                                    <option value="{{ $courier->id }}">{{ $courier->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('courier_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                         {{-- </div> --}}
 
                         <div class="col-12">
@@ -264,7 +264,14 @@
 
                             </div>
                         </div>
-
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <label for="shipping_cost" class="form-control-label">Shipping Cost (In Dollars)</label>
+                            <input type="number" id="shipping_cost" name="shipping_cost" placeholder=""
+                                class="form-control @error('shipping_cost') is-invalid @enderror">
+                            @error('shipping_cost')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header d-flex justify-content-center">

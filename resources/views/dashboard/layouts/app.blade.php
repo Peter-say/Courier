@@ -11,7 +11,7 @@
 
     <!-- Title Page-->
     <title>Dashboard 2</title>
-
+    <link rel="stylesheet" href="receipt-style">
     @include('dashboard.layouts.head.style')
 
 
