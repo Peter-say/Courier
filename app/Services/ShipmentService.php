@@ -115,8 +115,11 @@ class ShipmentService
                 }
             }
             $serializedImagePaths = json_encode($imagePaths);
+            
             $Updateshipment = Shipment::FindOrFail($id);
-             $Updateshipment->update([
+            
+            // Update shipment details
+            $Updateshipment->update([
                 'sender_name' => $request->input('sender_name'),
                 'sender_address' => $request->input('sender_address'),
                 'receiver_name' => $request->input('receiver_name'),
@@ -130,15 +133,16 @@ class ShipmentService
                 'pickup_datetime' => $request->input('pickup_datetime'),
                 'transportation_mode' => $request->input('transportation_mode'),
                 'delivery_datetime' => $request->input('delivery_datetime'),
-                'images' =>  $serializedImagePaths,
-                
+                'images' => $serializedImagePaths,
             ]);
-            
     
-            // Create dimensions associated with the shipment
+            // Delete old dimensions
+            $Updateshipment->dimensions()->delete();
+    
+            // Create new dimensions associated with the shipment
             foreach ($request->input('weight') as $index => $weight) {
                 Dimension::create([
-                    'shipment_id' =>  $Updateshipment->id,
+                    'shipment_id' => $Updateshipment->id,
                     'weight' => $weight,
                     'height' => $request->input('height')[$index],
                     'width' => $request->input('width')[$index],
@@ -146,11 +150,12 @@ class ShipmentService
                 ]);
             }
     
-            return redirect()->route('dashboard.shipment.')->with('success_message', 'Shipment created successfully');
+            return redirect()->route('dashboard.shipment.')->with('success_message', 'Shipment updated successfully');
         } catch (Exception $e) {
-            return redirect()->back()->with('error_message', 'Something went wrong while trying to create the shipment' . $e->getMessage());
+            return redirect()->back()->with('error_message', 'Something went wrong while trying to update the shipment' . $e->getMessage());
         }
     }
+    
     
     
 
