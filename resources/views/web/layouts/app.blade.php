@@ -23,21 +23,19 @@
 
     @include('web.layouts.bottom.script')
 
-    <!--Start of Tawk.to Script-->
+    <!--Start of Crisp.chat Script-->
     <script type="text/javascript">
-        var Tawk_API = Tawk_API || {},
-            Tawk_LoadStart = new Date();
+        window.$crisp = [];
+        window.CRISP_WEBSITE_ID = "9631766e-7f75-4007-a4b6-cf0aa668789a";
         (function() {
-            var s1 = document.createElement("script"),
-                s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/653a3733a84dd54dc4856a44/1hdlmf95d';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
+            d = document;
+            s = d.createElement("script");
+            s.src = "https://client.crisp.chat/l.js";
+            s.async = 1;
+            d.getElementsByTagName("head")[0].appendChild(s);
         })();
     </script>
-    <!--End of Tawk.to Script-->
+    <!--End of Crisp.chat Script-->
 
     <script type="text/javascript">
         function googleTranslateElementInit() {
