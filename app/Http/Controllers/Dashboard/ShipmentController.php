@@ -8,7 +8,7 @@ use App\Models\Courier;
 use App\Models\Shipment;
 use App\Models\TrackingHistory;
 use App\Services\ShipmentService;
-use Barryvdh\DomPDF\Facade\PDF;
+use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
