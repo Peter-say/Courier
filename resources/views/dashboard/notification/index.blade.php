@@ -65,21 +65,22 @@
                                     @foreach ($notifications as $notification)
                                         <a href="#">
                                             <tr>
-                                                @php
-                                               
-                                                    $notificationData = json_decode($notification->data, true);
-                                                @endphp
                                                 <td>{{ $notification->id }}</td>
-                                                <td>{{ isset($notificationData['name']) ? $notificationData['name'] : '' }}
-                                                    </td>
-                                                    <td>{{ isset($notificationData['email']) ? $notificationData['email'] : '' }}
-                                                    </td>
-                                                    <td>{{ isset($notificationData['subject']) ? $notificationData['subject'] : '' }}
-                                                    </td>
-                                                    <td>{{ isset($notificationData['message']) ? $notificationData['message'] : '' }}
-                                                    </td>
-                                                    <td>{{ $notification->created_at }}</td>
 
+                                                @php
+                                                    $notificationData = is_array($notification->data) ? $notification->data : json_decode($notification->data, true);
+                                                @endphp
+
+                                                <td>{{ isset($notificationData['name']) ? $notificationData['name'] : '' }}
+                                                </td>
+                                                <td>{{ isset($notificationData['email']) ? $notificationData['email'] : '' }}
+                                                </td>
+                                                <td>{{ isset($notificationData['subject']) ? $notificationData['subject'] : '' }}
+                                                </td>
+                                                <td>{{ isset($notificationData['message']) ? $notificationData['message'] : '' }}
+                                                </td>
+
+                                                <td>{{ $notification->created_at }}</td>
                                             </tr>
                                         </a>
                                     @endforeach
