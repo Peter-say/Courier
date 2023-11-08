@@ -42,9 +42,17 @@
                                         <div class="tp-header__contact d-flex align-items-center">
                                             <span class="tp-header__icon"><i class="flaticon-telephone"></i></span>
                                             <div class="tp-header__icon-info ml-20">
-                                                <label>Call Us</label>
-                                                <span><a href="tel:+14377826276">+14377826276</a></span>
+                                                <label>Contact Us</label>
+                                                <span>
+                                                    <a href="tel:+14377826276">Call +1 (437) 782-6276</a>
+                                                </span>
+                                                <div>
+                                                    <span>
+                                                        <a href="https://wa.me/14377826276" target="_blank">Chat on WhatsApp</a>
+                                                    </span>
+                                                </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>

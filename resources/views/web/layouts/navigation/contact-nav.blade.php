@@ -16,6 +16,7 @@
         </div>
         <div class="offcanvas__contact mb-40">
             <p class="offcanvas__contact-call"><a href="tel:+14377826276">+14377826276</a></p>
+            <p class="offcanvas__contact-call"><a href="https://wa.me/14377826276" target="_blank">Chat on WhatsApp</a></p>
             <p class="offcanvas__contact-mail"><a
                     href="mailto:swiftlysend.online@gmail.com" target="_blank"><span
                         class="__cf_email__"

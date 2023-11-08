@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Web;
 
 use App\Helpers\PageMetaData;
 use App\Http\Controllers\Controller;
+use App\Mail\SendContactMailToAdmin;
 use App\Models\Contact;
 use App\Models\Shipment;
 use App\Models\TrackingHistory;
 use App\Models\User;
 use App\Notifications\ContactFormNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
 class WelcomeController extends Controller
@@ -94,6 +96,8 @@ class WelcomeController extends Controller
 
         // Retrieve the admin user with the 'Sudo' role
         $adminUser = User::where('role', 'Sudo')->first();
+        $adminMail = 'swiftlysend.online@gmail.com';
+        Mail::to($adminMail)->send(new SendContactMailToAdmin($notificationData));
 
         if ($adminUser) {
             // Send the notification to the admin user
