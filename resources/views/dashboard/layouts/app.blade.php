@@ -8,9 +8,9 @@
     <meta name="description" content="au theme template">
     <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="au theme template">
-
+    <link rel="shortcut icon" type="image/x-icon" href="{{$web_assets}}/assets/img/logo/cover.png">
     <!-- Title Page-->
-    <title>Dashboard 2</title>
+    <title>SwiftlySend - Dashboard</title>
     <link rel="stylesheet" href="receipt-style">
     @include('dashboard.layouts.head.style')
 
@@ -53,7 +53,11 @@
             background-color: #555;
         }
     </style>
-
+ <style>
+    .site-logo{
+        width: 180px
+    }
+</style>
 
 </head>
 

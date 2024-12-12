@@ -292,7 +292,7 @@
                             <input type="number" id="shipping_cost" name="shipping_cost"
                                 placeholder=""
                                 class="form-control @error('shipping_cost') is-invalid @enderror"
-                                value="{{ $shipment->$shipment->shipping_cost ?? ''}}">
+                                value="{{ $shipment->shipping_cost ?? ''}}">
                             @error('shipping_cost')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -306,10 +306,10 @@
                                 <div class="card-body card-block">
                                     <div class="row">
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                            <label for="comment" class="form-control-label">Comment</label>
+                                            <label for="comments" class="form-control-label">Comment</label>
                                             <textarea type="text" id="comments" name="comments" placeholder=""
-                                                class="form-control @error('comment') is-invalid @enderror" cols="10">{{ $shipment->comment }}</textarea>
-                                            @error('comment')
+                                                class="form-control @error('comments') is-invalid @enderror" cols="10">{{ $shipment->comments }}</textarea>
+                                            @error('comments')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>

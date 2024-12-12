@@ -10,7 +10,38 @@
             max-height: 200px;
             overflow-y: auto;
         }
+
+        .icon-action {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+            cursor: pointer;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .icon-action:hover {
+            color: #0056b3;
+        }
+
+        .action-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .action-form {
+            display: inline;
+        }
+
+        .action-form button {
+            border: none;
+            background: none;
+            padding: 0;
+            margin: 0;
+        }
     </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
     <!-- BREADCRUMB-->
     <section class="au-breadcrumb m-t-75">
         <div class="section__content section__content--p30">
@@ -40,7 +71,6 @@
                                 <a href="{{ route('dashboard.shipment.create') }}" class="btn btn-primary">Create New</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -84,82 +114,45 @@
                                             <td>{{ $shipment->receiver_address }}</td>
                                             <td>{{ $shipment->receiver_contact }}</td>
                                             <td>{!! $shipment->currentDeliveryStatus() !!}</td>
-
                                             <td>
-                                                <div class="d-flex justify-content-between">
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-primary dropdown-toggle"
-                                                            data-toggle="dropdown" aria-expanded="false">
-                                                            Change Status
-                                                        </button>
-                                                        <ul class="dropdown-menu">
-                                                            @foreach ($statusOptions as $status)
-                                                                <li>
-                                                                    <form
-                                                                        action="{{ route('dashboard.shipment.update.delivery_status', ['id' => $shipment->id, 'status' => $status]) }}"
-                                                                        method="POST">
-                                                                        @csrf
-                                                                        @method('PUT')
-                                                                        <!-- Use PUT method for status update -->
-                                                                        <input type="hidden" name="delivery_status"
-                                                                            value="{{ $status }}">
-                                                                        <button type="submit" class="dropdown-item">
-                                                                            Change as {{ ucfirst($status) }}
-                                                                        </button>
-                                                                    </form>
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </div>
-                                                   
-                                                        <a href="{{ route('dashboard.shipment.view-receipt', $shipment->id) }}"
-                                                            class="btn btn-success">View Receipt</a>
-                                                   
-                                                    <a href="{{ route('dashboard.shipment.details', $shipment->id) }}"
-                                                        class="btn btn-dark">View</a>
-                                                    <a href="{{ route('dashboard.shipment.edit', $shipment->id) }}"
-                                                        class="btn btn-primary">Edit</a>
+                                                <div class="action-group">
+                                                    <!-- View Details -->
+                                                    <a href="{{ route('dashboard.shipment.details', $shipment->id) }}" 
+                                                       class="icon-action" title="View Details">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                    <!-- Edit -->
+                                                    <a href="{{ route('dashboard.shipment.edit', $shipment->id) }}" 
+                                                       class="icon-action" title="Edit Shipment">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <!-- Delete -->
                                                     <form action="{{ route('dashboard.shipment.delete', $shipment->id) }}"
-                                                        method="POST"
-                                                        onsubmit="return confirm('Are you sure you want to delete this shipment?');">
+                                                          method="POST"
+                                                          onsubmit="return confirm('Are you sure you want to delete this shipment?');"
+                                                          class="action-form">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger"> Delete</button>
+                                                        <button type="submit" class="icon-action" title="Delete Shipment">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </button>
                                                     </form>
+                                                    <!-- View Receipt -->
+                                                    <a href="{{ route('dashboard.shipment.view-receipt', $shipment->id) }}" 
+                                                       class="icon-action" title="View Receipt">
+                                                        <i class="fas fa-file-invoice"></i>
+                                                    </a>
                                                 </div>
-
                                             </td>
-
                                         </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
-
                 </div>
-                {{-- @include('notifications.pop-up'); --}}
                 @include('dashboard.shipment.modal.delivery-status')
             </div>
         </div>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var deleteButton = document.getElementById('delete-shipment');
-
-                deleteButton.addEventListener('click', function(event) {
-                    event.preventDefault(); // Prevent the default link behavior
-
-                    // Display a confirmation dialog
-                    var confirmation = confirm('Are you sure you want to delete this shipment?');
-
-                    if (confirmation) {
-                        // If the user confirms, proceed with the deletion
-                        window.location.href = this.getAttribute('href');
-                    }
-                });
-            });
-        </script>
-
     </div>
 @endsection

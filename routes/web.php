@@ -51,7 +51,7 @@ Route::get('messages', [ChatsController::class, 'fetchMessages']);
 
 Auth::routes();
 
-Route::prefix('dashboard')->as('dashboard.')->group(function () {
+Route::prefix('dashboard')->as('dashboard.')->middleware('auth')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::prefix('shipment')->as('shipment.')->group(function () {

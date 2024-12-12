@@ -1,6 +1,25 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+    <link rel="shortcut icon" type="image/x-icon" href="{{$web_assets}}/assets/img/logo/cover.png">
+    <!-- Title Page-->
+    <title>SwiftlySend - Confirm Email</title>
+    <link rel="stylesheet" href="receipt-style">
+    @include('dashboard.layouts.head.style')
+    <style>
+        .site-logo {
+            width: 180px
+        }
+    </style>
+</head>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -46,4 +65,8 @@
         </div>
     </div>
 </div>
-@endsection
+@include('dashboard.layouts.bottom.scripts')
+</body>
+
+</html>
+

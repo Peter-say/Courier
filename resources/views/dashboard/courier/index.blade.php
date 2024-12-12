@@ -10,6 +10,12 @@
             max-height: 200px;
             overflow-y: auto;
         }
+
+        .no-data {
+            text-align: center;
+            color: #007bff;
+            font-size: 1.2rem;
+        }
     </style>
     <!-- BREADCRUMB-->
     <section class="au-breadcrumb m-t-75">
@@ -21,21 +27,19 @@
                             <div class="au-breadcrumb-left">
                                 <span class="au-breadcrumb-span">You are here:</span>
                                 <ul class="list-unstyled list-inline au-breadcrumb__list">
-
                                     <li class="list-inline-item">
                                         <a href="{{ route('dashboard.home') }}">Dashboard</a>
                                     </li>
                                     <li class="list-inline-item seprate">
                                         <span>/</span>
                                     </li>
-                                    <li class="list-inline-item">couriers List</li>
+                                    <li class="list-inline-item">Couriers List</li>
                                 </ul>
                             </div>
                             <div class="d-flex justify-content-end">
                                 <a href="{{ route('dashboard.shipment.courier.create') }}" class="btn btn-primary">Create New</a>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -65,40 +69,39 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($couriers as $courier)
-                                        <tr>
-                                            <td>{{ $courier->id }}</td>
-                                            <td>{{ $courier->name }}</td>
-                                            <td>{{ $courier->contact_number }}</td>
-                                            <td>{{ $courier->vehicle_type ?? 'Not Available' }}</td>
-                                            <td>{{ $courier->license_plate ?? 'Not Available' }}</td>
-                                            <td>{{ $courier->status}}</td>
-                                           
-                                            <td>
-                                               
+                                    @if ($couriers->count())
+                                        @foreach ($couriers as $courier)
+                                            <tr>
+                                                <td>{{ $courier->id }}</td>
+                                                <td>{{ $courier->name }}</td>
+                                                <td>{{ $courier->contact_number }}</td>
+                                                <td>{{ $courier->vehicle_type ?? 'Not Available' }}</td>
+                                                <td>{{ $courier->license_plate ?? 'Not Available' }}</td>
+                                                <td>{{ $courier->status }}</td>
+                                                <td>
                                                     <div class="d-flex justify-content-between mr-2">
-                                                        <a href="{{route('dashboard.shipment.courier.edit', $courier->id)}}" class="btn btn-primary">Edit</a>
-                                                       
-                                                        <form action="{{ route('dashboard.shipment.courier.destroy', $courier->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this courier?');">
+                                                        <a href="{{ route('dashboard.shipment.courier.edit', $courier->id) }}" class="btn btn-primary">Edit</a>
+                                                        <form action="{{ route('dashboard.shipment.courier.destroy', $courier->id) }}" method="POST"
+                                                              onsubmit="return confirm('Are you sure you want to delete this courier?');">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger">Delete</button>
                                                         </form>
-                                                        
-                                                
-                                            </td>
-
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        <tr>
+                                            <td colspan="7" class="no-data">No data available</td>
                                         </tr>
-                                    @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
                     </div>
-
                 </div>
-               
             </div>
         </div>
-
     </div>
 @endsection

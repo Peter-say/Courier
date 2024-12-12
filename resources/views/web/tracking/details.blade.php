@@ -155,7 +155,7 @@
         }
 
         .image-card {
-            height: 300px;
+            height: 200px;
         }
 
         .card-img-top {
@@ -231,7 +231,6 @@
                         <article class="card">
                             <header class="card-header">Tracking Information</header>
                             <div class="card-body">
-                                <h6>Order ID: OD45345345435</h6>
                                 <article class="card">
                                     <div class="card-body row">
                                         <div class="col-4">
@@ -278,7 +277,12 @@
                                                 @php
                                                     $imagePaths = json_decode($shipmentDetails->images);
                                                 @endphp
-                                                <img src="{{ asset($imagePaths[0]) }}" alt="Image" class="card-img-top">
+                                                <a href="{{ $imagePaths[0] }}"
+                                                    data-fancybox="gallery_{{ $shipmentDetails->id }}"
+                                                    data-caption="{{ $shipmentDetails->name }}">
+                                                    <img src="{{ asset($imagePaths[0]) }}" alt="Image"
+                                                        class="card-img-top ">
+                                                </a>
                                             </div>
                                         </div>
                                     @elseif (is_array(json_decode($shipmentDetails->images)) && count(json_decode($shipmentDetails->images)) > 1)
@@ -286,7 +290,12 @@
                                         @foreach (json_decode($shipmentDetails->images) as $imagePath)
                                             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
                                                 <div class="card image-card">
-                                                    <img src="{{ asset($imagePath) }}" alt="Image" class="card-img-top">
+                                                    <a href="{{ asset($imagePath) }}"
+                                                        data-fancybox="gallery_{{ $shipmentDetails->id }}"
+                                                        data-caption="{{ $shipmentDetails->name }}">
+                                                        <img src="{{ asset($imagePath) }}" alt="Image"
+                                                            class="card-img-top">
+                                                    </a>
                                                 </div>
                                             </div>
                                         @endforeach

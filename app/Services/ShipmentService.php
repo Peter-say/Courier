@@ -47,7 +47,6 @@ class ShipmentService
         try {
             // Validate the incoming data
             $this->validateData($request);
-    
             // Create a new shipment using the validated data
 
             $imagePaths = [];
@@ -101,7 +100,7 @@ class ShipmentService
     }
 
     public function updateData(Request $request, $id)
-    {
+    { 
         try {
             // Validate the incoming data
             $this->validateData($request);
@@ -115,8 +114,7 @@ class ShipmentService
                 }
             }
             $serializedImagePaths = json_encode($imagePaths);
-            
-            $Updateshipment = Shipment::FindOrFail($id);
+            $Updateshipment = Shipment::find($id);
             
             // Update shipment details
             $Updateshipment->update([
