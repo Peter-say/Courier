@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Helpers;
-use App\Helpers;
+use App\Helpers\MetaData;
 use App\Models\Post;
 use Illuminate\Support\Str;
 
