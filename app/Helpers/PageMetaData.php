@@ -46,7 +46,7 @@ class PageMetaData
         return self::createMetaData(
             'Welcome to SwiftlySend',
             'Discover SwiftlySend - Your Premier Destination for Cutting-Edge Logistics and Transportation Solutions. Explore Our Services Today!',
-            'https://swiftlysend.online/'
+            'https://swiftlysend.online'
         );
     }
 
