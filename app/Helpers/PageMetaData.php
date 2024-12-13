@@ -34,7 +34,7 @@ class PageMetaData
             ->setAttribute("og_site_name", str_replace('-', '', self::DEFAULT_SUFFIX))
             ->setAttribute("og_title", $title)
             ->setAttribute("og_description", $description)
-            ->setAttribute("og_image", $ogImage ?? asset('web/assets/img/logo/cover.png'))
+            // ->setAttribute("og_image", $ogImage ?? asset('web/assets/img/logo/cover.png'))
             ->setAttribute("og_type", self::DEFAULT_OG_TYPE)
             ->setAttribute("og_image_width", self::DEFAULT_OG_IMAGE_WIDTH)
             ->setAttribute("og_image_height", self::DEFAULT_OG_IMAGE_HEIGHT)

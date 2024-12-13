@@ -7,7 +7,7 @@
 <meta name="keywords" content="{{ $metaData->keywords}}">
 
 <meta property="og:description" content="{{ $metaData->description ?? '' }}">
-<meta property="og:image" content="{{ $metaData->og_image ?? '' }}">
+<meta property="og:image" content="{{ $web_assets }}/assets/img/logo/cover.png">
 <meta property="og:url" content="{{ $metaData->og_url ?? '' }}">
 <meta property="og:type" content="{{ $metaData->og_type ?? '' }}">
 <meta property="og:image:width" content="{{ $metaData->og_image_width ?? '1200' }}">
