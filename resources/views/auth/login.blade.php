@@ -43,16 +43,22 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Password</label>
-                                <input id="password" type="password"
-                                    class="form-control  @error('password') is-invalid @enderror" name="password"
-                                    required autocomplete="current-password">
+                                <label for="password">Password</label>
+                                <div class="input-group">
+                                    <input id="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                        required autocomplete="current-password">
+                                    <button type="button" id="togglePassword" class="btn btn-outline-secondary">
+                                        <i class="fa fa-eye"></i>
+                                    </button>
+                                </div>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
+                                
                             <div class="login-checkbox">
                                 <label>
                                     <input type="checkbox" name="remember" id="remember"
@@ -88,8 +94,5 @@
     </div>
 
     @include('dashboard.layouts.bottom.scripts')
-
-
     </body>
-
 </html>

@@ -46,4 +46,21 @@
      });
  </script>
 
+<script>
+    const togglePassword = document.querySelector("#togglePassword");
+    const passwordInput = document.querySelector("#password");
+
+    togglePassword.addEventListener("click", function () {
+        // Toggle the type attribute
+        const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+        passwordInput.setAttribute("type", type);
+
+        // Toggle the icon
+        this.innerHTML = type === "password" 
+            ? '<i class="fa fa-eye"></i>' 
+            : '<i class="fa fa-eye-slash"></i>';
+    });
+</script>
+
+
  
