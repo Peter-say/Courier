@@ -2,13 +2,15 @@
 
 namespace App\Helpers;
 use App\Helpers\MetaData;
-use App\Models\Post;
-use Illuminate\Support\Str;
 
 class PageMetaData
 {
     const DEFAULT_SUFFIX = "- SwiftlySend";
     const DEFAULT_KEYWORDS = "Logistics Solutions, Transportation Services, Cutting-Edge Solutions, Premier Destination, Explore Services.";
+    const DEFAULT_OG_TYPE = "website";
+    const DEFAULT_OG_IMAGE_WIDTH = 1200;
+    const DEFAULT_OG_IMAGE_HEIGHT = 630;
+    const DEFAULT_TWITTER_CARD = "summary_large_image";
 
     public static function getTitle(string $name)
     {
@@ -25,11 +27,18 @@ class PageMetaData
         $meta = new MetaData();
 
         return $meta
-        ->setAttribute("title", $title)
-        ->setAttribute("description", $description)
-        ->setAttribute("keywords", self::getDefaultKeywords())
-        ->setAttribute("og_url", $ogUrl)
-        ->setAttribute("og_image", $ogImage ?? asset('web/assets/img/profile/cover.png'));
+            ->setAttribute("title", $title)
+            ->setAttribute("description", $description)
+            ->setAttribute("keywords", self::getDefaultKeywords())
+            ->setAttribute("og_url", $ogUrl)
+            ->setAttribute("og_site_name", str_replace('-', '', self::DEFAULT_SUFFIX))
+            ->setAttribute("og_title", $title)
+            ->setAttribute("og_description", $description)
+            ->setAttribute("og_image", $ogImage ?? asset('web/assets/img/logo/cover.png'))
+            ->setAttribute("og_type", self::DEFAULT_OG_TYPE)
+            ->setAttribute("og_image_width", self::DEFAULT_OG_IMAGE_WIDTH)
+            ->setAttribute("og_image_height", self::DEFAULT_OG_IMAGE_HEIGHT)
+            ->setAttribute("twitter_card", self::DEFAULT_TWITTER_CARD);
     }
 
     public static function welcome()
@@ -76,6 +85,5 @@ class PageMetaData
             'https://swiftlysend.online/web/service'
         );
     }
-
-    
 }
+
