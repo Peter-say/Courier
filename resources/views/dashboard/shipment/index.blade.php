@@ -115,22 +115,40 @@
                                             <td>{{ $shipment->receiver_contact }}</td>
                                             <td>{!! $shipment->currentDeliveryStatus() !!}</td>
                                             <td>
-                                                <div class="action-group">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <!-- Change Status -->
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                            <i class="fas fa-sync-alt" title="Change Status"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            @foreach ($statusOptions as $status)
+                                                                <li>
+                                                                    <form
+                                                                        action="{{ route('dashboard.shipment.update.delivery_status', ['id' => $shipment->id, 'status' => $status]) }}"
+                                                                        method="POST">
+                                                                        @csrf
+                                                                        @method('PUT')
+                                                                        <input type="hidden" name="delivery_status" value="{{ $status }}">
+                                                                        <button type="submit" class="dropdown-item">
+                                                                            Change to {{ ucfirst($status) }}
+                                                                        </button>
+                                                                    </form>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
                                                     <!-- View Details -->
-                                                    <a href="{{ route('dashboard.shipment.details', $shipment->id) }}" 
-                                                       class="icon-action" title="View Details">
+                                                    <a href="{{ route('dashboard.shipment.details', $shipment->id) }}" class="icon-action mx-2" title="View Details">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
                                                     <!-- Edit -->
-                                                    <a href="{{ route('dashboard.shipment.edit', $shipment->id) }}" 
-                                                       class="icon-action" title="Edit Shipment">
+                                                    <a href="{{ route('dashboard.shipment.edit', $shipment->id) }}" class="icon-action mx-2" title="Edit Shipment">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
                                                     <!-- Delete -->
-                                                    <form action="{{ route('dashboard.shipment.delete', $shipment->id) }}"
-                                                          method="POST"
-                                                          onsubmit="return confirm('Are you sure you want to delete this shipment?');"
-                                                          class="action-form">
+                                                    <form action="{{ route('dashboard.shipment.delete', $shipment->id) }}" method="POST"
+                                                        onsubmit="return confirm('Are you sure you want to delete this shipment?');" class="action-form mx-2">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="icon-action" title="Delete Shipment">
@@ -138,12 +156,12 @@
                                                         </button>
                                                     </form>
                                                     <!-- View Receipt -->
-                                                    <a href="{{ route('dashboard.shipment.view-receipt', $shipment->id) }}" 
-                                                       class="icon-action" title="View Receipt">
+                                                    <a href="{{ route('dashboard.shipment.view-receipt', $shipment->id) }}" class="icon-action mx-2" title="View Receipt">
                                                         <i class="fas fa-file-invoice"></i>
                                                     </a>
                                                 </div>
                                             </td>
+                                            
                                         </tr>
                                     @endforeach
                                 </tbody>
