@@ -219,7 +219,7 @@
                     @csrf <!-- Add CSRF token -->
                     <div class="form-group">
                         <label class="form-group">Enter Your Tracking Number To Find Shipment</label>
-                        <input type="text" class="form-control" name="tracking_number" id="tracking_number"
+                        <input type="text" class="form-control" name="tracking_number" id="tracking_number" value="{{request()->tracking_number}}"
                             style="border: 3px solid rgba(255, 166, 0, 0.884);">
                     </div>
                     <div><button type="submit" class="btn btn-warning w-100 mt-3">Find Shipment</button></div>

@@ -27,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
                 $metaData = (new PageMetaData())->contactUs();
             } elseif (Route::currentRouteName() === 'web.about-us') {
                 $metaData = (new PageMetaData())->aboutUs();
+            } elseif (Route::currentRouteName() === 'web.tracking.') {
+                $metaData = (new PageMetaData())->trackOrderPage();
             } elseif (Route::currentRouteName() === 'web.tracking.track-shipment') {
                 $metaData = (new PageMetaData())->trackOrderPage();
             } elseif (Route::currentRouteName() === 'web.service.') {
