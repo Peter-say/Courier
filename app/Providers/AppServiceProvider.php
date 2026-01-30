@@ -22,7 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Schema::defaultStringLength(191);
         view()->composer('*', function ($view) {
             $metaData = null;
             if (Route::currentRouteName() === 'web.contact-us') {
@@ -44,5 +43,6 @@ class AppServiceProvider extends ServiceProvider
                 'dashboard_assets' => url('/') . env('RESOURCE_URL') . '/dashboard',
             ]);
         });
+         Schema::defaultStringLength(191);
     }
 }
