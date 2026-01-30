@@ -18,7 +18,7 @@ class AdminSeeder extends Seeder
         User::create([
             'first_name' => 'Sudo',
             'last_name' => 'Admin',
-            'email' => 'swiftlysend@admin.com',
+            'email' => 'admin@swiftlypackage.com',
             'role' => 'Sudo',
             'avatar' => null,
             'email_verified_at' => now(),
