@@ -25,17 +25,17 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             $metaData = null;
             if (Route::currentRouteName() === 'web.contact-us') {
-                $metaData = (new PageMetaData())->contactUs();
+                $metaData = PageMetaData::welcome();
             } elseif (Route::currentRouteName() === 'web.about-us') {
-                $metaData = (new PageMetaData())->aboutUs();
+                $metaData = PageMetaData::welcome();
             } elseif (Route::currentRouteName() === 'web.tracking.') {
-                $metaData = (new PageMetaData())->trackOrderPage();
+                $metaData = PageMetaData::welcome();
             } elseif (Route::currentRouteName() === 'web.tracking.track-shipment') {
-                $metaData = (new PageMetaData())->trackOrderPage();
+                $metaData = PageMetaData::welcome();
             } elseif (Route::currentRouteName() === 'web.service.') {
-                $metaData = (new PageMetaData())->services();
+                $metaData = PageMetaData::welcome();
             } elseif (request()->url() === url('/')) {
-                $metaData = (new PageMetaData())->welcome();
+                $metaData = PageMetaData::welcome();
             }
             $view->with([
                 'metaData' => $metaData,
